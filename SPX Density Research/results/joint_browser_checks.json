@@ -1,0 +1,21 @@
+{
+  "browser": "138.0.7204.0",
+  "plotly": "3.1.0",
+  "checked_date": "2026-09-20",
+  "offline": true,
+  "checks": [
+    "Offline initial render of joint surface at 180 days",
+    "Pointer hover resolves numerical 3D density",
+    "Keyboard maturity selection updates the 3D line and three-curve slice",
+    "All three surface choices change plotted data; control reports 2,763 violations",
+    "Calendar comparison displays failing independent and passing joint gaps",
+    "Play advances through horizons and Pause stops",
+    "Pointer drag rotates and scrolling zooms the 3D camera",
+    "All eight diagnostics and numerical residual explanation displayed",
+    "Final horizon selectable by keyboard",
+    "390px and 320px layouts have no page-level horizontal overflow",
+    "No JavaScript errors or external HTTP requests"
+  ],
+  "javascript_errors": [],
+  "external_requests": []
+}

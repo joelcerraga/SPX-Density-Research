@@ -1,0 +1,4 @@
+snapshot_id,root,settlement_at,discount,observed_at,available_at,source_reference
+SYNTHETIC-ONLY-01,SPXW,2026-03-16T16:00:00-04:00,0.9934496300142736,2026-01-15T15:45:00-05:00,2026-01-15T15:45:00-05:00,Synthetic constant rate r=0.04; not a market yield curve.
+SYNTHETIC-ONLY-01,SPXW,2026-05-15T16:00:00-04:00,0.9869387874423552,2026-01-15T15:45:00-05:00,2026-01-15T15:45:00-05:00,Synthetic constant rate r=0.04; not a market yield curve.
+SYNTHETIC-ONLY-01,SPXW,2026-09-12T16:00:00-04:00,0.9740448343824937,2026-01-15T15:45:00-05:00,2026-01-15T15:45:00-05:00,Synthetic constant rate r=0.04; not a market yield curve.

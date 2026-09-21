@@ -1,0 +1,104 @@
+{
+  "crossref": {
+    "title": [
+      "Detecting and Repairing Arbitrage in Traded Option Prices"
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0003-0539-6414",
+        "authenticated-orcid": false,
+        "given": "Samuel N.",
+        "family": "Cohen",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Mathematical Institute, University of Oxford, Oxford, UK"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-4027-5298",
+        "authenticated-orcid": false,
+        "given": "Christoph",
+        "family": "Reisinger",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Mathematical Institute, University of Oxford, Oxford, UK"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-5584-0486",
+        "authenticated-orcid": false,
+        "given": "Sheng",
+        "family": "Wang",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Mathematical Institute, University of Oxford, Oxford, UK"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container-title": [
+      "Applied Mathematical Finance"
+    ],
+    "volume": "27",
+    "issue": "5",
+    "page": "345-373",
+    "published": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          2
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2021,
+          2,
+          8
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          2
+        ]
+      ]
+    },
+    "DOI": "10.1080/1350486x.2020.1846573",
+    "URL": "https://doi.org/10.1080/1350486x.2020.1846573"
+  },
+  "consulted_text": "https://arxiv.org/html/2008.09454v1",
+  "sections": [
+    "2.1",
+    "3.2"
+  ],
+  "access_date": "2026-09-21"
+}

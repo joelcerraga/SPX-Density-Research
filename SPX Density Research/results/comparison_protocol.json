@@ -1,0 +1,71 @@
+{
+  "status": "Fixed after the documented feasibility and numerical-formulation pilots",
+  "snapshots": [
+    {
+      "id": "aug31",
+      "file": "eom_marking_prices_list.csv",
+      "label": "31 August · 15:00 CT"
+    },
+    {
+      "id": "sep18",
+      "file": "eod_marking_prices_list.csv",
+      "label": "18 September · 15:00 CT"
+    },
+    {
+      "id": "sep18_late",
+      "file": "eod_marking_prices_late_list.csv",
+      "label": "18 September · 15:15 CT"
+    }
+  ],
+  "density_grid": {
+    "bins": 240,
+    "support": [
+      0.3,
+      2.2
+    ]
+  },
+  "coarse_control_bins": 120,
+  "carry": "Unchanged Equation (39), separately inferred per snapshot, scope and training fold",
+  "estimator": "Minimum discrete curvature inside original matched call/put bounds; nonnegative mass, unit mean and mass; analytical calendar refinement",
+  "smoothing_parameter": "None: curvature is minimised subject to hard quote constraints",
+  "numerical_formulation": "Explicit roughness residuals, price inequality rows divided by each inferred forward; strict Clarabel Solved status",
+  "stopping_tolerance": 1e-11,
+  "price_count_tolerance_points": 1e-07,
+  "lp_price_residual_tolerance_points": 2e-06,
+  "numerical_retry_rule": "Try equivalent positive quote-row multipliers 1, 10, 100 only if strict solver or independent post-solve checks fail; retain all attempts, never widen quotes",
+  "calendar_tolerance": 1e-08,
+  "common_horizon_days": 60.0,
+  "common_horizon_rule": "Linear mixture in elapsed time of adjacent normalised maturity densities; never extrapolate",
+  "common_contract_control": "Within each expiry, intersection of retained strikes across all three snapshots; re-estimate carry and refit",
+  "holdouts": "Three interlaced interior-pair folds per snapshot; endpoints always retained; D and F estimated only on training pairs",
+  "tail_ranges": "Linear extrema over the 240-bin, original-spread-feasible family with the full-sample fixed carry; no roughness restriction",
+  "events": [
+    {
+      "name": "below_0_8_forward",
+      "threshold": 0.8,
+      "upper": false
+    },
+    {
+      "name": "above_1_2_forward",
+      "threshold": 1.2,
+      "upper": true
+    },
+    {
+      "name": "above_1_8_forward",
+      "threshold": 1.8,
+      "upper": true
+    }
+  ],
+  "limits": [
+    "All snapshots were inspected during feasibility design; no blind or temporal performance claim.",
+    "Common-horizon values require interpolation, and normalised tail events are relative to the relevant forward.",
+    "No true market density, external curve, actual depth, carry-uncertainty band or executable-arbitrage conclusion.",
+    "No cross-observation-date calendar constraint. The within-snapshot maturity constraints remain conditional on deterministic carry/proportional dividends."
+  ],
+  "pilot_files": {
+    "comparison_feasibility_pilot.json": "546a922b269c88fe394eb867f8720142dde8fc5ec042f904374717171cdb77e0",
+    "comparison_qp_pilot.json": "82c0279b1c5fd23b422dbc49136b58b13648b8f2664febe49247292817d8b13d",
+    "comparison_qp_scaling_pilot.json": "85cab0f0e81d7356122df0dc524a3c9cda54f5a4df839a225ea3eb002dfb4186",
+    "comparison_normalised_qp_pilot.json": "906b92bb6c96ecfbf6653307973396a3fbb60c01241b61dc57e9dfc5ec4eb43b"
+  }
+}

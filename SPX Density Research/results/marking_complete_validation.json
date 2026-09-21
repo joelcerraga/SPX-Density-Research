@@ -1,0 +1,19 @@
+{
+  "joint_fit_count": 24,
+  "marginal_fit_count": 72,
+  "all_statuses_solved": true,
+  "all_calendar_checks_pass": true,
+  "minimum_final_calendar_gap": -5.74866730952727e-10,
+  "minimum_bin_mass": -1.6352183679632326e-16,
+  "maximum_mass_error": 1.7763568394002505e-15,
+  "maximum_mean_error": 2.375877272697835e-14,
+  "maximum_auxiliary_residual": 1.3105223085077603e-12,
+  "selected_residual_plot_limits": [
+    -19.07303857487559,
+    14.988454666240939
+  ],
+  "selected_residual_extrema": [
+    -18.77303857487559,
+    14.688454666240938
+  ]
+}

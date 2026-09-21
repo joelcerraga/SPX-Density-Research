@@ -1,0 +1,63 @@
+{
+  "notebook": "09_empirical_preparation.ipynb",
+  "code_cells_executed": 2,
+  "notebook_structure_checked": true,
+  "formal_nbformat_schema_validation": false,
+  "embedded_figures_verified": 5,
+  "captions_below_figures": true,
+  "equation_numbers": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "figure_numbers": [
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "table_numbers": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "register_counts": {
+    "figures": 28,
+    "tables": 30,
+    "equations": 40
+  },
+  "all_notebook_and_new_methodology_local_links_resolve": true,
+  "templates_match_rendered_markdown": true,
+  "first_eight_notebooks_and_two_earlier_explorers_unchanged": true,
+  "uploaded_csv_bytes_preserved": true,
+  "numerical_checks": "marking_complete_validation.json",
+  "tests_passed": 74,
+  "test_log": "marking_tests.log",
+  "browser_checks": "marking_browser_checks.json",
+  "browser_check_count": 9,
+  "notes": [
+    "Primary empirical run and post-hoc diagnostic retained separately.",
+    "Synthetic fixture evidence remains distinctly labelled.",
+    "Source and code hashes match numerical records."
+  ],
+  "file_sha256": {
+    "09_empirical_preparation.ipynb": "79ebce6f40b7479bfa7f88b6392699040884390c2f284afb42afd54b4b6602c0",
+    "research/marking_methodology.md": "86de38d327f4db6ad85107c640a0a1cd6c47f39596759b038e8789f604ac342d",
+    "research/development_reflection.md": "b0db152fe0d3fb63f9180a8b481dbfd2f7bfe561ad1df0757de243d152b80d3c",
+    "research/references.md": "e137509ead7dc4c6140e56486b0cf1dababc5f0c90f336509a8fca27028ff392",
+    "research/paper_registers.md": "ffd699d03ea3e40ee85536a4000fb72f508bc1dbcd536de9290a05f133de1cfa",
+    "interactive/empirical_density_surface.html": "54706713067f6341a9e8f6ee20635f00b4b93208c6c2abb818a590b1598b3830",
+    "requirements.txt": "5e532bdaeffc95c2411f4f218797ec40f16ddffc4565bba78df2e2d8d162701c"
+  }
+}

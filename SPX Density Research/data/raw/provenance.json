@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.cboe.com/delayed_quotes/spx/quote_table",
+  "retrieved_at_utc": "2026-09-19T17:55:21.321873+00:00",
+  "provider_timestamp_raw": "17:43:22",
+  "quote_observation_datetime": null,
+  "quote_timezone": null,
+  "observation_time_verified": false,
+  "underlying_last_trade_time": "2026-09-18T16:14:59",
+  "sha256": "a877f87b1d7fe16288fc8fb8bcc252b6d62ecb0e36c294305ec411d5c9e2200e",
+  "status": "candidate_snapshot_not_approved_for_density_estimation",
+  "note": "Retrieved from embedded CTX.contextOptionsData. Retrieval time and trade time are not quote observation time. Raw snapshot retained for private research; redistribution rights have not been established."
+}

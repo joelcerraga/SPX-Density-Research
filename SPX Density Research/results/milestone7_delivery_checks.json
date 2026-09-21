@@ -1,0 +1,59 @@
+{
+  "stage": 7,
+  "verified_utc": "2026-09-21T02:59:10.183256+00:00",
+  "unit_tests_passed": 45,
+  "verified_relative_links": 34,
+  "preserved_earlier_artifacts": 8,
+  "numbering": {
+    "figures": 20,
+    "tables": 17,
+    "equations": 29
+  },
+  "reflection_notebooks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "figure_exports": [
+    {
+      "file": "figure_18_quote_coverage_design.png",
+      "size_bytes": 61159,
+      "dimensions": [
+        1890,
+        737
+      ],
+      "sha256": "b1abf7988f0fb1a5d2bf5f01de7af23c01865539faeaf3124bcd0cedb40861cd",
+      "embedded_copy_matches": true
+    },
+    {
+      "file": "figure_19_repeated_recovery_errors.png",
+      "size_bytes": 103919,
+      "dimensions": [
+        1944,
+        1332
+      ],
+      "sha256": "b743cca35d86275ec9aa00352c08cc5d95cdf08a7a0a4c11b98c2e85be172620",
+      "embedded_copy_matches": true
+    },
+    {
+      "file": "figure_20_repeated_tail_errors.png",
+      "size_bytes": 209823,
+      "dimensions": [
+        1944,
+        1368
+      ],
+      "sha256": "6981ab7bbc4771a700c9e034aa40862a30018ac011bf2ee26f4183f1bbbe8487",
+      "embedded_copy_matches": true
+    }
+  ],
+  "export_incident": {
+    "observation": "Figure 19 standalone PNG was empty while its notebook attachment remained intact",
+    "cause": "Not established",
+    "response": "Recovered attachment, added verified temporary-file exports, regenerated figures and checked every PNG against its notebook attachment",
+    "resolved_in_delivered_artifacts": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "data_kind": "synthetic_fixture",
+  "underlying": "SPX",
+  "quote_units": "index_points",
+  "settlement_type": "cash",
+  "timestamp_semantics": "contemporaneous_nbbo_snapshot",
+  "size_semantics": "positive_displayed_contracts",
+  "calendar_model": "deterministic_carry_proportional_dividends",
+  "source_evidence": {
+    "quotes": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information.",
+    "observation_time": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information.",
+    "sizes": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information.",
+    "settlement": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information.",
+    "discounts": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information.",
+    "research_use": "Synthetic fixture generated in run_empirical_preparation.py; no observed market information."
+  },
+  "screening": {
+    "max_relative_spread": 0.25,
+    "max_curve_age_seconds": 86400
+  },
+  "input_sha256": {
+    "quotes.csv": "b9854cb0a27eca6fd3255547ad8075e5de6b68028720415bb473611c5f8d855d",
+    "discounts.csv": "a6e3b73f0cb278474c9f09b4221dd1b4851e170698825dc28c0f15d1155f0e16"
+  },
+  "notes": "All prices, sizes, discounts and dates are test inputs. Dates do not assert real listed contracts or exchange sessions."
+}

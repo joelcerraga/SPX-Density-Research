@@ -1,0 +1,45 @@
+[
+  {
+    "objective_scale": 10.0,
+    "status": "solver_failure",
+    "solver_status": "AlmostSolved",
+    "iterations": 40,
+    "history": [
+      {
+        "round": 1,
+        "status": "Solved",
+        "iterations": 40,
+        "primal_residual": 1.017905275640964e-14,
+        "dual_residual": 8.644341795212519e-12,
+        "scaled_duality_gap": 3.6637359812630166e-14,
+        "calendar_rows": 478,
+        "minimum_calendar_gap": -1.3303087552367418e-09,
+        "maximum_residual_equation_error": 1.149080830487037e-14,
+        "maximum_mass_error": 4.440892098500626e-16,
+        "maximum_mean_error": 4.440892098500626e-16,
+        "minimum_mass": 6.115368412028186e-17,
+        "maximum_spread_distance_points": 6.821210263296962e-13
+      }
+    ],
+    "primal_residual": 7.548666222747011e-15,
+    "dual_residual": 3.261872557241323e-11
+  },
+  {
+    "objective_scale": 100.0,
+    "status": "solver_failure",
+    "solver_status": "AlmostSolved",
+    "iterations": 43,
+    "history": [],
+    "primal_residual": 7.537150607694562e-15,
+    "dual_residual": 1.1826660751177872e-11
+  },
+  {
+    "objective_scale": 0.1,
+    "status": "solver_failure",
+    "solver_status": "AlmostSolved",
+    "iterations": 39,
+    "history": [],
+    "primal_residual": 1.1534197485172035e-14,
+    "dual_residual": 2.4682016044614337e-09
+  }
+]

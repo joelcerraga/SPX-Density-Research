@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "data_kind": "market",
+  "underlying": "SPX",
+  "quote_units": "index_points",
+  "settlement_type": "cash",
+  "timestamp_semantics": "contemporaneous_nbbo_snapshot",
+  "size_semantics": "positive_displayed_contracts",
+  "calendar_model": "deterministic_carry_proportional_dividends",
+  "source_evidence": {
+    "quotes": "",
+    "observation_time": "",
+    "sizes": "",
+    "settlement": "",
+    "discounts": "",
+    "research_use": ""
+  },
+  "review": {
+    "reviewer": "",
+    "reviewed_at": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  "screening": {
+    "max_relative_spread": 0.25,
+    "max_curve_age_seconds": 86400
+  },
+  "input_sha256": {
+    "quotes.csv": "",
+    "discounts.csv": ""
+  },
+  "notes": "Template only. Verify every declaration and justify the screening values before accepting a market bundle."
+}

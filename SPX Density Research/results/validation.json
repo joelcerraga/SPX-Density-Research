@@ -1,0 +1,76 @@
+{
+  "parameters": {
+    "spot": 6000.0,
+    "rate": 0.04,
+    "dividend": 0.015,
+    "volatility": 0.2,
+    "maturity": 0.5
+  },
+  "baseline": {
+    "mass": 0.9999999985279788,
+    "minimum_density": 3.649747692016563e-12,
+    "negative_density_count": 0,
+    "integrated_absolute_error": 2.914825705338636e-06,
+    "first_moment": 6075.470691653079,
+    "theoretical_forward": 6075.470709243807,
+    "forward_relative_error": 2.8953687479907275e-09,
+    "max_repricing_error_index_points": 1.0992562238243409e-05
+  },
+  "convergence": [
+    {
+      "strike_spacing": 80,
+      "mass": 0.9999999967807478,
+      "minimum_density": 5.5638710280943744e-12,
+      "negative_density_count": 0,
+      "integrated_absolute_error": 0.0007451359343736728,
+      "first_moment": 6075.470680030048,
+      "theoretical_forward": 6075.470709243807,
+      "forward_relative_error": 4.808476536378369e-09,
+      "max_repricing_error_index_points": 0.27690125387232456
+    },
+    {
+      "strike_spacing": 40,
+      "mass": 0.9999999980126875,
+      "minimum_density": 4.33062538351284e-12,
+      "negative_density_count": 0,
+      "integrated_absolute_error": 0.00018651327077218318,
+      "first_moment": 6075.470687808123,
+      "theoretical_forward": 6075.470709243807,
+      "forward_relative_error": 3.528234155276487e-09,
+      "max_repricing_error_index_points": 0.09213977787072736
+    },
+    {
+      "strike_spacing": 20,
+      "mass": 0.9999999983742319,
+      "minimum_density": 3.82392298866907e-12,
+      "negative_density_count": 0,
+      "integrated_absolute_error": 4.663657550484385e-05,
+      "first_moment": 6075.470690615238,
+      "theoretical_forward": 6075.470709243807,
+      "forward_relative_error": 3.066193499646373e-09,
+      "max_repricing_error_index_points": 1.150382672676642e-05
+    },
+    {
+      "strike_spacing": 10,
+      "mass": 0.9999999984808435,
+      "minimum_density": 3.706762850557003e-12,
+      "negative_density_count": 0,
+      "integrated_absolute_error": 1.1659343857766796e-05,
+      "first_moment": 6075.470691322019,
+      "theoretical_forward": 6075.470709243807,
+      "forward_relative_error": 2.949859951268269e-09,
+      "max_repricing_error_index_points": 1.1159559790030471e-05
+    },
+    {
+      "strike_spacing": 5,
+      "mass": 0.9999999985279788,
+      "minimum_density": 3.649747692016563e-12,
+      "negative_density_count": 0,
+      "integrated_absolute_error": 2.914825705338636e-06,
+      "first_moment": 6075.470691653079,
+      "theoretical_forward": 6075.470709243807,
+      "forward_relative_error": 2.8953687479907275e-09,
+      "max_repricing_error_index_points": 1.0992562238243409e-05
+    }
+  ]
+}

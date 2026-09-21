@@ -1,0 +1,285 @@
+{
+  "purpose": "Post-hoc diagnostic of the observed selection/evaluation discrepancy; no change to selector, grid or primary evaluation measures",
+  "benchmark": "mixture",
+  "coverage": "original",
+  "inside_price_count": 640,
+  "outside_price_count": 320,
+  "repetitions": [
+    {
+      "repetition": 0,
+      "selected": {
+        "within_quote_range_rmse": 0.11626202654198817,
+        "outside_quote_range_rmse": 1.790369463925062
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.15380265446362953,
+        "outside_quote_range_rmse": 1.3319615645879768
+      }
+    },
+    {
+      "repetition": 1,
+      "selected": {
+        "within_quote_range_rmse": 0.12458219325300662,
+        "outside_quote_range_rmse": 2.2219407869272567
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.14948265415319523,
+        "outside_quote_range_rmse": 1.5328315110050128
+      }
+    },
+    {
+      "repetition": 2,
+      "selected": {
+        "within_quote_range_rmse": 0.12623687165133313,
+        "outside_quote_range_rmse": 1.995945692948627
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16059264931287745,
+        "outside_quote_range_rmse": 1.8028557332061301
+      }
+    },
+    {
+      "repetition": 3,
+      "selected": {
+        "within_quote_range_rmse": 0.1200066170655797,
+        "outside_quote_range_rmse": 2.168630290053278
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.13847174314547714,
+        "outside_quote_range_rmse": 2.274995014409151
+      }
+    },
+    {
+      "repetition": 4,
+      "selected": {
+        "within_quote_range_rmse": 0.12124223662384878,
+        "outside_quote_range_rmse": 1.8434684933876424
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.15191304836491323,
+        "outside_quote_range_rmse": 1.1715910487598566
+      }
+    },
+    {
+      "repetition": 5,
+      "selected": {
+        "within_quote_range_rmse": 0.12215395665738664,
+        "outside_quote_range_rmse": 1.7751143390841941
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.15629584330907814,
+        "outside_quote_range_rmse": 1.2937583851629362
+      }
+    },
+    {
+      "repetition": 6,
+      "selected": {
+        "within_quote_range_rmse": 0.12510078087326718,
+        "outside_quote_range_rmse": 1.5904933493384206
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.1534263403196028,
+        "outside_quote_range_rmse": 1.3409652189188812
+      }
+    },
+    {
+      "repetition": 7,
+      "selected": {
+        "within_quote_range_rmse": 0.12383783006324164,
+        "outside_quote_range_rmse": 2.092345496575292
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16289742584320951,
+        "outside_quote_range_rmse": 2.1943787201313483
+      }
+    },
+    {
+      "repetition": 8,
+      "selected": {
+        "within_quote_range_rmse": 0.11877209689645553,
+        "outside_quote_range_rmse": 1.432006230000812
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.15436181883851832,
+        "outside_quote_range_rmse": 1.094848887005344
+      }
+    },
+    {
+      "repetition": 9,
+      "selected": {
+        "within_quote_range_rmse": 0.12103078450215426,
+        "outside_quote_range_rmse": 1.8372998357726178
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.15200289187068855,
+        "outside_quote_range_rmse": 1.974602320536533
+      }
+    },
+    {
+      "repetition": 10,
+      "selected": {
+        "within_quote_range_rmse": 0.13185443671456681,
+        "outside_quote_range_rmse": 1.9271665563851745
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16267053850753557,
+        "outside_quote_range_rmse": 1.7600265077991852
+      }
+    },
+    {
+      "repetition": 11,
+      "selected": {
+        "within_quote_range_rmse": 0.12615394045683068,
+        "outside_quote_range_rmse": 1.550416519480943
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16099111103427735,
+        "outside_quote_range_rmse": 1.4476754953672504
+      }
+    },
+    {
+      "repetition": 12,
+      "selected": {
+        "within_quote_range_rmse": 0.12927745333616458,
+        "outside_quote_range_rmse": 1.9037244270493179
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16514944556033512,
+        "outside_quote_range_rmse": 1.6243897844102047
+      }
+    },
+    {
+      "repetition": 13,
+      "selected": {
+        "within_quote_range_rmse": 0.1303458510015626,
+        "outside_quote_range_rmse": 1.6401467580467537
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16866529525013843,
+        "outside_quote_range_rmse": 1.4103340880103852
+      }
+    },
+    {
+      "repetition": 14,
+      "selected": {
+        "within_quote_range_rmse": 0.12383608391657441,
+        "outside_quote_range_rmse": 2.3195646608266713
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.1501154610419051,
+        "outside_quote_range_rmse": 1.7565811015835995
+      }
+    },
+    {
+      "repetition": 15,
+      "selected": {
+        "within_quote_range_rmse": 0.12783409285394207,
+        "outside_quote_range_rmse": 2.035337491212595
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16235011011954514,
+        "outside_quote_range_rmse": 1.1831780050582104
+      }
+    },
+    {
+      "repetition": 16,
+      "selected": {
+        "within_quote_range_rmse": 0.116163836317799,
+        "outside_quote_range_rmse": 1.8805689109671215
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.14970108943502516,
+        "outside_quote_range_rmse": 1.2086134145281477
+      }
+    },
+    {
+      "repetition": 17,
+      "selected": {
+        "within_quote_range_rmse": 0.11625414094896903,
+        "outside_quote_range_rmse": 1.9869144424518144
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.1586114875002291,
+        "outside_quote_range_rmse": 1.2397531837572278
+      }
+    },
+    {
+      "repetition": 18,
+      "selected": {
+        "within_quote_range_rmse": 0.1259980680173683,
+        "outside_quote_range_rmse": 1.832267400849654
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.16370538965165388,
+        "outside_quote_range_rmse": 1.3898182306668827
+      }
+    },
+    {
+      "repetition": 19,
+      "selected": {
+        "within_quote_range_rmse": 0.12281600288583207,
+        "outside_quote_range_rmse": 1.8695954317359238
+      },
+      "fixed": {
+        "within_quote_range_rmse": 0.166407947183001,
+        "outside_quote_range_rmse": 1.41442351793639
+      }
+    }
+  ],
+  "groups": {
+    "selected": {
+      "within_quote_range_rmse": {
+        "n": 20,
+        "mean": 0.12348796502889356,
+        "sd": 0.004590027413330741,
+        "mcse": 0.0010263613314795061,
+        "minimum": 0.116163836317799,
+        "maximum": 0.13185443671456681
+      },
+      "outside_quote_range_rmse": {
+        "n": 20,
+        "mean": 1.8846658288509583,
+        "sd": 0.22538171771095375,
+        "mcse": 0.050396884168736084,
+        "minimum": 1.432006230000812,
+        "maximum": 2.3195646608266713
+      }
+    },
+    "fixed": {
+      "within_quote_range_rmse": {
+        "n": 20,
+        "mean": 0.15708074724524176,
+        "sd": 0.007414782629558544,
+        "mcse": 0.0016579957998077545,
+        "minimum": 0.13847174314547714,
+        "maximum": 0.16866529525013843
+      },
+      "outside_quote_range_rmse": {
+        "n": 20,
+        "mean": 1.5223790866420326,
+        "sd": 0.3395853737024574,
+        "mcse": 0.07593359797633642,
+        "minimum": 1.094848887005344,
+        "maximum": 2.274995014409151
+      }
+    }
+  },
+  "paired": {
+    "within_quote_range_rmse": {
+      "n": 20,
+      "mean": -0.03359278221634823,
+      "sd": 0.005994563722762405,
+      "mcse": 0.001340425197955094,
+      "minimum": -0.043591944297168936,
+      "maximum": -0.018465126079897434
+    },
+    "outside_quote_range_rmse": {
+      "n": 20,
+      "mean": 0.362286742208926,
+      "sd": 0.2921854360959452,
+      "mcse": 0.06533464971459542,
+      "minimum": -0.13730248476391527,
+      "maximum": 0.8521594861543849
+    }
+  }
+}

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SPX density research — synthetic maturity explorer</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #173449; background: #fff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1100px; padding: 32px 28px 48px; margin: auto; }
+    .eyebrow { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: #52616a; }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.35rem); font-weight: 600; margin: 10px 0 12px; }
+    h2 { font-size: 1.15rem; font-weight: 600; margin: 24px 0 12px; }
+    p { line-height: 1.55; }
+    .intro { max-width: 850px; margin-bottom: 22px; }
+    .controls { display: flex; align-items: end; flex-wrap: wrap; gap: 16px 24px; padding: 18px 0; border-block: 1px solid #dce2e5; }
+    .maturity-control { flex: 1 1 330px; }
+    label { display: block; font-size: .93rem; }
+    input[type=range] { width: 100%; accent-color: #218a87; margin: 14px 0 5px; }
+    .range-ends { display: flex; justify-content: space-between; color: #52616a; font-size: .8rem; }
+    select, button { font: inherit; padding: 9px 12px; min-height: 42px; border: 1px solid #a4b2ba; border-radius: 4px; background: white; color: #173449; }
+    select { margin-top: 7px; max-width: 100%; }
+    button { cursor: pointer; }
+    button:disabled { cursor: default; opacity: .5; }
+    button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #cf8b51; outline-offset: 3px; }
+    #play { background: #173449; color: white; border-color: #173449; }
+    .hint, figcaption, .small { color: #465b68; font-size: .9rem; line-height: 1.55; }
+    .hint { margin: 14px 0 0; }
+    figure { margin: 0; }
+    #surface { width: 100%; height: 590px; }
+    #slice { width: 100%; height: 340px; }
+    figcaption { margin: 0 0 22px; }
+    #slice-stats { font-variant-numeric: tabular-nums; }
+    #error { padding: 12px; background: #fff3e8; color: #7d3516; }
+    details { margin-top: 28px; border-top: 1px solid #dce2e5; padding-top: 18px; }
+    summary { cursor: pointer; font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 14px 0; }
+    td, th { border-bottom: 1px solid #dce2e5; padding: 9px 12px 9px 0; text-align: right; font-variant-numeric: tabular-nums; }
+    th:first-child, td:first-child { text-align: left; }
+    a { color: #14665f; }
+    footer { margin-top: 26px; }
+    noscript { display: block; margin: 20px; }
+    @media (max-width: 600px) {
+      main { padding: 24px 12px 36px; }
+      #surface { height: 430px; }
+      #slice { height: 310px; }
+      .controls { gap: 12px; }
+      select, button { min-height: 44px; }
+    }
+    @media print { .controls, .hint, .modebar { display: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Joel Cerraga · Quant research · Milestone 4</div>
+    <h1>One valuation setup. Eight expiry horizons.</h1>
+    <p class="intro">Explore the risk-neutral density in three dimensions, then examine an individual maturity below.
+      <strong>All inputs are synthetic.</strong> These are independently fitted distributions, not a verified market surface or a historical animation.</p>
+  </header>
+  <section class="controls" aria-label="Density explorer controls">
+    <div class="maturity-control">
+      <label for="maturity">Selected horizon: <strong id="maturity-label">180 days</strong></label>
+      <input id="maturity" type="range" min="0" max="7" step="1" value="4" aria-describedby="sweep-note" disabled>
+      <div class="range-ends"><span>30 days</span><span>365 days</span></div>
+    </div>
+    <div>
+      <label for="surface-kind">3D surface</label>
+      <select id="surface-kind" disabled>
+        <option value="fitted">Constrained estimate</option>
+        <option value="known">Known lognormal benchmark</option>
+      </select>
+    </div>
+    <button id="play" type="button" disabled>Play maturity sweep</button>
+  </section>
+  <p id="sweep-note" class="hint">Drag to rotate · Scroll to zoom · Hover for values · The sweep visits expiry horizons, not historical dates.</p>
+  <p id="error" role="alert" hidden></p>
+  <figure>
+    <div id="surface" role="img" aria-label="Interactive 3D density surface: terminal index level, time to expiry in years, and density per index point."></div>
+    <figcaption><strong>Figure 10, interactive companion.</strong> Eight maturity slices are joined for visual orientation.
+      The connecting sheet does not estimate intermediate maturities. The orange line marks the selected slice.
+      The 3,000–11,000 display window is narrower than the fitting support; displayed densities are not renormalised.</figcaption>
+  </figure>
+  <h2>Read the selected maturity</h2>
+  <p id="slice-stats" class="small" aria-live="polite"></p>
+  <figure>
+    <div id="slice" role="img" aria-label="Selected maturity: exact fitted histogram compared with the known lognormal density."></div>
+    <figcaption><strong>Figure 11, interactive companion.</strong> The teal steps are the fitted histogram; the dashed navy curve is the known density.
+      The axes stay fixed as the horizon changes. A lower peak is not a loss of total probability: the distribution spreads across a wider range of outcomes.</figcaption>
+  </figure>
+  <details>
+    <summary>Validation, assumptions and research context</summary>
+    <p>Each fit enforces nonnegative bin probabilities, unit total probability and a mean equal to the supplied forward.
+      These are constraints, not independent evidence that the estimated shape is correct. Withheld-strike errors are synthetic interpolation checks.</p>
+    <p id="calendar-note"></p>
+    <p>As Gatheral and Jacquier explain in <em>Arbitrage-free SVI volatility surfaces</em> [12, §2],
+      cross-maturity consistency is a separate requirement from the validity of individual slices.
+      This project tests normalised call prices at fixed forward moneyness; it does not implement their SVI estimator.
+      As Bahra explains in his Bank of England working paper [1], these risk-neutral distributions should not be interpreted as real-world forecasts.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Selected diagnostics by fitted horizon</caption>
+        <thead><tr><th scope="col">Days</th><th scope="col">Withheld-price RMSE<br>(index points)</th><th scope="col">Density L1 error<br>(on support)</th><th scope="col">Fitted mass in<br>display window</th></tr></thead>
+        <tbody id="metrics"></tbody>
+      </table>
+    </div>
+    <p class="small">Settings: initial level 6,000; volatility 20% per square-root year; rate 4% and dividend yield 1.5% per year;
+      81 synthetic prices and 120 bins at each horizon; penalty 10<sup>−6</sup> throughout.
+      Independent uniform price errors lie between −0.5 and +0.5 index points. Full derivation, numerical settings and references accompany Notebook 4.</p>
+    <p class="small">[1] B. Bahra (1997), <a href="https://www.bankofengland.co.uk/-/media/boe/files/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices.pdf">Bank of England Working Paper 66</a>.<br>
+      [12] J. Gatheral and A. Jacquier, <a href="https://arxiv.org/abs/1204.0646">Arbitrage-free SVI volatility surfaces</a>, §2 (consulted author preprint).</p>
+  </details>
+  <footer class="small">Offline research companion · Plotly.js 3.1.0 (MIT) · No account, network connection or market-data subscription is needed to view the saved graphs.</footer>
+  <noscript>Enable JavaScript to explore the graphs. Static Figures 10–11 and the numerical results are included in the project ZIP.</noscript>
+</main>
+<!-- Plotly third-party licence:
+__PLOTLY_LICENSE__
+-->
+<script>__PLOTLY_BUNDLE__</script>
+<script id="experiment-data" type="application/json">__EXPERIMENT_DATA__</script>
+<script>
+(async () => {
+  "use strict";
+  const DATA = JSON.parse(document.getElementById("experiment-data").textContent);
+  const surface = document.getElementById("surface");
+  const slice = document.getElementById("slice");
+  const slider = document.getElementById("maturity");
+  const kind = document.getElementById("surface-kind");
+  const play = document.getElementById("play");
+  const label = document.getElementById("maturity-label");
+  const stats = document.getElementById("slice-stats");
+  const error = document.getElementById("error");
+  const x = DATA.levels;
+  const times = DATA.slices.map(s => s.years);
+  const maxDensity = Math.max(...DATA.slices.flatMap(s => [...s.known, ...s.fitted])) * 1.08;
+  const navy = "#16364c", teal = "#218a87", orange = "#cf8b51";
+  let index = 4, playing = false, timer = null;
+  const config = {responsive: true, displaylogo: false, scrollZoom: true,
+    modeBarButtonsToRemove: ["sendDataToCloud"],
+    toImageButtonOptions: {format: "png", filename: "synthetic-density", scale: 2}};
+  const hover3d = "Terminal level: %{x:,.0f} points<br>Horizon: %{y:.4f} years<br>Density: %{z:.6f} per point<extra>%{fullData.name}</extra>";
+  const hover2d = "Terminal level: %{x:,.0f} points<br>Density: %{y:.6f} per point<extra>%{fullData.name}</extra>";
+  const font = {family: "Arial, sans-serif", color: navy, size: 12};
+  const narrow = () => surface.clientWidth < 550;
+  const defaultCamera = () => ({eye: narrow() ? {x: 2.45, y: -2.75, z: 1.85} : {x: 1.65, y: -1.85, z: 1.25}});
+  let wasNarrow = narrow();
+  const selected3d = () => {
+    const s = DATA.slices[index];
+    if (kind.value === "fitted") {
+      const points = s.step_x.map((v, i) => [v, s.step_y[i]]).filter(p => p[0] >= x[0] && p[0] <= x[x.length - 1]);
+      return {x: points.map(p => p[0]), y: points.map(() => s.years), z: points.map(p => p[1])};
+    }
+    return {x, y: x.map(() => s.years), z: s.known};
+  };
+  const layout3d = () => ({
+    font, paper_bgcolor: "white", margin: {l: 0, r: 0, t: 12, b: 16},
+    showlegend: false, uirevision: "retain-camera",
+    scene: {
+      xaxis: {title: {text: narrow() ? "Level (points)" : "Terminal index level (index points)"},
+        range: [x[0], x[x.length - 1]], nticks: narrow() ? 4 : 6, gridcolor: "#dce2e5"},
+      yaxis: {title: {text: narrow() ? "Expiry (years)" : "Time to expiry (years)"}, range: [times[0], times[times.length - 1]], nticks: 5, gridcolor: "#dce2e5"},
+      zaxis: {title: {text: narrow() ? "Density (1/point)" : "Density (per point)"}, range: [0, maxDensity], tickformat: ".4f", nticks: 5, gridcolor: "#dce2e5"},
+      aspectmode: "manual", aspectratio: {x: 1.7, y: 1.1, z: .85},
+      camera: defaultCamera(), dragmode: "orbit"
+    }
+  });
+  const stop = () => { playing = false; clearTimeout(timer); timer = null; play.textContent = "Play maturity sweep"; play.setAttribute("aria-pressed", "false"); };
+  const showError = e => { stop(); error.hidden = false; error.textContent = "The interactive graph could not be rendered. Try a browser with WebGL enabled, or use the static figures in the project. " + e.message; };
+  function updateText() {
+    const s = DATA.slices[index], m = DATA.report.marginals[index];
+    label.textContent = `${s.days} days (${s.years.toFixed(4)} years)`;
+    slider.value = String(index);
+    slider.setAttribute("aria-valuetext", `${s.days} days`);
+    stats.textContent = `${s.days}-day fit · Withheld-price RMSE ${m.withheld_clean_price_rmse.toFixed(4)} index points · Density L1 error ${m.density_l1_on_support.toFixed(4)} on the fitting support`;
+  }
+  async function updateSelection() {
+    updateText();
+    const s = DATA.slices[index], selected = selected3d();
+    await Promise.all([
+      Plotly.restyle(surface, {x: [selected.x], y: [selected.y], z: [selected.z]}, [1]),
+      Plotly.restyle(slice, {x: [x, s.step_x], y: [s.known, s.step_y]}, [0, 1])
+    ]);
+    surface.dataset.selectedDays = String(s.days);
+  }
+  async function tick() {
+    if (!playing) return;
+    if (index >= DATA.slices.length - 1) { stop(); return; }
+    index += 1;
+    try { await updateSelection(); } catch (e) { showError(e); return; }
+    if (playing) timer = setTimeout(tick, 1050);
+  }
+  try {
+    await Plotly.newPlot(surface, [
+      {type: "surface", x, y: times, z: DATA.slices.map(s => s.fitted), name: "Constrained estimate",
+        colorscale: "Viridis", cmin: 0, cmax: maxDensity, showscale: false, hovertemplate: hover3d,
+        lighting: {ambient: .8, diffuse: .6, roughness: .9}},
+      {type: "scatter3d", mode: "lines", ...selected3d(), name: "Selected maturity",
+        line: {color: orange, width: 7}, hovertemplate: hover3d}
+    ], layout3d(), config);
+    const first = DATA.slices[index];
+    await Plotly.newPlot(slice, [
+      {type: "scatter", mode: "lines", x, y: first.known, name: "Known lognormal density",
+        line: {color: navy, width: 2, dash: "dash"}, hovertemplate: hover2d},
+      {type: "scatter", mode: "lines", x: first.step_x, y: first.step_y, name: "Constrained histogram",
+        line: {color: teal, width: 2}, hovertemplate: hover2d}
+    ], {font, paper_bgcolor: "white", plot_bgcolor: "white", margin: {l: 76, r: 12, t: 28, b: 62},
+      xaxis: {title: {text: "Terminal index level (index points)"}, range: [x[0], x[x.length - 1]], nticks: narrow() ? 4 : 8, gridcolor: "#edf0f2"},
+      yaxis: {title: {text: "Density (per index point)"}, range: [0, maxDensity], tickformat: ".4f", nticks: 5, gridcolor: "#edf0f2"},
+      legend: {orientation: "h", x: 0, y: 1.15, font: {size: 11}}, hovermode: "x unified", uirevision: "fixed-density-scale"}, config);
+    updateText();
+    surface.dataset.selectedDays = String(DATA.slices[index].days);
+    surface.dataset.ready = "true";
+    for (const element of [slider, kind, play]) element.disabled = false;
+    slider.addEventListener("input", () => { stop(); index = Number(slider.value); updateSelection().catch(showError); });
+    kind.addEventListener("change", async () => {
+      stop();
+      try {
+        await Plotly.restyle(surface, {z: [DATA.slices.map(s => s[kind.value])],
+          name: kind.value === "fitted" ? "Constrained estimate" : "Known lognormal benchmark"}, [0]);
+        await updateSelection();
+      } catch (e) { showError(e); }
+    });
+    play.setAttribute("aria-pressed", "false");
+    play.addEventListener("click", async () => {
+      if (playing) { stop(); return; }
+      playing = true; play.textContent = "Pause sweep"; play.setAttribute("aria-pressed", "true");
+      index = 0;
+      try { await updateSelection(); if (playing) timer = setTimeout(tick, 1050); } catch (e) { showError(e); }
+    });
+    document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); });
+    window.addEventListener("resize", () => {
+      const small = narrow();
+      const updates = {"scene.xaxis.title.text": small ? "Level (points)" : "Terminal index level (index points)",
+        "scene.yaxis.title.text": small ? "Expiry (years)" : "Time to expiry (years)",
+        "scene.zaxis.title.text": small ? "Density (1/point)" : "Density (per point)", "scene.xaxis.nticks": small ? 4 : 6};
+      if (small !== wasNarrow) { updates["scene.camera"] = defaultCamera(); wasNarrow = small; }
+      Plotly.relayout(surface, updates);
+      Plotly.relayout(slice, {"xaxis.nticks": narrow() ? 4 : 8});
+    });
+    const c = DATA.report.calendar;
+    document.getElementById("calendar-note").textContent = `Calendar diagnostic: ${c.violations.toLocaleString()} decreases exceed the ${c.tolerance} tolerance across ${c.comparisons.toLocaleString()} adjacent-maturity / normalised-strike comparisons. The largest decrease is ${c.maximum_decrease.toExponential(4)} in dimensionless call value. None occurs among the ${c.shared_quote_range_comparisons.toLocaleString()} checks inside the paired quote-range overlap. The violations lie in extrapolated wings; they still prevent calling this fitted surface arbitrage-free. Calendar constraints have not been imposed.`;
+    for (const m of DATA.report.marginals) {
+      const tr = document.createElement("tr");
+      for (const value of [m.days, m.withheld_clean_price_rmse.toFixed(6), m.density_l1_on_support.toFixed(6), m.fitted_mass_in_display_window.toFixed(8)]) {
+        const td = document.createElement("td"); td.textContent = String(value); tr.appendChild(td);
+      }
+      document.getElementById("metrics").appendChild(tr);
+    }
+  } catch (e) { showError(e); }
+})();
+</script>
+</body>
+</html>

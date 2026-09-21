@@ -1,0 +1,358 @@
+{
+  "headings": [
+    {
+      "key": "h1",
+      "title": "1 Introduction",
+      "level": 1
+    },
+    {
+      "key": "h2",
+      "title": "1.1 Research background",
+      "level": 2
+    },
+    {
+      "key": "h3",
+      "title": "1.2 Aim and objectives",
+      "level": 2
+    },
+    {
+      "key": "h4",
+      "title": "1.3 Scope and contribution",
+      "level": 2
+    },
+    {
+      "key": "h5",
+      "title": "1.4 Organisation of the paper",
+      "level": 2
+    },
+    {
+      "key": "h6",
+      "title": "2 Valuation relationships and numerical recovery",
+      "level": 1
+    },
+    {
+      "key": "h7",
+      "title": "2.1 From European calls to a risk-neutral density",
+      "level": 2
+    },
+    {
+      "key": "h8",
+      "title": "2.2 Controlled benchmark and finite differences",
+      "level": 2
+    },
+    {
+      "key": "h9",
+      "title": "2.3 Convergence, cancellation and noisy observations",
+      "level": 2
+    },
+    {
+      "key": "h10",
+      "title": "3 Quote assessment and constrained estimation",
+      "level": 1
+    },
+    {
+      "key": "h11",
+      "title": "3.1 Assessing observations before calibration",
+      "level": 2
+    },
+    {
+      "key": "h12",
+      "title": "3.2 Representing a valid terminal distribution",
+      "level": 2
+    },
+    {
+      "key": "h13",
+      "title": "3.3 Fitting noisy calls with a smoothness penalty",
+      "level": 2
+    },
+    {
+      "key": "h14",
+      "title": "3.4 Single-maturity validation",
+      "level": 2
+    },
+    {
+      "key": "h15",
+      "title": "4 Consistency across maturity",
+      "level": 1
+    },
+    {
+      "key": "h16",
+      "title": "4.1 Valid marginal densities can form an inconsistent family",
+      "level": 2
+    },
+    {
+      "key": "h17",
+      "title": "4.2 A joint programme in common coordinates",
+      "level": 2
+    },
+    {
+      "key": "h18",
+      "title": "4.3 Checking between the constraint locations",
+      "level": 2
+    },
+    {
+      "key": "h19",
+      "title": "4.4 Results of joint fitting",
+      "level": 2
+    },
+    {
+      "key": "h20",
+      "title": "5 Robustness and repeated synthetic evaluation",
+      "level": 1
+    },
+    {
+      "key": "h21",
+      "title": "5.1 Extending the benchmark and making smoothing comparable",
+      "level": 2
+    },
+    {
+      "key": "h22",
+      "title": "5.2 Measuring density and tail errors",
+      "level": 2
+    },
+    {
+      "key": "h23",
+      "title": "5.3 Separating noise from missing strike information",
+      "level": 2
+    },
+    {
+      "key": "h24",
+      "title": "5.4 Results across repeated quote realisations",
+      "level": 2
+    },
+    {
+      "key": "h25",
+      "title": "6 Smoothing selection and forward sensitivity",
+      "level": 1
+    },
+    {
+      "key": "h26",
+      "title": "6.1 Evaluating a complete selection procedure",
+      "level": 2
+    },
+    {
+      "key": "h27",
+      "title": "6.2 Price selection and density recovery are different targets",
+      "level": 2
+    },
+    {
+      "key": "h28",
+      "title": "6.3 Perturbing the input without moving the risk event",
+      "level": 2
+    },
+    {
+      "key": "h29",
+      "title": "7 Empirical inputs and the first market calibration",
+      "level": 1
+    },
+    {
+      "key": "h30",
+      "title": "7.1 Establishing an auditable input route",
+      "level": 2
+    },
+    {
+      "key": "h31",
+      "title": "7.2 Conditional forwards and training-only inference",
+      "level": 2
+    },
+    {
+      "key": "h32",
+      "title": "7.3 Synthetic acceptance exercise",
+      "level": 2
+    },
+    {
+      "key": "h33",
+      "title": "7.4 The supplied market files and contract scope",
+      "level": 2
+    },
+    {
+      "key": "h34",
+      "title": "7.5 Inferring a quote-implied carry proxy",
+      "level": 2
+    },
+    {
+      "key": "h35",
+      "title": "7.6 Market fit, selection and remaining spread misses",
+      "level": 2
+    },
+    {
+      "key": "h36",
+      "title": "8 Original-spread compatibility and dated comparisons",
+      "level": 1
+    },
+    {
+      "key": "h37",
+      "title": "8.1 Defining a common empirical comparison",
+      "level": 2
+    },
+    {
+      "key": "h38",
+      "title": "8.2 Distinguishing grid feasibility from quote inconsistency",
+      "level": 2
+    },
+    {
+      "key": "h39",
+      "title": "8.3 Selecting a smooth member of the feasible family",
+      "level": 2
+    },
+    {
+      "key": "h40",
+      "title": "8.4 Held-out pairs and the unresolved fold",
+      "level": 2
+    },
+    {
+      "key": "h41",
+      "title": "8.5 Conditional ranges rather than a single tail answer",
+      "level": 2
+    },
+    {
+      "key": "h42",
+      "title": "8.6 Fixed expiries and a common elapsed horizon",
+      "level": 2
+    },
+    {
+      "key": "h43",
+      "title": "9 Development challenges and lessons learned",
+      "level": 1
+    },
+    {
+      "key": "h44",
+      "title": "9.1 Purpose of the development record",
+      "level": 2
+    },
+    {
+      "key": "h45",
+      "title": "9.2 Notebook 1: a smaller numerical step was not always better",
+      "level": 2
+    },
+    {
+      "key": "h46",
+      "title": "9.3 Notebook 2: retrieving prices did not establish usable observations",
+      "level": 2
+    },
+    {
+      "key": "h47",
+      "title": "9.4 Notebook 3: smoothing required an interpretable constrained object",
+      "level": 2
+    },
+    {
+      "key": "h48",
+      "title": "9.5 Notebooks 4\u20135: good slices did not guarantee a consistent surface",
+      "level": 2
+    },
+    {
+      "key": "h49",
+      "title": "9.6 Notebook 6: fair sensitivity comparisons and a solver limitation",
+      "level": 2
+    },
+    {
+      "key": "h50",
+      "title": "9.7 Notebook 7: repeated studies required more than additional runs",
+      "level": 2
+    },
+    {
+      "key": "h51",
+      "title": "9.8 Notebook 8: the selection target and the evaluation target diverged",
+      "level": 2
+    },
+    {
+      "key": "h52",
+      "title": "9.9 Notebook 9: empirical access, inferred inputs and misleading visual agreement",
+      "level": 2
+    },
+    {
+      "key": "h53",
+      "title": "9.10 Notebook 10: feasibility, finite precision and unresolved evidence",
+      "level": 2
+    },
+    {
+      "key": "h54",
+      "title": "9.11 Final assembly: retaining the evidence in a readable paper",
+      "level": 2
+    },
+    {
+      "key": "h55",
+      "title": "10 Discussion and limitations",
+      "level": 1
+    },
+    {
+      "key": "h56",
+      "title": "10.1 What the evidence establishes",
+      "level": 2
+    },
+    {
+      "key": "h57",
+      "title": "10.2 Limits of identification and probability interpretation",
+      "level": 2
+    },
+    {
+      "key": "h58",
+      "title": "10.3 Limits of empirical and numerical validation",
+      "level": 2
+    },
+    {
+      "key": "h59",
+      "title": "11 Conclusions and future work",
+      "level": 1
+    },
+    {
+      "key": "h60",
+      "title": "11.1 Conclusion",
+      "level": 2
+    },
+    {
+      "key": "h61",
+      "title": "11.2 Priorities for further work",
+      "level": 2
+    },
+    {
+      "key": "h62",
+      "title": "References",
+      "level": 1
+    },
+    {
+      "key": "h63",
+      "title": "Appendix A Reproducibility and interactive companions",
+      "level": 1
+    },
+    {
+      "key": "h64",
+      "title": "A.1 Structure of the project package",
+      "level": 2
+    },
+    {
+      "key": "h65",
+      "title": "A.2 Interactive figures",
+      "level": 2
+    },
+    {
+      "key": "h66",
+      "title": "A.3 Reproduction and software scope",
+      "level": 2
+    },
+    {
+      "key": "h67",
+      "title": "Appendix B Attribution and reporting conventions",
+      "level": 1
+    },
+    {
+      "key": "h68",
+      "title": "B.1 Established relationships and project definitions",
+      "level": 2
+    },
+    {
+      "key": "h69",
+      "title": "B.2 Units and interpretation",
+      "level": 2
+    }
+  ],
+  "front": [
+    "Abstract",
+    "List of figures",
+    "List of tables",
+    "List of equations",
+    "List of abbreviations",
+    "List of mathematical symbols"
+  ],
+  "title": "Recovering Option-Implied Risk-Neutral Densities from SPX Prices"
+}

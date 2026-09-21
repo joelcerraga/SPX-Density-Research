@@ -1,0 +1,11 @@
+{
+  "compared_archive": "SPX-Density-Milestone-10.zip",
+  "missing_previous_files": [],
+  "changed_previous_files": [
+    "spx-density-research/README.md",
+    "spx-density-research/research/development_reflection.md",
+    "spx-density-research/research/paper_registers.md",
+    "spx-density-research/research/project_roadmap.md"
+  ],
+  "all_other_previous_files_unchanged": true
+}

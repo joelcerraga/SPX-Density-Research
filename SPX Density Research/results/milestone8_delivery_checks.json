@@ -1,0 +1,68 @@
+{
+  "stage": 8,
+  "notebook_structure_checked": true,
+  "formal_nbformat_schema_check": "Not run: nbformat is not installed; JSON/cell/output/attachment checks performed instead",
+  "full_suite_tests": 55,
+  "full_suite_passed": true,
+  "preserved_notebooks": 7,
+  "preserved_interactive_companions": 2,
+  "paper_register_counts": {
+    "figures": 23,
+    "tables": 21,
+    "equations": 33
+  },
+  "figures": [
+    {
+      "file": "figures/figure_21_smoothing_selection_scores.png",
+      "bytes": 109745,
+      "sha256": "3a04f20ea359bd0041c6ede8646c5709e93861d204fe75c6df79700f5173966c"
+    },
+    {
+      "file": "figures/figure_21_smoothing_selection_scores.svg",
+      "bytes": 59506,
+      "sha256": "8480959ab265b79835bf8b8efd63e9db4780e9523a14fc55280848cec46459c9"
+    },
+    {
+      "file": "figures/figure_22_selected_and_fixed_recovery.png",
+      "bytes": 60275,
+      "sha256": "21dc00b444ce2490baca4fd1d0e701ea3549e55f106f6c8ebabe16a5e081b0f2"
+    },
+    {
+      "file": "figures/figure_22_selected_and_fixed_recovery.svg",
+      "bytes": 61606,
+      "sha256": "fbbe86904587b6d801570eba96231b103489e5ea3320a3080aa6ec970a5adbe9"
+    },
+    {
+      "file": "figures/figure_23_forward_input_sensitivity.png",
+      "bytes": 242937,
+      "sha256": "22bcdd111e3b7345c3f792faa9951876cde1b970ab7b1af1b5c894f812d464cd"
+    },
+    {
+      "file": "figures/figure_23_forward_input_sensitivity.svg",
+      "bytes": 129458,
+      "sha256": "35549157f28aefb17338f81a174e2f696ae13c762ed3468de70829cf3f5388c7"
+    }
+  ],
+  "visual_review": "Figures 21\u201323 inspected: labels, axes, legends and error bars legible; captions remain below embedded figures",
+  "all_methodology_local_links_resolve": true,
+  "no_unresolved_placeholders": true,
+  "notebook_sha256": "03b4a552787455de3987c39246d1a4f0bb5d653b2c86e6b510d3a8f86488c677",
+  "reflection_sha256": "3409fb2592917316431105c3ac884376f398ac0eeae13055173f78299bf9d646",
+  "numerical_checks": {
+    "planned_experiments": 240,
+    "recorded_experiments": 240,
+    "failed_or_blocked": 0,
+    "unique_accepted_joint_fits": 1000,
+    "accepted_marginals": 8000,
+    "reused_fixed_fits": 40,
+    "all_calendar_checks_pass": true,
+    "minimum_calendar_gap": -9.996273712766621e-10,
+    "maximum_mass_error": 5.810685266283144e-12,
+    "maximum_normalised_mean_error": 8.945022500483901e-11,
+    "minimum_raw_mass": -9.476934009415587e-12,
+    "maximum_residual_equation_error": 1.2571832463947885e-11,
+    "maximum_solver_iterations": 40,
+    "maximum_refinement_rounds": 7,
+    "maximum_quadrature_error_estimate": 1.9971588607892166e-07
+  }
+}

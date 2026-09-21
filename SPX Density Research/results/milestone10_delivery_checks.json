@@ -1,0 +1,79 @@
+{
+  "notebook": "10_empirical_comparison.ipynb",
+  "code_cells_executed": 1,
+  "notebook_structure_checked": true,
+  "formal_nbformat_schema_validation": false,
+  "embedded_figures_verified": 5,
+  "captions_below_figures": true,
+  "equation_numbers": [
+    41,
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "figure_numbers": [
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "table_numbers": [
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "register_counts": {
+    "figures": 33,
+    "tables": 36,
+    "equations": 46
+  },
+  "reference_count": 23,
+  "new_notebook_and_updated_document_links_resolve": true,
+  "templates_match_rendered_markdown": true,
+  "nine_previous_notebooks_and_three_explorers_unchanged": true,
+  "figure_4_caption_then_explanation_preserved": true,
+  "uploaded_csv_bytes_preserved": true,
+  "tests_passed": 84,
+  "test_log": "comparison_tests.log",
+  "numerical_summary": "comparison_summary.json",
+  "unaccepted_cases_explicit": [
+    {
+      "case_id": "sep18_late_coarse",
+      "status": "blocked_by_spread_feasibility",
+      "reason": "Original quote bounds cannot be met on this grid at the declared point tolerance."
+    },
+    {
+      "case_id": "sep18_late_fold0",
+      "status": "solver_failure",
+      "reason": "AlmostSolved"
+    }
+  ],
+  "browser_checks": "comparison_browser_checks.json",
+  "browser_check_count": 9,
+  "file_sha256": {
+    "10_empirical_comparison.ipynb": "25e93af3fe9dd38736cee74dd953bf70e92ee2fccfdd3ee0aab32ebede9cc59e",
+    "interactive/dated_density_surface.html": "5d29f5ccaad9cca8f15f3991409692ce338709ccd87f663c5a29843e7546ee20",
+    "src/comparison.py": "60fd989a71f3ca6eafb83636fef3a03e91f3d7638e1f63ab0c03774d758683b4",
+    "run_comparison.py": "95bb0509063d50f2580532d673c60fa4b22dc2829c29934dba715a30fec0296c",
+    "build_comparison_report.py": "c104ee6fccc3521e99658aa6da894b24372f9ca93c64dcbda6558bcb227080c6",
+    "build_comparison_html.py": "c7545fdf9ec3138cc98bda34c28b1d58f4ebfd4d1a0c5e3577c9d30c93f51a16",
+    "build_milestone10_notebook.py": "9ac42e0ea908ef0db836e238ec6340b74fbe169ee49d70d26b019aa4aafab913",
+    "tests/test_comparison.py": "723ec0f27e162c84a0fca5f5a47a1a0de5ac1bb8ea7e0d6be5d431d679c8e640",
+    "tests/check_comparison.cjs": "8c4837b2b871e12dd08b3ed3f8288d71ce094c4654bf1d2e27e7da614d9f923d",
+    "check_milestone10_delivery.py": "2fb9a1965094eb2a227faf916798833c76f5587b8846a6de9355fc3c38766004",
+    "research/comparison_methodology.md": "6e7b99de2d715315aa37c451d072686eedf4a4aa1ed46ca96ce6a637f757fcae",
+    "research/development_reflection.md": "e7c364652f92a22e92013f6399ae172d994bf3cd632d72966a09fef88f8f8522",
+    "research/references.md": "32645f6e49c4dd4861d9ac14edbc5dfbfe757a1717a2a524f18d3464caaf9e9a",
+    "research/paper_registers.md": "85b5dd82eacf05870c9c119be7c660580687f8493ea33daaf44d51b49cc39159",
+    "research/project_roadmap.md": "ee9150d6f714197560f6dd417c68f8fa1fcdfc31d277a2ccca6620ad5fd433a0",
+    "research/empirical_input_guide.md": "e60d770493d9cc8671729dc5e66204e1a84ba9dd073c99e0b6291bda417b8dee",
+    "research/data_access_status.md": "1da8effd808d3c896c1e2c5b6a61c26897566d775b7e5a34b4f0a78a3e4ab5d5",
+    "README.md": "8b44cd78bef62f5ecb00e1d73c7ab33bc6fb54a1eb50e8fde96dd52ff32d39a8"
+  }
+}

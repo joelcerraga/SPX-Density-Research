@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "eod_marking_prices_list.csv",
+    "source_url": "https://cdn.cboe.com/resources/marking_prices/eod_marking_prices_list.csv",
+    "checked_at_utc": "2026-09-21T04:25:30.229795+00:00",
+    "uploaded_sha256": "ed14f222eab3ac8e7394db2c441ba9866d1f6b0ccc888b949ccb914519ba8239",
+    "http_status": 200,
+    "source_sha256": "ed14f222eab3ac8e7394db2c441ba9866d1f6b0ccc888b949ccb914519ba8239",
+    "bytes": 8028464,
+    "matches_official_source": true
+  },
+  {
+    "filename": "eod_marking_prices_late_list.csv",
+    "source_url": "https://cdn.cboe.com/resources/marking_prices/eod_marking_prices_late_list.csv",
+    "checked_at_utc": "2026-09-21T04:25:30.230051+00:00",
+    "uploaded_sha256": "6d45d9842d4d28e1143e656ae4fa6529cbe05b2af791ea2ba092202c6fd7a4a3",
+    "http_status": 200,
+    "source_sha256": "6d45d9842d4d28e1143e656ae4fa6529cbe05b2af791ea2ba092202c6fd7a4a3",
+    "bytes": 7947760,
+    "matches_official_source": true
+  },
+  {
+    "filename": "eom_marking_prices_list.csv",
+    "source_url": "https://cdn.cboe.com/resources/marking_prices/eom_marking_prices_list.csv",
+    "checked_at_utc": "2026-09-21T04:25:30.230249+00:00",
+    "uploaded_sha256": "00ec3260c37b8fe3850c1f77c63410bc9b0c8070b536707216328c98a7359048",
+    "http_status": 200,
+    "source_sha256": "00ec3260c37b8fe3850c1f77c63410bc9b0c8070b536707216328c98a7359048",
+    "bytes": 8886931,
+    "matches_official_source": true
+  }
+]

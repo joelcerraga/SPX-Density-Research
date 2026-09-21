@@ -1,0 +1,11 @@
+{
+  "fit_count": 10,
+  "marginal_count": 30,
+  "maximum_mass_error": 3.7636560534792807e-14,
+  "maximum_mean_error": 4.057865155004947e-13,
+  "minimum_bin_mass": 1.8189409629030436e-13,
+  "minimum_final_calendar_gap": -7.803887625538373e-10,
+  "maximum_auxiliary_residual": 3.1210076544173283e-13,
+  "all_statuses_solved": true,
+  "all_calendar_checks_pass": true
+}

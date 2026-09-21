@@ -1,0 +1,9 @@
+{
+  "source_url": "https://datashop.cboe.com/download/sample/217",
+  "product_page": "https://datashop.cboe.com/option-eod-summary",
+  "retrieved_at_utc": "2026-09-21T03:42:13.395472+00:00",
+  "purpose": "Inspect the provider-advertised public sample for documented quote inputs; no purchase or subscription",
+  "status": "access_failed",
+  "http_status": 403,
+  "error": "HTTP Error 403: Forbidden"
+}

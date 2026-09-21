@@ -1,0 +1,33 @@
+{
+  "scope": "Diagnostic using the saved repeated-study draws on all master-grid positions; uncapped prices are not fitted or substituted into the study",
+  "checks": [
+    {
+      "benchmark": "lognormal",
+      "amplitude": 0.1,
+      "observations": 48400,
+      "negative_prices_under_uncapped_counterfactual": 244,
+      "bounded_positions_per_repetition": 44
+    },
+    {
+      "benchmark": "lognormal",
+      "amplitude": 0.5,
+      "observations": 48400,
+      "negative_prices_under_uncapped_counterfactual": 1353,
+      "bounded_positions_per_repetition": 132
+    },
+    {
+      "benchmark": "mixture",
+      "amplitude": 0.1,
+      "observations": 48400,
+      "negative_prices_under_uncapped_counterfactual": 0,
+      "bounded_positions_per_repetition": 0
+    },
+    {
+      "benchmark": "mixture",
+      "amplitude": 0.5,
+      "observations": 48400,
+      "negative_prices_under_uncapped_counterfactual": 0,
+      "bounded_positions_per_repetition": 0
+    }
+  ]
+}

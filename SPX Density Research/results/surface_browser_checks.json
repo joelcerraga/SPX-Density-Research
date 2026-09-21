@@ -1,0 +1,21 @@
+{
+  "browser": "138.0.7204.0",
+  "plotly": "3.1.0",
+  "checked_date": "2026-09-20",
+  "offline": true,
+  "checks": [
+    "Offline initial render, selected horizon 180 days",
+    "Pointer hover resolves a numerical 3D density value",
+    "Keyboard maturity selection updates 3D trace",
+    "Known/fitted surface control changes actual plotted values",
+    "Play advances horizons; Pause stops the sweep",
+    "Pointer drag changes the 3D camera",
+    "Scroll changes the 3D camera zoom",
+    "All eight diagnostic rows and observed calendar violations displayed",
+    "390px layout has no page-level horizontal overflow",
+    "320px layout has no page-level horizontal overflow",
+    "No JavaScript errors or external HTTP requests during the session"
+  ],
+  "javascript_errors": [],
+  "external_requests": []
+}

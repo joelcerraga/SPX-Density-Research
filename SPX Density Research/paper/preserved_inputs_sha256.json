@@ -1,0 +1,20 @@
+{
+  "01_synthetic_density.ipynb": "7a0ee13ecab9a820af2dc6fe75d95825947f52c086b5c974bd898b87554abc0f",
+  "02_market_data_audit.ipynb": "eaf1ddea16628bc5843d51d9f7c5e5c6c16213db46b9763d37ae4a2f2cb559df",
+  "03_constrained_density.ipynb": "6cb339921c59b39bec16fb52e460b1501e843b428071230803d30bf656b51836",
+  "04_density_surface.ipynb": "e89009fa488f52c3967cfa9199d650cc272e3309c4f9359d1afa7c8621c0ce84",
+  "05_joint_density.ipynb": "15809dc4e53418c3d537fee59a3f7d3755d0c705177649135a7db3615d53d50b",
+  "06_density_robustness.ipynb": "b48d8803d9ba5351a3bf898c0994bf9d39bbffb25c9edb023c243e1494871b6a",
+  "07_noise_and_coverage.ipynb": "d16eddb97bf170b084b075a72a7df401ec37c94be92be9aba858973049ffa9f2",
+  "08_smoothing_and_forwards.ipynb": "03b4a552787455de3987c39246d1a4f0bb5d653b2c86e6b510d3a8f86488c677",
+  "09_empirical_preparation.ipynb": "79ebce6f40b7479bfa7f88b6392699040884390c2f284afb42afd54b4b6602c0",
+  "10_empirical_comparison.ipynb": "25e93af3fe9dd38736cee74dd953bf70e92ee2fccfdd3ee0aab32ebede9cc59e",
+  "interactive/dated_density_surface.html": "5d29f5ccaad9cca8f15f3991409692ce338709ccd87f663c5a29843e7546ee20",
+  "interactive/dated_surface_template.html": "f8dc817fea1d3ca71c5edde28490548ac26a9babf0bb32726becd75311fd2653",
+  "interactive/density_surface.html": "c57c4def0df61f298bbc3b4cf2f301e6a690d05e1d8547bc9f9749d3d9a4bd4c",
+  "interactive/empirical_density_surface.html": "54706713067f6341a9e8f6ee20635f00b4b93208c6c2abb818a590b1598b3830",
+  "interactive/empirical_surface_template.html": "9316046d2263f88dc4d12e0b48fdf653592db067f4520b92f90b2478b3a0d56a",
+  "interactive/joint_density_surface.html": "2a4e0e8f309f791486a585fd20dec7da8b1bc716ebbcd907786d97469027829e",
+  "interactive/joint_surface_template.html": "448ece59cc4b57353b405276e960e734a56f4e03aad3d19964e3263453136280",
+  "interactive/surface_template.html": "dcd2316ae203fdd56eac552f8addecded1e8fd359f1edaddf41c9372f5c6bd61"
+}

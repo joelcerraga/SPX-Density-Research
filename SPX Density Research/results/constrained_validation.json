@@ -1,0 +1,55 @@
+{
+  "status": "synthetic_only",
+  "noise_standard_deviation": 0.5,
+  "seed": 2026,
+  "quote_count": 81,
+  "bins": 120,
+  "forward": 6075.470709243807,
+  "discount_factor": 0.9801986733067553,
+  "support": [
+    1822.641212773142,
+    13366.035560336375
+  ],
+  "known_density_mass_outside_support": 8.213763654369586e-09,
+  "raw_negative_density_points": 18,
+  "baseline_penalty": 1e-06,
+  "penalty_selection": "Predeclared illustrative middle setting; not selected by minimising benchmark error",
+  "results": [
+    {
+      "penalty": 1e-08,
+      "iterations": 50,
+      "mass": 1.0000000000000016,
+      "mean": 6075.470709243816,
+      "minimum_bin_mass": 0.0,
+      "noisy_quote_rmse": 0.3928968686792473,
+      "withheld_clean_price_rmse": 0.28737241831255755,
+      "integrated_density_absolute_error": 0.10856271918361246,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "penalty": 1e-06,
+      "iterations": 106,
+      "mass": 1.0000000000000009,
+      "mean": 6075.470709243812,
+      "minimum_bin_mass": 0.0,
+      "noisy_quote_rmse": 0.43773154203761705,
+      "withheld_clean_price_rmse": 0.2461129928137899,
+      "integrated_density_absolute_error": 0.030997962908053043,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "penalty": 0.0001,
+      "iterations": 196,
+      "mass": 0.9999999999999998,
+      "mean": 6075.4707092438075,
+      "minimum_bin_mass": 0.0,
+      "noisy_quote_rmse": 0.45867538772419825,
+      "withheld_clean_price_rmse": 0.2110713105033859,
+      "integrated_density_absolute_error": 0.02578816413972992,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+[
+  {
+    "repetition": 0,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      0
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 280235161295113551612999061720692072047,
+        "inc": 205507592451877071740601046614541487497
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 258824884406636135806871697672739811847,
+        "inc": 205507592451877071740601046614541487497
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 1,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      1
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 328432390176981427106073851454219911029,
+        "inc": 152127660828453210873989645901615783623
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 201286154972271799832758205074655751389,
+        "inc": 152127660828453210873989645901615783623
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 2,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      2
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 206509729643267939982452929399812881215,
+        "inc": 281685960139532411446994071166135877385
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 256970400944503935803101866238959720663,
+        "inc": 281685960139532411446994071166135877385
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 3,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      3
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 42330287201914826868434169957948798142,
+        "inc": 310512269523818853380519109689426941233
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 103182059011508141961985882017260432950,
+        "inc": 310512269523818853380519109689426941233
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 4,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      4
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 275373058207467385877417153154638971688,
+        "inc": 140528958968864677800772759115516407055
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 313699005481913141350221992972362158320,
+        "inc": 140528958968864677800772759115516407055
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 5,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      5
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 160249626517363142451302087325689638148,
+        "inc": 23783695286428127663232710389676565945
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 251388456911184315526968175369491236220,
+        "inc": 23783695286428127663232710389676565945
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 6,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      6
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 30171320428675691769096967468888985673,
+        "inc": 162431511732551299058168761507141031893
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 47847055608507647620351768332404377921,
+        "inc": 162431511732551299058168761507141031893
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 7,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      7
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 317605578806634567705137880564420446574,
+        "inc": 104488704187808184675032166544550698269
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 18947663544564469488312194822591327878,
+        "inc": 104488704187808184675032166544550698269
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 8,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      8
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 320117420457351375528664981308513043254,
+        "inc": 198563913651856651730874436971045714187
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 59792738698370968246030686471349754462,
+        "inc": 198563913651856651730874436971045714187
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 9,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      9
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 237612608011852315948253678738744605249,
+        "inc": 262864919357882752457638817553493892757
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 318299682050087828220510787098077939257,
+        "inc": 262864919357882752457638817553493892757
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 10,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      10
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 280943062491499885043449009697731624835,
+        "inc": 5229579155699061615896721210325146767
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 77802601556384846749723831860176281835,
+        "inc": 5229579155699061615896721210325146767
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 11,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      11
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 96073348006082309071301607387378613660,
+        "inc": 63553214876467653002435121926921331357
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 243614790627312777323147249200735354612,
+        "inc": 63553214876467653002435121926921331357
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 12,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      12
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 137174712524794967728412655241794492944,
+        "inc": 157962061899200398722531190537034982769
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 121883850444849041512364960948561373512,
+        "inc": 157962061899200398722531190537034982769
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 13,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      13
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 131053820646852366069152652629198692591,
+        "inc": 213890024365972674903485720036745107113
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 96380976973914562689122182793749656455,
+        "inc": 213890024365972674903485720036745107113
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 14,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      14
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 309947288934297745808355277228453208662,
+        "inc": 130123988850259303956800496585510812069
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 119862328129022999354182016596300583982,
+        "inc": 130123988850259303956800496585510812069
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 15,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      15
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 150237333565218531243957795335359919290,
+        "inc": 180581068488399957766199468172840162311
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 43477525959402550412746791447433307266,
+        "inc": 180581068488399957766199468172840162311
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 16,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      16
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 291703554777158619616377449429533601485,
+        "inc": 222338223632254447429762967730986304963
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 178050884756451661679176683444214492757,
+        "inc": 222338223632254447429762967730986304963
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 17,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      17
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 34021834186257375875181703085992438406,
+        "inc": 39202837530379577393673535991586791163
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 18068828198688112044606863079761947694,
+        "inc": 39202837530379577393673535991586791163
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 18,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      18
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 119007603008769909709912873664471944895,
+        "inc": 308901345347374539921457662659299715787
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 166417568340827762619001218936611381191,
+        "inc": 308901345347374539921457662659299715787
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  },
+  {
+    "repetition": 19,
+    "entropy": [
+      20260921,
+      8
+    ],
+    "spawn_key": [
+      19
+    ],
+    "initial_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 41910310288164318350267545264659208776,
+        "inc": 58117693570859215257146260415710392817
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    },
+    "final_state": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 332584853790011739803960277498867914368,
+        "inc": 58117693570859215257146260415710392817
+      },
+      "has_uint32": 0,
+      "uinteger": 0
+    }
+  }
+]

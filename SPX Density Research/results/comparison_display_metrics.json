@@ -1,0 +1,37 @@
+{
+  "date_changes": [
+    {
+      "from": "aug31",
+      "to": "sep18",
+      "fixed_expiry_l1": [
+        0.2912871992287732,
+        0.1603501947447709,
+        0.1191790796460218
+      ],
+      "common_60_l1": 0.04822455480825959,
+      "matched_common_60_l1": 0.05122573227943245
+    },
+    {
+      "from": "sep18",
+      "to": "sep18_late",
+      "fixed_expiry_l1": [
+        0.023617335761869758,
+        0.019408555273273093,
+        0.01833523452595116
+      ],
+      "common_60_l1": 0.01816985015343461,
+      "matched_common_60_l1": 0.01732157345709474
+    }
+  ],
+  "primary_spread_quote_count": 5518,
+  "primary_outside_count": 0,
+  "nonaccepted_numerical_attempts": 4,
+  "residual_plot_old_ylim": [
+    -19.173038574875587,
+    15.088454666240938
+  ],
+  "residual_plot_new_ylim": [
+    -1.2,
+    1.2
+  ]
+}

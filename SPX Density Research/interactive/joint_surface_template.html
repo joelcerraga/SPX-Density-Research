@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPX density research — joint maturity fit</title>
+<style>
+  :root {color-scheme:light;font-family:system-ui,sans-serif;color:#173449;background:#fff}
+  * {box-sizing:border-box} body {margin:0}
+  main {max-width:1100px;padding:32px 28px 48px;margin:auto}
+  .eyebrow {font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#52616a}
+  h1 {font-size:clamp(1.6rem,4vw,2.35rem);font-weight:600;margin:10px 0 12px}
+  h2 {font-size:1.15rem;font-weight:600;margin:26px 0 10px}
+  p {line-height:1.55} .intro {max-width:880px}
+  .controls {display:flex;align-items:end;flex-wrap:wrap;gap:16px 24px;padding:18px 0;border-block:1px solid #dce2e5}
+  .horizon {flex:1 1 310px} label {display:block;font-size:.93rem}
+  input[type=range] {width:100%;accent-color:#218a87;margin:14px 0 5px}
+  .ends {display:flex;justify-content:space-between;font-size:.8rem;color:#52616a}
+  button,select {font:inherit;padding:9px 12px;min-height:44px;border:1px solid #a4b2ba;border-radius:4px;background:white;color:#173449;max-width:100%}
+  select {margin-top:7px} button {cursor:pointer} button:disabled,select:disabled {opacity:.5}
+  #play {background:#173449;color:white;border-color:#173449}
+  button:focus-visible,input:focus-visible,select:focus-visible {outline:3px solid #cf8b51;outline-offset:3px}
+  .small,figcaption {font-size:.9rem;line-height:1.55;color:#465b68}
+  #result-line {font-variant-numeric:tabular-nums}
+  figure {margin:0} figcaption {margin:0 0 22px}
+  #surface {width:100%;height:590px} #slice {width:100%;height:355px} #calendar {width:100%;height:310px}
+  #error {background:#fff3e8;color:#7d3516;padding:12px}
+  details {margin-top:28px;border-top:1px solid #dce2e5;padding-top:18px} summary {cursor:pointer;font-weight:600}
+  .table-wrap {overflow-x:auto} table {border-collapse:collapse;width:100%;font-size:.88rem;margin:14px 0}
+  td,th {border-bottom:1px solid #dce2e5;padding:9px 12px 9px 0;text-align:right;font-variant-numeric:tabular-nums}
+  td:first-child,th:first-child {text-align:left} a {color:#14665f} footer {margin-top:28px}
+  @media(max-width:600px) {main {padding:24px 12px 36px}.controls {gap:12px}#surface {height:420px}#slice {height:365px}#calendar {height:330px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Joel Cerraga · Quant research · Milestone 5</div>
+<h1>Connecting the maturity slices.</h1>
+<p class="intro">Compare the joint fit with independently fitted slices and the known benchmark.
+  <strong>All inputs are synthetic.</strong> The joint fit links maturities through calendar constraints;
+  the same-solver independent control shows what those constraints change.</p>
+<section class="controls" aria-label="Density comparison controls">
+  <div class="horizon">
+    <label for="maturity">Selected horizon: <strong id="maturity-label">180 days</strong></label>
+    <input id="maturity" type="range" min="0" max="7" step="1" value="4" disabled>
+    <div class="ends"><span>30 days</span><span>365 days</span></div>
+  </div>
+  <div><label for="surface-kind">3D surface</label>
+    <select id="surface-kind" disabled>
+      <option value="joint">Joint fit</option><option value="control">Independent control</option><option value="known">Known lognormal benchmark</option>
+    </select>
+  </div>
+  <button id="play" type="button" aria-pressed="false" disabled>Play maturity sweep</button>
+</section>
+<p class="small">Drag to rotate · Scroll to zoom · Hover for values · The sweep visits expiry horizons, not historical dates.</p>
+<p id="result-line" class="small" aria-live="polite"></p>
+<p id="error" role="alert" hidden></p>
+<figure>
+  <div id="surface" role="img" aria-label="Three-dimensional synthetic density surface by terminal index level and time to expiry."></div>
+  <figcaption><strong>Interactive companion to Figure 14.</strong> The orange line marks the selected horizon.
+    Connecting facets are for display; no intermediate maturities are estimated. The display is cropped to 3,000–11,000 index points and is not renormalised.</figcaption>
+</figure>
+<h2>Compare the selected slice</h2>
+<p id="slice-stats" class="small" aria-live="polite"></p>
+<figure>
+  <div id="slice" role="img" aria-label="Known lognormal density, independent control and joint density at the selected horizon."></div>
+  <figcaption><strong>Interactive companion to Figure 13.</strong> Both fitted histograms remain visible alongside the known density.
+    Their central shapes nearly overlap. Calendar consistency does not establish tail accuracy; density differences remain visible in the notebook's tail enlargement.</figcaption>
+</figure>
+<h2>The change in calendar consistency</h2>
+<figure>
+  <div id="calendar" role="img" aria-label="365-day minus 300-day normalised call values, comparing independent and joint fits in the upper-strike wing."></div>
+  <figcaption><strong>Interactive companion to Figure 12.</strong> This fixed comparison shows 365-day minus 300-day normalised call values.
+    The independent fit falls below zero. The joint fit satisfies the all-strike check within the stated numerical tolerance for adjacent fitted maturities.
+    These differences are call values, not densities.</figcaption>
+</figure>
+<details>
+  <summary>Validation, numerical tolerances and sources</summary>
+  <p id="validation-note"></p>
+  <p>As Gatheral and Jacquier explain in <em>Arbitrage-free SVI volatility surfaces</em> [12, §2],
+    consistency across maturities is a separate condition from valid individual slices. The common-bin representation lets this project check quadratic call-price gaps between bin boundaries.
+    As Stellato and co-authors describe in their OSQP paper [13], convex quadratic programmes can be solved to specified residual tolerances.</p>
+  <div class="table-wrap"><table><caption>Withheld clean-price RMSE (index points)</caption>
+    <thead><tr><th scope="col">Days</th><th scope="col">Independent control</th><th scope="col">Joint fit</th></tr></thead><tbody id="metrics"></tbody>
+  </table></div>
+  <p class="small">The synthetic quote inputs, 120 bins, support [0.3F, 2.2F], smoothing penalty and forward assumptions are unchanged.
+    Small signed solver residuals are retained; masses are not clipped or renormalised. Passing this check is not an empirical market result, an exact symbolic proof, or a guarantee of accurate unobserved tails.</p>
+  <p class="small">Bahra's Bank of England paper [1] remains the foundation for the risk-neutral interpretation; these densities are not physical-probability forecasts.
+    Historical-date animation remains a later stage dependent on verified snapshots.</p>
+  <p class="small">[1] <a href="https://www.bankofengland.co.uk/-/media/boe/files/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices.pdf">Bahra, Bank of England Working Paper 66</a>.<br>
+    [12] <a href="https://arxiv.org/abs/1204.0646">Gatheral and Jacquier, Arbitrage-free SVI volatility surfaces</a>.<br>
+    [13] <a href="https://web.stanford.edu/~boyd/papers/osqp.html">Stellato et al., OSQP: An Operator Splitting Solver for Quadratic Programs</a>.</p>
+</details>
+<footer class="small">Offline research companion · Plotly.js 3.1.0 (MIT) · No network connection is needed to view the saved graphs.</footer>
+<noscript>Enable JavaScript to explore the graphs. Static Figures 12–14 are included in the project ZIP.</noscript>
+</main>
+<!-- Plotly licence:
+__PLOTLY_LICENSE__
+-->
+<script>__PLOTLY_BUNDLE__</script>
+<script id="experiment-data" type="application/json">__EXPERIMENT_DATA__</script>
+<script>
+(async () => {
+  "use strict";
+  const DATA=JSON.parse(document.getElementById("experiment-data").textContent);
+  const el=id=>document.getElementById(id), surface=el("surface"), slice=el("slice"), slider=el("maturity"), kind=el("surface-kind"), play=el("play");
+  const x=DATA.levels, times=DATA.slices.map(s=>s.years), names={joint:"Joint fit",control:"Independent control",known:"Known lognormal benchmark"};
+  const navy="#16364c", teal="#218a87", orange="#cf8b51", font={family:"Arial, sans-serif",color:navy,size:12};
+  const maxDensity=Math.max(...DATA.slices.flatMap(s=>[...s.known,...s.control,...s.joint]))*1.08;
+  const narrow=()=>surface.clientWidth<550;
+  const camera=()=>({eye:narrow()?{x:2.6,y:-2.9,z:1.95}:{x:1.65,y:-1.85,z:1.25}});
+  let index=4, playing=false, timer=null, wasNarrow=narrow();
+  const config={responsive:true,displaylogo:false,scrollZoom:true,toImageButtonOptions:{format:"png",filename:"joint-density-research",scale:2}};
+  const hover3d="Level: %{x:,.0f} points<br>Horizon: %{y:.4f} years<br>Density: %{z:.6f} per point<extra>%{fullData.name}</extra>";
+  const hover2d="Level: %{x:,.0f} points<br>Density: %{y:.6f} per point<extra>%{fullData.name}</extra>";
+  function selected3d(){
+    const s=DATA.slices[index];
+    if(kind.value==="known")return {x,y:x.map(()=>s.years),z:s.known};
+    const points=s.step_x.map((value,i)=>[value,s[kind.value+"_step"][i]]).filter(p=>p[0]>=x[0]&&p[0]<=x[x.length-1]);
+    return {x:points.map(p=>p[0]),y:points.map(()=>s.years),z:points.map(p=>p[1])};
+  }
+  function text(){
+    const s=DATA.slices[index], a=DATA.report.cases.control.marginals[index], b=DATA.report.cases.joint.marginals[index];
+    el("maturity-label").textContent=`${s.days} days (${s.years.toFixed(4)} years)`;
+    slider.value=String(index);slider.setAttribute("aria-valuetext",`${s.days} days`);
+    el("slice-stats").textContent=`${s.days}-day withheld-price RMSE: independent ${a.withheld_clean_price_rmse.toFixed(4)} · joint ${b.withheld_clean_price_rmse.toFixed(4)} index points`;
+    el("result-line").textContent=kind.value==="known"?"Known analytical benchmark · Synthetic reference model":`${names[kind.value]} · ${DATA.report.cases[kind.value].sampled_calendar.violations.toLocaleString()} calendar violations above 10⁻⁸ on the comparison grid`;
+  }
+  function stop(){playing=false;clearTimeout(timer);timer=null;play.textContent="Play maturity sweep";play.setAttribute("aria-pressed","false");}
+  function error(e){stop();el("error").hidden=false;el("error").textContent="The graph could not be rendered. Try a browser with WebGL enabled, or use the static project figures. "+e.message;}
+  async function select(){
+    text();const s=DATA.slices[index], p=selected3d();
+    await Promise.all([Plotly.restyle(surface,{x:[p.x],y:[p.y],z:[p.z]},[1]),
+      Plotly.restyle(slice,{x:[x,s.step_x,s.step_x],y:[s.known,s.control_step,s.joint_step]},[0,1,2])]);
+    surface.dataset.selectedDays=String(s.days);
+  }
+  async function tick(){if(!playing)return;if(index===DATA.slices.length-1){stop();return;}index++;
+    try{await select();if(playing)timer=setTimeout(tick,1050);}catch(e){error(e);}}
+  try{
+    await Plotly.newPlot(surface,[
+      {type:"surface",x,y:times,z:DATA.slices.map(s=>s.joint),name:names.joint,colorscale:"Viridis",showscale:false,cmin:0,cmax:maxDensity,hovertemplate:hover3d,lighting:{ambient:.8,diffuse:.6}},
+      {type:"scatter3d",mode:"lines",...selected3d(),name:"Selected horizon",line:{color:orange,width:7},hovertemplate:hover3d}
+    ],{font,paper_bgcolor:"white",margin:{l:0,r:0,t:12,b:16},showlegend:false,uirevision:"retain-camera",scene:{
+      xaxis:{title:{text:narrow()?"Level (points)":"Terminal index level (index points)"},range:[x[0],x[x.length-1]],nticks:narrow()?4:6,gridcolor:"#dce2e5"},
+      yaxis:{title:{text:narrow()?"Expiry (years)":"Time to expiry (years)"},range:[times[0],times[times.length-1]],nticks:5,gridcolor:"#dce2e5"},
+      zaxis:{title:{text:"Density (1/point)"},range:[0,maxDensity],tickformat:".4f",nticks:5,gridcolor:"#dce2e5"},
+      camera:camera(),aspectmode:"manual",aspectratio:{x:1.7,y:1.1,z:.85},dragmode:"orbit"}},config);
+    const s=DATA.slices[index];
+    await Plotly.newPlot(slice,[
+      {type:"scatter",mode:"lines",x,y:s.known,name:"Known density",line:{color:navy,dash:"dot",width:2},hovertemplate:hover2d},
+      {type:"scatter",mode:"lines",x:s.step_x,y:s.control_step,name:names.control,line:{color:orange,dash:"dash",width:2},hovertemplate:hover2d},
+      {type:"scatter",mode:"lines",x:s.step_x,y:s.joint_step,name:names.joint,line:{color:teal,width:2},hovertemplate:hover2d}
+    ],{font,paper_bgcolor:"white",plot_bgcolor:"white",margin:{l:76,r:12,t:narrow()?78:38,b:62},
+      xaxis:{title:{text:"Terminal index level (index points)"},range:[x[0],x[x.length-1]],nticks:narrow()?4:8,gridcolor:"#edf0f2"},
+      yaxis:{title:{text:"Density (per index point)"},range:[0,maxDensity],tickformat:".4f",nticks:5,gridcolor:"#edf0f2"},
+      legend:{orientation:"h",x:0,y:1.24,font:{size:11}},hovermode:"x unified",uirevision:"retain-scale"},config);
+    const c=DATA.calendar_detail;
+    await Plotly.newPlot(el("calendar"),["control","joint"].map(key=>({type:"scatter",mode:"lines",x:c.moneyness,y:c[key],name:names[key],
+      line:{color:key==="joint"?teal:orange,dash:key==="joint"?"solid":"dash",width:2},
+      hovertemplate:"K/F: %{x:.4f}<br>Normalised call gap: %{y:.7f}<extra>%{fullData.name}</extra>"})),
+      {font,paper_bgcolor:"white",plot_bgcolor:"white",margin:{l:76,r:12,t:50,b:62},
+       xaxis:{title:{text:"Forward moneyness, K/F"},range:[1.5,2.2],nticks:narrow()?4:8,gridcolor:"#edf0f2"},
+       yaxis:{title:{text:"Normalised call gap"},tickformat:".4f",zeroline:true,zerolinecolor:navy,gridcolor:"#edf0f2"},
+       legend:{orientation:"h",x:0,y:1.22,font:{size:11}},hovermode:"x unified"},config);
+    text();surface.dataset.ready="true";surface.dataset.selectedDays=String(s.days);
+    for(const control of [slider,kind,play])control.disabled=false;
+    slider.addEventListener("input",()=>{stop();index=Number(slider.value);select().catch(error);});
+    kind.addEventListener("change",async()=>{stop();try{await Plotly.restyle(surface,{z:[DATA.slices.map(s=>s[kind.value])],name:names[kind.value]},[0]);await select();}catch(e){error(e);}});
+    play.addEventListener("click",async()=>{if(playing){stop();return;}playing=true;play.textContent="Pause sweep";play.setAttribute("aria-pressed","true");index=0;try{await select();if(playing)timer=setTimeout(tick,1050);}catch(e){error(e);}});
+    document.addEventListener("visibilitychange",()=>{if(document.hidden)stop();});
+    window.addEventListener("resize",()=>{const small=narrow(), updates={"scene.xaxis.title.text":small?"Level (points)":"Terminal index level (index points)","scene.yaxis.title.text":small?"Expiry (years)":"Time to expiry (years)","scene.xaxis.nticks":small?4:6};
+      if(small!==wasNarrow){updates["scene.camera"]=camera();wasNarrow=small;}Plotly.relayout(surface,updates);Plotly.relayout(slice,{"xaxis.nticks":small?4:8,"margin.t":small?78:38});});
+    const j=DATA.report.cases.joint, final=j.solver.history[j.solver.history.length-1];
+    el("validation-note").textContent=`For each adjacent fitted-maturity pair, the interval check examines all nonnegative strikes. Its worst joint gap is ${j.continuous_calendar.minimum_gap.toExponential(3)}, within the 10⁻⁸ acceptance tolerance. The solver used ${j.solver.refinement_rounds} refinement rounds. Maximum mass error: ${final.maximum_mass_error.toExponential(2)}; minimum raw bin mass: ${final.minimum_bin_mass.toExponential(2)}. These are numerical residuals, not exact zeros.`;
+    for(let i=0;i<DATA.slices.length;i++){const tr=document.createElement("tr");for(const value of [DATA.slices[i].days,DATA.report.cases.control.marginals[i].withheld_clean_price_rmse.toFixed(6),j.marginals[i].withheld_clean_price_rmse.toFixed(6)]){const td=document.createElement("td");td.textContent=value;tr.appendChild(td);}el("metrics").appendChild(tr);}
+  }catch(e){error(e);}
+})();
+</script>
+</body>
+</html>

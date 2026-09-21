@@ -1,0 +1,15 @@
+{
+  "prior_archive_files_compared": 1272,
+  "changed_shared_documents": [
+    "CHANGELOG.md",
+    "README.md",
+    "research/data_access_status.md",
+    "research/development_reflection.md",
+    "research/empirical_input_guide.md",
+    "research/paper_registers.md",
+    "research/project_roadmap.md",
+    "research/references.md"
+  ],
+  "missing_files": [],
+  "other_prior_files_unchanged": true
+}

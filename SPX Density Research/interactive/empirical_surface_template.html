@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPX empirical density · 18 September 2026</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#16364c;background:#edf2f5}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;margin:auto;padding:30px 28px 20px}h1{font-size:clamp(24px,3vw,36px);font-weight:650;margin:5px 0 12px;letter-spacing:-.8px}.eyebrow{color:#218a87;font-weight:700;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}.intro{max-width:1000px;line-height:1.6;margin:0 0 22px}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:16px;padding:18px;background:white;border:1px solid #d8e1e7;border-radius:12px}.control{display:flex;flex-direction:column;gap:7px}label{font-size:12px;font-weight:650}select,button{font:inherit;border:1px solid #bccbd5;border-radius:6px;background:white;color:#16364c;padding:9px 12px}button{cursor:pointer}button:hover{background:#e8f2f1}#maturity{min-width:230px;accent-color:#218a87}#status{font-size:13px;line-height:1.5;padding:13px 2px;min-height:45px}.plots{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}.panel{background:white;border:1px solid #d8e1e7;border-radius:12px;overflow:hidden}.panel h2{font-size:16px;margin:19px 20px 0}.plot{height:480px;width:100%}.caption{font-size:12px;line-height:1.55;padding:0 20px 18px;color:#536a7a}.metrics{margin-top:18px;padding:18px 20px}.metrics h2{margin:0 0 12px}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;padding:10px 12px;border-bottom:1px solid #e3e9ed}th:first-child,td:first-child{text-align:left}.scroll{overflow-x:auto}.limits{line-height:1.65;font-size:13px;padding:20px 2px;max-width:1140px}.limits strong{font-weight:650}footer{font-size:11px;color:#627885;padding:5px 2px 15px}details{font-size:11px}pre{white-space:pre-wrap}
+@media(max-width:850px){main{padding:22px 12px}.plots{grid-template-columns:1fr}.plot{height:400px}.controls{gap:14px}select{max-width:100%}.control{max-width:100%}.caption{padding:0 14px 16px}.metrics{padding:16px 12px}th,td{padding:9px 8px}}
+</style></head><body><main>
+<div class="eyebrow">Notebook 9 · observed option quotes</div>
+<h1>SPX option-implied density</h1>
+<p class="intro">18 September 2026, 15:00 Chicago time · 969 matched call–put pairs · three SPXW expiries. Rotate the surface, inspect a maturity slice and compare smoothing choices. These are risk-neutral valuation distributions conditional on quote-implied discount and forward inputs.</p>
+<div class="controls">
+<div class="control"><label for="fit">Fitting choice</label><select id="fit"></select></div>
+<div class="control"><label for="range">Displayed terminal levels</label><select id="range"><option value="full">Full support · 0.3–2.2 × forward</option><option value="central">Central detail · 0.75–1.25 × forward</option></select></div>
+<div class="control"><label for="maturity" id="maturity-label">Maturity slice</label><input id="maturity" type="range" min="0" max="2" step="1" value="0"></div>
+<button id="play" type="button">Play maturities</button><button id="reset" type="button">Reset view</button>
+</div><div id="status" aria-live="polite"></div>
+<div class="plots"><section class="panel"><h2>Density across maturities</h2><div id="surface" class="plot"></div><div class="caption">Only three maturity curves are fitted. The surface joins bin centres for visual guidance; intermediate maturities are not calibrated. Drag to rotate, scroll to zoom and hover for values.</div></section>
+<section class="panel"><h2>Exact histogram slice</h2><div id="slice" class="plot"></div><div class="caption">Steps show the fitted density on each bin. Dotted lines delimit the retained strike range; the density outside it depends strongly on modelling choices. Changing the display range does not change probabilities.</div></section></div>
+<section class="panel metrics"><h2 id="metrics-title">Selected slice</h2><div class="scroll"><table><thead><tr><th>Pairs</th><th>Forward</th><th>Discount</th><th>Below 0.8F</th><th>Above 1.2F</th><th>Above 1.8F</th><th>Outside spreads</th></tr></thead><tbody id="metrics"></tbody></table></div></section>
+<div class="limits"><strong>Reading the evidence.</strong> The primary selection chose λ = 10⁻⁷ from its declared three-value grid. Weaker coefficients were examined after seeing that boundary result and are labelled post-hoc. All fits meet the numerical probability and calendar criteria, but neither those checks nor a low price residual establishes density accuracy. There is no known market density for comparison. The fit targets call midpoints; call–put parity supplies put values, and some prices remain outside their spreads. Very small extrapolated tail probabilities are particularly sensitive to smoothing. This maturity animation shows one observation date; it is not historical-date animation.</div>
+<footer>Source: archived Cboe actual exchange bid/ask columns. Indicative marks and indicative sizes are excluded from estimation. See Notebook 9, Tables 26–30 and Equations (38)–(40) for provenance, assumptions and complete diagnostics. Earlier synthetic explorers remain separate.</footer>
+<details><summary>Plotly licence</summary><pre>__PLOTLY_LICENSE__</pre></details>
+</main><script>__PLOTLY_BUNDLE__</script><script>
+const fits=__EMPIRICAL_DATA__;
+const $=id=>document.getElementById(id), config={responsive:true,displaylogo:false};
+let timer=null,revision=0;
+fits.forEach((f,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${f.role} · λ = ${f.penalty.toExponential(0)}${i===0?' · selected':''}`;$('fit').append(o)});
+const pct=x=>(100*x).toPrecision(5)+'%';
+function render(){
+const fi=Number($('fit').value),mi=Number($('maturity').value),f=fits[fi],m=f.marginals[mi];
+const edges=m.edges.map(x=>x/m.forward),xx=edges.slice(0,-1).map((x,i)=>(x+edges[i+1])/2),
+ z=f.marginals.map(m=>m.mass.map((v,i)=>v/(edges[i+1]-edges[i]))),days=f.marginals.map(m=>m.elapsed_days),
+ xr=$('range').value==='central'?[.75,1.25]:[.3,2.2];
+const surface=[{type:'surface',x:xx,y:days,z,colorscale:'Viridis',showscale:false,opacity:.88,
+ hovertemplate:'S/F %{x:.4f}<br>Days %{y:.3f}<br>Density %{z:.6f}<extra></extra>'},
+ {type:'scatter3d',mode:'lines',x:xx,y:xx.map(()=>m.elapsed_days),z:z[mi],line:{color:'#c57b3c',width:6},
+ hovertemplate:'Selected maturity<extra></extra>'}];
+const small=$('surface').clientWidth<480;
+const camera={eye:small?{x:1.9,y:-2.2,z:1.3}:{x:1.55,y:-1.8,z:1.1}};
+Plotly.react('surface',surface,{margin:{l:small?12:0,r:small?14:0,t:12,b:8},paper_bgcolor:'white',font:{color:'#16364c',size:small?10:12},uirevision:'camera-'+revision,
+ scene:{camera,xaxis:{title:{text:small?'Level / forward':'Terminal level / forward'},range:xr},yaxis:{title:{text:small?'Days':'Days to settlement'},tickvals:days,ticktext:days.map(x=>x.toFixed(2))},zaxis:{title:{text:small?'':'Density'}},aspectratio:{x:1.3,y:1,z:.8}}},config);
+const sx=[],sy=[];m.mass.forEach((p,i)=>{sx.push(edges[i],edges[i+1]);sy.push(p/(edges[i+1]-edges[i]),p/(edges[i+1]-edges[i]))});
+Plotly.react('slice',[{type:'scatter',mode:'lines',x:sx,y:sy,line:{color:'#218a87',width:2},
+ hovertemplate:'S/F %{x:.5f}<br>Density %{y:.6f}<extra></extra>'}],{margin:{l:62,r:22,t:16,b:58},paper_bgcolor:'white',plot_bgcolor:'white',font:{color:'#16364c'},
+ xaxis:{title:{text:'Terminal level / inferred forward'},range:xr,gridcolor:'#ecf0f3'},yaxis:{title:{text:'Normalised density'},rangemode:'tozero',gridcolor:'#ecf0f3'},
+ shapes:m.normalised_strike_range.map(x=>({type:'line',x0:x,x1:x,y0:0,y1:1,yref:'paper',line:{color:'#73858b',width:1,dash:'dot'}}))},config);
+$('maturity-label').textContent=`Maturity slice · ${m.expiry}`;
+$('status').textContent=`${f.role} fit · λ = ${f.penalty.toExponential(0)} · ${m.expiry} (${m.elapsed_days.toFixed(3)} days). ${f.marginals.reduce((s,m)=>s+m.outside_spread_count,0)} / 1,938 fitted call/put prices lie outside their spreads across all three expiries.`;
+$('metrics-title').textContent=`${m.expiry} · conditional risk-neutral estimates`;
+$('metrics').innerHTML=`<tr><td>${m.pair_count}</td><td>${m.forward.toFixed(4)}</td><td>${m.discount.toFixed(8)}</td><td>${pct(m.risk.below_0_8_forward)}</td><td>${pct(m.risk.above_1_2_forward)}</td><td>${pct(m.risk.above_1_8_forward)}</td><td>${m.outside_spread_count} / ${2*m.pair_count}</td></tr>`;
+window.empiricalState={fitIndex:fi,maturityIndex:mi,role:f.role,penalty:f.penalty,expiry:m.expiry,range:xr};
+}
+['fit','range','maturity'].forEach(id=>$(id).addEventListener(id==='maturity'?'input':'change',render));
+$('play').addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;$('play').textContent='Play maturities'}else{timer=setInterval(()=>{$('maturity').value=(Number($('maturity').value)+1)%3;render()},1400);$('play').textContent='Pause'}});
+$('reset').addEventListener('click',()=>{revision++;render()});render();
+</script></body></html>

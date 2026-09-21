@@ -1,0 +1,154 @@
+[
+  {
+    "spec": {
+      "benchmark": "lognormal",
+      "coverage": "central",
+      "amplitude": 0.0,
+      "repetition": -1,
+      "id": "lognormal_central_a0_clean"
+    },
+    "status": "accepted",
+    "seconds": 0.7489280979998512,
+    "metrics": {
+      "validation_rmse": 0.9650749873503919,
+      "original_range_rmse": 0.45608127910554935,
+      "within_quote_range_rmse": 0.03148480723615036,
+      "outside_quote_range_rmse": 1.1817609530995217,
+      "mean_full_density_l1": 0.0352812918716318
+    },
+    "rounds": 1
+  },
+  {
+    "spec": {
+      "benchmark": "lognormal",
+      "coverage": "central",
+      "amplitude": 0.5,
+      "repetition": 0,
+      "id": "lognormal_central_a5_r00"
+    },
+    "status": "accepted",
+    "seconds": 3.9780698260001373,
+    "metrics": {
+      "validation_rmse": 1.3620557575945968,
+      "original_range_rmse": 0.9445705337490933,
+      "within_quote_range_rmse": 0.11670727249145817,
+      "outside_quote_range_rmse": 1.6661283073247055,
+      "mean_full_density_l1": 0.0443878719851024
+    },
+    "rounds": 5
+  },
+  {
+    "spec": {
+      "benchmark": "lognormal",
+      "coverage": "extended",
+      "amplitude": 0.0,
+      "repetition": -1,
+      "id": "lognormal_extended_a0_clean"
+    },
+    "status": "accepted",
+    "seconds": 0.8145160230005786,
+    "metrics": {
+      "validation_rmse": 0.032034281137107906,
+      "original_range_rmse": 0.03781462938110783,
+      "within_quote_range_rmse": 0.032034281137107906,
+      "outside_quote_range_rmse": null,
+      "mean_full_density_l1": 0.029139385541985797
+    },
+    "rounds": 1
+  },
+  {
+    "spec": {
+      "benchmark": "lognormal",
+      "coverage": "extended",
+      "amplitude": 0.5,
+      "repetition": 0,
+      "id": "lognormal_extended_a5_r00"
+    },
+    "status": "accepted",
+    "seconds": 4.384876187000373,
+    "metrics": {
+      "validation_rmse": 0.10372075449441455,
+      "original_range_rmse": 0.11943875041223098,
+      "within_quote_range_rmse": 0.10372075449441455,
+      "outside_quote_range_rmse": null,
+      "mean_full_density_l1": 0.03389504460914273
+    },
+    "rounds": 5
+  },
+  {
+    "spec": {
+      "benchmark": "mixture",
+      "coverage": "central",
+      "amplitude": 0.0,
+      "repetition": -1,
+      "id": "mixture_central_a0_clean"
+    },
+    "status": "accepted",
+    "seconds": 1.894953756999712,
+    "metrics": {
+      "validation_rmse": 7.798099470177219,
+      "original_range_rmse": 4.032444760102094,
+      "within_quote_range_rmse": 0.11863289222846136,
+      "outside_quote_range_rmse": 9.550313928798785,
+      "mean_full_density_l1": 0.11251028751365877
+    },
+    "rounds": 3
+  },
+  {
+    "spec": {
+      "benchmark": "mixture",
+      "coverage": "central",
+      "amplitude": 0.5,
+      "repetition": 0,
+      "id": "mixture_central_a5_r00"
+    },
+    "status": "accepted",
+    "seconds": 2.4706534540000575,
+    "metrics": {
+      "validation_rmse": 7.414212867540938,
+      "original_range_rmse": 3.650597068920608,
+      "within_quote_range_rmse": 0.16136470233406985,
+      "outside_quote_range_rmse": 9.079802276714771,
+      "mean_full_density_l1": 0.1166696835024652
+    },
+    "rounds": 4
+  },
+  {
+    "spec": {
+      "benchmark": "mixture",
+      "coverage": "extended",
+      "amplitude": 0.0,
+      "repetition": -1,
+      "id": "mixture_extended_a0_clean"
+    },
+    "status": "accepted",
+    "seconds": 3.0184822159999385,
+    "metrics": {
+      "validation_rmse": 0.12342152026512775,
+      "original_range_rmse": 0.1476860023120246,
+      "within_quote_range_rmse": 0.12342152026512775,
+      "outside_quote_range_rmse": null,
+      "mean_full_density_l1": 0.042689880951802046
+    },
+    "rounds": 4
+  },
+  {
+    "spec": {
+      "benchmark": "mixture",
+      "coverage": "extended",
+      "amplitude": 0.5,
+      "repetition": 0,
+      "id": "mixture_extended_a5_r00"
+    },
+    "status": "accepted",
+    "seconds": 2.4122738619998927,
+    "metrics": {
+      "validation_rmse": 0.16601936483750998,
+      "original_range_rmse": 0.18805130986561513,
+      "within_quote_range_rmse": 0.16601936483750998,
+      "outside_quote_range_rmse": null,
+      "mean_full_density_l1": 0.0544040127252538
+    },
+    "rounds": 3
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "browser": "138.0.7204.0",
+  "plotly": "3.1.0",
+  "checked_date": "2026-09-21",
+  "offline": true,
+  "checks": [
+    "Offline render with 3 maturity rows, 3 observed snapshots and exact 240-bin slice curves",
+    "Every snapshot has correct quote counts and common-horizon values; maturity/density scales remain fixed",
+    "Common-contract control changes fitted values and suppresses inapplicable all-pair risk bounds",
+    "Keyboard expiry selection and full/central display control update the linked figures",
+    "Observed-snapshot playback advances and pauses without creating intermediate dates",
+    "3D rotation, wheel zoom and reset respond",
+    "Pointer hover yields a numeric density value",
+    "390px and 320px layouts avoid page overflow; risk table scrolls within its panel",
+    "No JavaScript errors or external HTTP requests"
+  ],
+  "javascript_errors": [],
+  "external_requests": []
+}

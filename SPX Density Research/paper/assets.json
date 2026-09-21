@@ -1,0 +1,935 @@
+{
+  "equations": {
+    "1": {
+      "title": "Discounted expected call payoff",
+      "latex": "C(K,T)=e^{-rT}\\int_K^\\infty(s-K)f_Q(s;T)\\,ds.",
+      "source": "methodology.md"
+    },
+    "2": {
+      "title": "First strike derivative of the call price",
+      "latex": "\\frac{\\partial C}{\\partial K}=-e^{-rT}\\int_K^\\infty f_Q(s;T)\\,ds.",
+      "source": "methodology.md"
+    },
+    "3": {
+      "title": "Breeden–Litzenberger density-extraction relationship",
+      "latex": "f_Q(K;T)=e^{rT}\\frac{\\partial^2C}{\\partial K^2}.",
+      "source": "methodology.md"
+    },
+    "4": {
+      "title": "Centred finite-difference density estimate",
+      "latex": "\\widehat f_Q(K_i)=e^{rT}\\frac{C(K_i+h)-2C(K_i)+C(K_i-h)}{h^2}.",
+      "source": "methodology.md"
+    },
+    "5": {
+      "title": "Bid–ask midpoint",
+      "latex": "M_i=\\frac{B_i+A_i}{2}.",
+      "source": "market_data_methodology.md"
+    },
+    "6": {
+      "title": "Relative bid–ask spread",
+      "latex": "R_i=\\frac{A_i-B_i}{M_i}.",
+      "source": "market_data_methodology.md"
+    },
+    "7": {
+      "title": "Discounted put–call parity",
+      "latex": "C(K,T)-P(K,T)=D(T)\\,[F(T)-K],\\qquad D(T)=e^{-rT}.",
+      "source": "market_data_methodology.md"
+    },
+    "8": {
+      "title": "Indicative forward interval from bid–ask quotes",
+      "latex": "K+\\frac{C_{\\mathrm{bid}}-P_{\\mathrm{ask}}}{D(T)}\\leq F(T)\\leq K+\\frac{C_{\\mathrm{ask}}-P_{\\mathrm{bid}}}{D(T)}.",
+      "source": "market_data_methodology.md"
+    },
+    "9": {
+      "title": "Piecewise-constant probability density",
+      "latex": "\\widehat f_Q(s)=\\sum_{j=1}^{J}\\frac{w_j}{\\Delta s_j}\\,\\mathbf{1}_{[a_j,b_j)}(s).",
+      "source": "constrained_methodology.md"
+    },
+    "10": {
+      "title": "Non-negativity, total-mass and forward constraints",
+      "latex": "w_j\\geq0,\\qquad \\sum_{j=1}^{J}w_j=1,\\qquad\\sum_{j=1}^{J}m_jw_j=F(T).",
+      "source": "constrained_methodology.md"
+    },
+    "11": {
+      "title": "Exact call valuation under interval probabilities",
+      "latex": "\\widehat C(K_i)=\\sum_{j=1}^{J}A_{ij}w_j,\\qquad A_{ij}=\\frac{D(T)}{2\\Delta s_j}\\left[(b_j-K_i)_+^2-(a_j-K_i)_+^2\\right].",
+      "source": "constrained_methodology.md"
+    },
+    "12": {
+      "title": "Regularised constrained fitting objective",
+      "latex": "\\min_{\\mathbf w}\\;\\frac{1}{N}\\sum_{i=1}^{N}\\left(\\frac{\\sum_j A_{ij}w_j-y_i}{F}\\right)^2+\\frac{\\lambda}{J-2}\\sum_{j=1}^{J-2}(g_{j+2}-2g_{j+1}+g_j)^2,\\quad\\text{subject to Equation (10)}.",
+      "source": "constrained_methodology.md"
+    },
+    "13": {
+      "title": "Forward-normalised call value",
+      "latex": "\\overline C(\\kappa,T)=\\frac{C(\\kappa F(T),T)}{D(T)F(T)}=\\mathbb{E}^{Q}\\!\\left[\\left(\\frac{S_T}{F(T)}-\\kappa\\right)_+\\right].",
+      "source": "surface_methodology.md"
+    },
+    "14": {
+      "title": "Cross-maturity consistency at fixed forward moneyness",
+      "latex": "\\overline C(\\kappa,T_{i+1})\\geq\\overline C(\\kappa,T_i),\\qquad T_{i+1}>T_i.",
+      "source": "surface_methodology.md"
+    },
+    "15": {
+      "title": "Integrated absolute density error on fitting support",
+      "latex": "L_1(T)=\\int_{a_1(T)}^{b_J(T)}\\left|\\widehat f_Q(s;T)-f_Q(s;T)\\right|\\,ds.",
+      "source": "surface_methodology.md"
+    },
+    "16": {
+      "title": "Common forward-coordinate density and physical density",
+      "latex": "\\widehat g_m(x)=\\sum_{j=1}^{J}\\frac{w_{mj}}{\\Delta u}\\,\\mathbf 1_{[u_{j-1},u_j)}(x),\\qquad \\widehat f_Q(s;T_m)=\\frac{1}{F_m}\\widehat g_m\\!\\left(\\frac{s}{F_m}\\right).",
+      "source": "joint_methodology.md"
+    },
+    "17": {
+      "title": "Joint quadratic programme with calendar constraints",
+      "latex": "\\begin{aligned}\n\\min_{\\mathbf w_1,\\ldots,\\mathbf w_M}\\quad &\\sum_{m=1}^{M}\\ell_m(\\mathbf w_m)\\\\\n\\text{subject to}\\quad &w_{mj}\\geq0,\\quad \\mathbf 1^\\top\\mathbf w_m=1,\\quad \\bar{\\mathbf u}^{\\top}\\mathbf w_m=1,\\\\\n&\\mathbf B(\\kappa)(\\mathbf w_{m+1}-\\mathbf w_m)\\geq0,\n\\quad \\kappa\\in\\mathcal K_m,\\quad m=1,\\ldots,M-1.\n\\end{aligned}",
+      "source": "joint_methodology.md"
+    },
+    "18": {
+      "title": "Within-bin quadratic calendar gap",
+      "latex": "\\Delta_m(u_{j-1}+z)=\\Delta_m(u_{j-1})-z\\sum_{\\ell=j}^{J}\\delta_{m\\ell}+\\frac{\\delta_{mj}}{2\\Delta u}z^2,\\qquad 0\\leq z\\leq\\Delta u.",
+      "source": "joint_methodology.md"
+    },
+    "19": {
+      "title": "Interior calendar-gap minimum",
+      "latex": "z^*_{mj}=\\Delta u\\,\\frac{\\sum_{\\ell=j}^{J}\\delta_{m\\ell}}{\\delta_{mj}},\\qquad \\delta_{mj}>0,\\quad 0<z^*_{mj}<\\Delta u.",
+      "source": "joint_methodology.md"
+    },
+    "20": {
+      "title": "Lognormal-mixture density and weighted option prices",
+      "latex": "g_{\\mathrm{mix}}(x,T)=\\sum_{\\ell=1}^{L}\\pi_\\ell g_{\\mathrm{LN}}(x,T;\\sigma_\\ell),\\qquad C_{\\mathrm{mix}}(K,T)=\\sum_{\\ell=1}^{L}\\pi_\\ell C_{\\mathrm{BS}}(K,T;\\sigma_\\ell),\\qquad \\sum_{\\ell=1}^{L}\\pi_\\ell=1.",
+      "source": "robustness_methodology.md"
+    },
+    "21": {
+      "title": "Grid-scaled discrete density roughness",
+      "latex": "R_{\\Delta u}(\\mathbf g)=\\Delta u\\sum_{j=1}^{J-2}\\left(\\frac{g_{j+2}-2g_{j+1}+g_j}{(\\Delta u)^2}\\right)^2=\\frac{1}{(\\Delta u)^3}\\sum_{j=1}^{J-2}(g_{j+2}-2g_{j+1}+g_j)^2.",
+      "source": "robustness_methodology.md"
+    },
+    "22": {
+      "title": "Equivalent smoothing coefficient across grids",
+      "latex": "\\lambda(J,\\Delta u;\\alpha)=\\alpha\\frac{J-2}{(\\Delta u)^3},\\qquad \\alpha_0=10^{-6}\\frac{(1.9/120)^3}{118}.",
+      "source": "robustness_methodology.md"
+    },
+    "23": {
+      "title": "Full-domain density error including omitted tails",
+      "latex": "L_1^{\\mathrm{full}}(T)=\\int_{u_0}^{u_J}|\\widehat g(x,T)-g(x,T)|\\,dx+Q(X_T<u_0)+Q(X_T>u_J),\\qquad X_T=S_T/F(T).",
+      "source": "robustness_methodology.md"
+    },
+    "24": {
+      "title": "Risk-neutral tail probabilities at stated forward thresholds",
+      "latex": "p_{0.8}^{-}(T)=Q(S_T<0.8F(T)),\\qquad p_{1.2}^{+}(T)=Q(S_T>1.2F(T)),\\qquad p_{1.8}^{+}(T)=Q(S_T>1.8F(T)).",
+      "source": "robustness_methodology.md"
+    },
+    "25": {
+      "title": "Normalised terminal-level variance for histograms and mixtures",
+      "latex": "\\widehat V(T)=\\sum_{j=1}^{J}w_j\\frac{u_{j-1}^2+u_{j-1}u_j+u_j^2}{3}-\\widehat\\mu^2,\\qquad V_{\\mathrm{known}}(T)=\\sum_{\\ell=1}^{L}\\pi_\\ell\\left(e^{\\sigma_\\ell^2T}-1\\right).",
+      "source": "robustness_methodology.md"
+    },
+    "26": {
+      "title": "Paired bounded synthetic quote perturbations",
+      "latex": "y_{\\nu mi}(a)=C_{mi}+\\eta_{mi}(a)U_{\\nu mi},\\qquad \\eta_{mi}(a)=\\min\\{a,C_{mi}/2\\},\\qquad U_{\\nu mi}\\sim\\mathcal U[-1,1].",
+      "source": "repeated_methodology.md"
+    },
+    "27": {
+      "title": "Simulation bias, empirical variance and finite-sample MSE decomposition",
+      "latex": "\\begin{aligned}\n\\overline\\theta&=\\frac{1}{n_{\\mathrm{sim}}}\\sum_{\\nu=1}^{n_{\\mathrm{sim}}}\\widehat\\theta_\\nu,\n&\\widehat{\\operatorname{Bias}}&=\\overline\\theta-\\theta,\\\\\ns_\\theta^2&=\\frac{1}{n_{\\mathrm{sim}}-1}\\sum_{\\nu=1}^{n_{\\mathrm{sim}}}(\\widehat\\theta_\\nu-\\overline\\theta)^2,\\\\\n\\operatorname{RMSE}_\\theta^2&=\\frac{1}{n_{\\mathrm{sim}}}\\sum_{\\nu=1}^{n_{\\mathrm{sim}}}(\\widehat\\theta_\\nu-\\theta)^2\n=\\widehat{\\operatorname{Bias}}^2+\\frac{n_{\\mathrm{sim}}-1}{n_{\\mathrm{sim}}}s_\\theta^2.\n\\end{aligned}",
+      "source": "repeated_methodology.md"
+    },
+    "28": {
+      "title": "Monte Carlo standard error of a mean",
+      "latex": "\\operatorname{MCSE}(\\overline z)=\\frac{s_z}{\\sqrt{n_{\\mathrm{sim}}}}.",
+      "source": "repeated_methodology.md"
+    },
+    "29": {
+      "title": "Mean paired contrast and its Monte Carlo standard error",
+      "latex": "\\overline\\Delta=\\frac{1}{n_{\\mathrm{sim}}}\\sum_{\\nu=1}^{n_{\\mathrm{sim}}}\\Delta_\\nu,\\qquad\n\\operatorname{MCSE}(\\overline\\Delta)=\\sqrt{\\frac{\\sum_{\\nu=1}^{n_{\\mathrm{sim}}}(\\Delta_\\nu-\\overline\\Delta)^2}{n_{\\mathrm{sim}}(n_{\\mathrm{sim}}-1)}}.",
+      "source": "repeated_methodology.md"
+    },
+    "30": {
+      "title": "Pooled noisy-price validation score and penalty selection",
+      "latex": "\\operatorname{CV}(\\lambda)=\n\\frac{\\displaystyle\\sum_{k=1}^{3}\\sum_{m=1}^{M}\\sum_{i\\in\\mathcal H_k}\n\\left[\\frac{\\widehat C_{m,\\lambda}^{(-k)}(K_{mi})-y_{mi}}{F_m}\\right]^2}\n{\\displaystyle M\\sum_{k=1}^{3}|\\mathcal H_k|},\n\\qquad\n\\widehat\\lambda=\\max\\!\\left(\\operatorname*{arg\\,min}_{\\lambda\\in\\Lambda}\\operatorname{CV}(\\lambda)\\right).",
+      "source": "selection_methodology.md"
+    },
+    "31": {
+      "title": "Relative perturbation of the supplied forward curve",
+      "latex": "\\widetilde F_m^{(\\varepsilon)}=(1+\\varepsilon)F_m,\n\\qquad\n\\varepsilon\\in\\{-0.005,-0.001,0,0.001,0.005\\}.",
+      "source": "selection_methodology.md"
+    },
+    "32": {
+      "title": "Density evaluation and fixed risk event in reference coordinates",
+      "latex": "\\widehat g_m^{(\\varepsilon),\\mathrm{ref}}(x)\n=F_m\\widehat f_m^{(\\varepsilon)}(F_m x),\n\\qquad\n\\widehat p_{1.8,m}^{(\\varepsilon)}\n=\\int_{1.8}^{\\infty}\\widehat g_m^{(\\varepsilon),\\mathrm{ref}}(x)\\,\\mathrm dx.",
+      "source": "selection_methodology.md"
+    },
+    "33": {
+      "title": "Supplied-forward call lower bound and quote shortfall",
+      "latex": "C_m(K_{mi})\\geq L_{mi}^{(\\varepsilon)}\n=D_m\\bigl(\\widetilde F_m^{(\\varepsilon)}-K_{mi}\\bigr)_+,\n\\qquad\nv_{mi}^{(\\varepsilon)}=\\bigl(L_{mi}^{(\\varepsilon)}-y_{mi}\\bigr)_+.",
+      "source": "selection_methodology.md"
+    },
+    "34": {
+      "title": "Common bid–ask forward intersection and point convention",
+      "latex": "\\underline F_m=\\max_i\\ell^F_{mi},\\qquad\n\\overline F_m=\\min_i u^F_{mi},\\qquad\n\\widehat F_m=\\frac{\\underline F_m+\\overline F_m}{2}\n\\quad\\text{when }0<\\underline F_m\\leq\\overline F_m.",
+      "source": "empirical_methodology.md"
+    },
+    "35": {
+      "title": "Minimum uniform widening of incompatible forward intervals",
+      "latex": "s_m^*=\\min\\{s\\geq0:\\max_i(\\ell^F_{mi}-s)\n             \\leq\\min_i(u^F_{mi}+s)\\}\n       =\\frac{(\\underline F_m-\\overline F_m)_+}{2}.",
+      "source": "empirical_methodology.md"
+    },
+    "36": {
+      "title": "Smoothing selection with training-only inferred forwards",
+      "latex": "\\operatorname{CV}_{F}(\\lambda)=\n\\frac{\\displaystyle\\sum_{k,m}\\sum_{i\\in\\mathcal H_{km}}\n\\left[\\frac{\\widehat C_{m,\\lambda}^{(-k)}(K_{mi};\\widehat F_m^{(-k)})\n                 -C^{\\mathrm{mid}}_{mi}}{\\widehat F_m^{(-k)}}\\right]^2}\n{\\displaystyle\\sum_{k,m}|\\mathcal H_{km}|},\n\\qquad \\widehat\\lambda=\\arg\\min_{\\lambda\\in\\Lambda}\\operatorname{CV}_{F}(\\lambda).",
+      "source": "empirical_methodology.md"
+    },
+    "37": {
+      "title": "Fitted option-price distance outside its bid–ask range",
+      "latex": "d^{\\mathrm{spread}}_{mi,o}\n=\\max\\{B_{mi,o}-\\widehat V_{mi,o},\\,\n          \\widehat V_{mi,o}-A_{mi,o},\\,0\\}.",
+      "source": "empirical_methodology.md"
+    },
+    "38": {
+      "title": "Linear put–call parity and bid–ask difference bounds",
+      "latex": "C_{mi}-P_{mi}=H_m-D_mK_{mi},\\qquad\nb^-_{mi}=C^{\\mathrm{bid}}_{mi}-P^{\\mathrm{ask}}_{mi},\\qquad\nb^+_{mi}=C^{\\mathrm{ask}}_{mi}-P^{\\mathrm{bid}}_{mi}.",
+      "source": "marking_methodology.md"
+    },
+    "39": {
+      "title": "Constrained quote-implied discount and forward estimation",
+      "latex": "(\\widehat H_m,\\widehat D_m)=\n\\underset{H,D}{\\arg\\min}\\;\\frac{1}{N_m}\\sum_{i=1}^{N_m}\n\\left(\\frac{H-DK_{mi}-y_{mi}}{K_{0m}}\\right)^2,\n\\quad\n\\begin{cases}\nb^-_{mi}\\le H-DK_{mi}\\le b^+_{mi},&\\text{all retained }i,\\\\\nD\\ge\\varepsilon_{\\mathrm{carry}},\\quad H\\ge\\varepsilon_{\\mathrm{carry}} K_{0m},&\\varepsilon_{\\mathrm{carry}}=10^{-8},\n\\end{cases}\n\\quad\\widehat F_m=\\frac{\\widehat H_m}{\\widehat D_m}.",
+      "source": "marking_methodology.md"
+    },
+    "40": {
+      "title": "Quote-implied continuously compounded rate equivalent",
+      "latex": "\\widehat r_m=-\\frac{\\log\\widehat D_m}{T_m}.",
+      "source": "marking_methodology.md"
+    },
+    "41": {
+      "title": "Intersection of original call and parity-transformed put intervals",
+      "latex": "\\ell^C_{mi}=\\max\\{B_{mi,C},\\ B_{mi,P}+D_m(F_m-K_{mi})\\},\\qquad\nu^C_{mi}=\\min\\{A_{mi,C},\\ A_{mi,P}+D_m(F_m-K_{mi})\\}.",
+      "source": "comparison_methodology.md"
+    },
+    "42": {
+      "title": "Minimum diagnostic quote widening under the finite density basis",
+      "latex": "\\delta_J^*=\\min_{\\delta\\ge0,\\,W\\in\\mathcal P_J}\\delta\n\\quad\\text{subject to}\\quad\n\\ell^C_{mi}-\\delta\\le(\\mathbf A_m\\mathbf w_m)_i\\le u^C_{mi}+\\delta\n\\quad\\text{for every }m,i.",
+      "source": "comparison_methodology.md"
+    },
+    "43": {
+      "title": "Minimum-curvature density inside original quote restrictions",
+      "latex": "\\widehat W=\\arg\\min_{W\\in\\mathcal F_J}\\mathcal R_J(W),\\qquad\n\\mathcal R_J(W)=\\frac{1}{J-2}\\sum_{m=1}^{M}\\sum_{j=2}^{J-1}\n\\left(\\frac{w_{m,j+1}-2w_{mj}+w_{m,j-1}}{\\Delta u}\\right)^2.",
+      "source": "comparison_methodology.md"
+    },
+    "44": {
+      "title": "Conditional feasible lower and upper event probabilities",
+      "latex": "\\underline p_J(\\mathbf a)=\\min_{W\\in\\mathcal F_J}\\mathbf a^{\\mathsf T}\\operatorname{vec}(W),\\qquad\n\\overline p_J(\\mathbf a)=\\max_{W\\in\\mathcal F_J}\\mathbf a^{\\mathsf T}\\operatorname{vec}(W).",
+      "source": "comparison_methodology.md"
+    },
+    "45": {
+      "title": "Assumed interpolation of normalised distributions at a common horizon",
+      "latex": "\\omega_* = \\frac{T_*-T_a}{T_b-T_a},\\qquad\n\\mathbf w_*=(1-\\omega_*)\\mathbf w_a+\\omega_*\\mathbf w_b,\\qquad\nT_a\\le T_*\\le T_b.",
+      "source": "comparison_methodology.md"
+    },
+    "46": {
+      "title": "Absolute distance between two fitted normalised densities",
+      "latex": "d_1(\\widehat g^{(a)},\\widehat g^{(b)})=\n\\int_{0.3}^{2.2}|\\widehat g^{(a)}(x)-\\widehat g^{(b)}(x)|\\,dx\n=\\sum_{j=1}^{J}|w_j^{(a)}-w_j^{(b)}|.",
+      "source": "comparison_methodology.md"
+    }
+  },
+  "figures": {
+    "1": {
+      "title": "Synthetic European call prices",
+      "path": "figures/figure_01_call_prices.png",
+      "caption": "Figure 1. Synthetic European call prices across strikes for a six-month expiry, using an illustrative initial index level of 6,000 and constant annual volatility of 20%.",
+      "source": "methodology.md"
+    },
+    "2": {
+      "title": "Known and recovered synthetic density",
+      "path": "figures/figure_02_density_recovery.png",
+      "caption": "Figure 2. Analytical lognormal density and density recovered from synthetic call-price curvature. The dashed vertical line identifies the theoretical forward of 6,075.47. The recovered and analytical curves nearly coincide.",
+      "source": "methodology.md"
+    },
+    "3": {
+      "title": "Strike-spacing convergence",
+      "path": "figures/figure_03_convergence.png",
+      "caption": "Figure 3. Integrated absolute density error against strike spacing. The measured error follows approximately second-order convergence over the tested grid spacings.",
+      "source": "methodology.md"
+    },
+    "4": {
+      "title": "Sensitivity to independent quote errors",
+      "path": "figures/figure_04_noise_sensitivity.png",
+      "caption": "Figure 4. Density recovered after adding independent, zero-mean quote noise with a standard deviation of 0.05 index points (seed 42). Negative estimates demonstrate the sensitivity of raw second differences to quote errors.",
+      "source": "methodology.md"
+    },
+    "5": {
+      "title": "Candidate quote coverage by expiry and root",
+      "path": "figures/figure_05_quote_coverage.png",
+      "caption": "Figure 5. Number of strikes with both a call and a put passing the provisional 25% price screen, for the first twelve listed expiry dates within each root. The panels retain SPX and SPXW separately. Dates are contract expiry labels, not verified settlement horizons. Counts do not establish continuous strike coverage or quote usability.",
+      "source": "market_data_methodology.md"
+    },
+    "6": {
+      "title": "Candidate coverage under spread thresholds",
+      "path": "figures/figure_06_spread_sensitivity.png",
+      "caption": "Figure 6. Records passing the local price screen when the maximum spread-to-midpoint ratio is set to 10%, 25% and 50%. Counts are 24,721, 25,866 and 26,475, respectively. These are candidate-data diagnostics; the observation-time and size limitations apply at every threshold.",
+      "source": "market_data_methodology.md"
+    },
+    "7": {
+      "title": "Constrained synthetic call-price fit and residuals",
+      "path": "figures/figure_07_constrained_prices.png",
+      "caption": "Figure 7. Synthetic call prices and the constrained fit for the baseline penalty. The upper panel shows prices; the lower panel compares the added price errors with the fitted price's deviation from the known value. Prices are in index points, not currency per contract.",
+      "source": "constrained_methodology.md"
+    },
+    "8": {
+      "title": "Constrained density versus raw differentiation",
+      "path": "figures/figure_08_constrained_density.png",
+      "caption": "Figure 8. Known lognormal density, raw second differences of noisy call prices and the fitted histogram density. The display is cropped to $[0.6F,1.6F]$ for readability; fitting uses the wider support stated above. All inputs are synthetic.",
+      "source": "constrained_methodology.md"
+    },
+    "9": {
+      "title": "Smoothing-penalty sensitivity",
+      "path": "figures/figure_09_smoothing_sensitivity.png",
+      "caption": "Figure 9. Histogram densities obtained with penalties $10^{-8}$, $10^{-6}$ and $10^{-4}$, with the same prices, interval grid and forward. The dashed curve is the known density. This comparison isolates the penalty setting within one noise realisation.",
+      "source": "constrained_methodology.md"
+    },
+    "10": {
+      "title": "Synthetic multi-maturity density surface; interactive companion",
+      "path": "figures/figure_10_maturity_surface.png",
+      "caption": "Figure 10. Constrained synthetic densities at eight horizons from 30 to 365 days, displayed over terminal levels 3,000–11,000. The sheet joins sampled values for visual orientation; it is not a fitted interpolation model between maturities. Density is measured per index point. The interactive companion adds rotation, zoom, hover values and maturity selection.",
+      "source": "surface_methodology.md"
+    },
+    "11": {
+      "title": "Known and fitted density slices across horizons",
+      "path": "figures/figure_11_maturity_slices.png",
+      "caption": "Figure 11. Known lognormal densities and fitted histogram slices at 30, 90, 180 and 365 days. All panels use the same axes. The stepwise density is the actual interval representation, without display smoothing. The interactive companion permits selection of all eight fitted horizons.",
+      "source": "surface_methodology.md"
+    },
+    "12": {
+      "title": "Calendar gap before and after joint fitting",
+      "path": "figures/figure_12_calendar_gap.png",
+      "caption": "Figure 12. Difference between 365-day and 300-day forward-normalised call values under the independent control and joint fit. The left panel shows the upper-strike wing; the right panel enlarges the interval containing the control's deepest decrease. A negative value violates the required maturity ordering when its magnitude exceeds the stated tolerance. Values are dimensionless.",
+      "source": "joint_methodology.md"
+    },
+    "13": {
+      "title": "Joint density comparison and remaining tail differences",
+      "path": "figures/figure_13_joint_density_comparison.png",
+      "caption": "Figure 13. Known density, independent control and joint fit at 365 days. The main panel covers terminal levels 3,000–11,000; the second panel enlarges the right tail over 9,000–12,500. Fitted curves show the actual histogram steps. Density is measured per index point.",
+      "source": "joint_methodology.md"
+    },
+    "14": {
+      "title": "Joint synthetic maturity surface; interactive comparison",
+      "path": "figures/figure_14_joint_maturity_surface.png",
+      "caption": "Figure 14. Jointly fitted synthetic risk-neutral densities at eight horizons. The axes are terminal index level, expiry horizon in years and density per index point. Connecting facets are graphical joins only; they do not establish an estimated or calendar-consistent distribution at an intermediate maturity.",
+      "source": "joint_methodology.md"
+    },
+    "15": {
+      "title": "Density sensitivity across support, resolution and smoothing choices",
+      "path": "figures/figure_15_density_sensitivity.png",
+      "caption": "Figure 15. Known and baseline fitted densities at 365 days, with the pointwise range across all seven settings shaded. The upper row is the single-lognormal benchmark and the lower row is the two-lognormal mixture. Left panels show the central distribution; right panels enlarge the upper tail. Density is per index point. The shaded envelope is sampled for display and is not a probability density or a confidence band.",
+      "source": "robustness_methodology.md"
+    },
+    "16": {
+      "title": "Price and full-density error across sensitivity settings",
+      "path": "figures/figure_16_price_density_tradeoff.png",
+      "caption": "Figure 16. Pooled withheld clean-price RMSE and mean full-domain density error across the seven settings. Each point summarises all eight horizons for one benchmark. RMSE is in index points; integrated density error is dimensionless. The two horizontal axes represent different measures and should not be compared numerically to one another.",
+      "source": "robustness_methodology.md"
+    },
+    "17": {
+      "title": "Tail-probability errors under alternative fitting choices",
+      "path": "figures/figure_17_tail_probability_sensitivity.png",
+      "caption": "Figure 17. Fitted minus known probabilities at 365 days for the three events in Equation (24). Errors are measured in percentage points; the vertical zero line indicates agreement with the benchmark. Each panel contains the same seven modelling choices. A one-percentage-point error is an absolute probability difference of 0.01, not a 1% relative error.",
+      "source": "robustness_methodology.md"
+    },
+    "18": {
+      "title": "Nested strike patterns and tail-threshold coverage",
+      "path": "figures/figure_18_quote_coverage_design.png",
+      "caption": "Figure 18. The four quote patterns at 365 days, expressed as strike divided by forward. Points identify actual supplied strikes. The shaded interval is the common density-fitting support, and dashed lines identify the three probability thresholds. The corresponding strike ranges change with horizon; the plotting example does not imply that 1.8F is quoted at every maturity.",
+      "source": "repeated_methodology.md"
+    },
+    "19": {
+      "title": "Repeated recovery errors and Monte Carlo precision",
+      "path": "figures/figure_19_repeated_recovery_errors.png",
+      "caption": "Figure 19. Mean full-domain density error and mean validation-price RMSE across 50 repetitions per scenario. Bars show the mean plus or minus two Monte Carlo standard errors, describing the precision of the simulation mean. They are not the spread of individual estimates or confidence intervals for a density. Price panels use logarithmic horizontal scales; density panels use linear scales.",
+      "source": "repeated_methodology.md"
+    },
+    "20": {
+      "title": "Repeated upper-tail errors and clean-input controls",
+      "path": "figures/figure_20_repeated_tail_errors.png",
+      "caption": "Figure 20. Errors in the 365-day risk-neutral probability above 1.8F, in percentage points. Each row displays all 50 noisy fits, their mean plus or minus one empirical SD, and the corresponding clean-input control. Vertical offsets separate points for visibility and carry no numerical meaning. The spread shown here differs from the Monte Carlo mean-error bars in Figure 19. Horizontal scales may differ between panels.",
+      "source": "repeated_methodology.md"
+    },
+    "21": {
+      "title": "Noisy held-out price scores for smoothing selection",
+      "path": "figures/figure_21_smoothing_selection_scores.png",
+      "caption": "Figure 21. Mean pooled noisy-price validation MSE for each smoothing coefficient, with ±2 Monte Carlo standard errors across the 20 repetitions. The dimensionless score is multiplied by $10^9$ for display and the vertical scale is logarithmic. Lines connect the three evaluated candidates. These scores select the coefficient; they are not the final recovery-performance estimates.",
+      "source": "selection_methodology.md"
+    },
+    "22": {
+      "title": "Selected and fixed smoothing on separate recovery measures",
+      "path": "figures/figure_22_selected_and_fixed_recovery.png",
+      "caption": "Figure 22. Mean clean-price RMSE and full-domain density error after refitting with selected or fixed smoothing, using the same quote realisations in each comparison. Bars show ±2 MCSE. A small price error does not, by itself, establish a small density error, since prices integrate the density through the payoff relationship in Equation (1).",
+      "source": "selection_methodology.md"
+    },
+    "23": {
+      "title": "Density, price and fixed-event tail sensitivity to supplied forwards",
+      "path": "figures/figure_23_forward_input_sensitivity.png",
+      "caption": "Figure 23. Sensitivity of the selected fit to the supplied forward, under Extended 121 coverage. Points are repetition means with ±2 MCSE; connecting lines are visual guides between the five stated stress levels. The price-error axis is logarithmic. The tail event remains $S_T>1.8F_{\\mathrm{true}}$ at 365 days throughout. Calendar feasibility is checked separately in supplied-forward coordinates.",
+      "source": "selection_methodology.md"
+    },
+    "24": {
+      "title": "Matched-pair forward intervals and an intentionally incompatible quote",
+      "path": "figures/figure_24_paired_forward_intervals.png",
+      "caption": "Figure 24. Conditional forward bounds for the first synthetic horizon. Each vertical segment is one call–put pair's interval from Equation (8). The left panel has a common intersection. The right panel adds five points to the first call's bid and ask while leaving the put unchanged; the largest lower bound then exceeds the smallest upper bound. The dotted line is the known fixture forward, available only because this example is synthetic. The shaded compatible band is not a confidence interval.",
+      "source": "empirical_methodology.md"
+    },
+    "25": {
+      "title": "Synthetic input-fixture density recovery and bid–ask residuals",
+      "path": "figures/figure_25_fixture_density_and_spreads.png",
+      "caption": "Figure 25. Density recovery and quote-range checks in the synthetic fixture. The upper panels compare the fitted histogram with the known mixture in fixed reference-forward coordinates. Only $0.4$–$1.8$ is displayed; Table 24's density error covers the full positive domain. The lower panels divide midpoint residuals by each quote's half-spread: values between $-1$ and $1$ lie inside the bid/ask interval. Both option types are shown. Half-spreads are positive in this fixture; the stored point-distance diagnostic also works for a valid zero-width quote.",
+      "source": "empirical_methodology.md"
+    },
+    "26": {
+      "title": "Observed market prices and complete call–put spread residuals",
+      "path": "figures/figure_26_market_prices_and_spreads.png",
+      "caption": "Figure 26. Primary market fit and bid–ask residuals on 18 September 2026. Upper panels show market call midpoints and the selected fitted call curve. Lower panels show both option types in units of their own half-spread. The shaded band is the bid–ask interval. The common vertical range covers every residual; misses are retained rather than clipped. Prices are index points, not dollars per contract. All retained spreads in this case have positive width.",
+      "source": "marking_methodology.md"
+    },
+    "27": {
+      "title": "Empirical density sensitivity on full support and central detail",
+      "path": "figures/figure_27_market_density_sensitivity.png",
+      "caption": "Figure 27. Market-density sensitivity to smoothing. The three solid curves use the declared primary coefficients; the dashed curve uses the post-hoc selected $10^{-10}$. Top panels show the entire fitting support and lower panels enlarge $0.75\\le S/F\\le1.25$. Dotted vertical lines delimit the retained strike range. Curves are estimated histograms, not analytical benchmark densities. Tiny far-tail masses are easier to compare numerically in Table 30 than on this peak-dominated linear scale.",
+      "source": "marking_methodology.md"
+    },
+    "28": {
+      "title": "First empirical maturity surface and offline explorer",
+      "path": "figures/figure_28_market_density_surface.png",
+      "caption": "Figure 28. The primary selected empirical density across three settlement horizons. The surface connects bin centres and the three fitted maturity curves for visual guidance. It is not a fitted continuum of maturities. The horizontal terminal-level coordinate is normalised by each expiry's inferred forward; the vertical coordinate is its corresponding density. Exact steps and alternative smoothing choices are available in the [offline empirical explorer](../interactive/empirical_density_surface.html).",
+      "source": "marking_methodology.md"
+    },
+    "29": {
+      "title": "Original call/put spread residuals before and after hard-bound fitting",
+      "path": "figures/figure_29_original_spread_comparison.png",
+      "caption": "Figure 29. Standard September snapshot: Notebook 9's selected 120-bin midpoint fit above, and the new 240-bin original-spread fit below. Shading spans the quoted bid–ask interval in half-spread units. The upper and lower rows have different vertical scales, and all residuals are displayed. The 120-bin hard-bound control also has zero counted spread misses; the September improvement therefore does not require the finer grid.",
+      "source": "comparison_methodology.md"
+    },
+    "30": {
+      "title": "Fixed-expiry comparisons across the three observed snapshots",
+      "path": "figures/figure_30_fixed_expiry_date_comparison.png",
+      "caption": "Figure 30. Fixed-expiry density comparisons, with full support above and central detail below. The elapsed horizon falls by 18 days between August and standard September, and by another 15 minutes at the later snapshot. Each curve uses its own inferred forward; the same normalised threshold can therefore correspond to different index levels. These curves cannot isolate a pure change in expectations at a fixed horizon.",
+      "source": "comparison_methodology.md"
+    },
+    "31": {
+      "title": "Assumed common-60-day densities and common-contract control",
+      "path": "figures/figure_31_common_horizon_density.png",
+      "caption": "Figure 31. Interpolated 60-day normalised density using all retained pairs, and the separately re-estimated common-contract control. The panel displays 0.7–1.3 for detail; the fitted support remains 0.3–2.2, and tail calculations use the complete support. The right panel changes both quote composition and inferred carry.",
+      "source": "comparison_methodology.md"
+    },
+    "32": {
+      "title": "Chosen tail estimates and conditional feasible probability ranges",
+      "path": "figures/figure_32_conditional_tail_ranges.png",
+      "caption": "Figure 32. Dots are the minimum-curvature point estimates; horizontal bars are the conditional feasible probability ranges. Panels use different horizontal scales and percentages throughout. The bars are not statistical error bars. In particular, a nearly zero selected upper-tail probability can coexist with a materially positive feasible upper bound.",
+      "source": "comparison_methodology.md"
+    },
+    "33": {
+      "title": "Dated density surfaces on shared scales; offline date-aware companion",
+      "path": "figures/figure_33_dated_density_surfaces.png",
+      "caption": "Figure 33. The three fitted surfaces on common normalised-level, elapsed-day and density scales. Only three expiry densities are fitted in each snapshot. Surface joins between bin centres and maturity rows aid viewing; they are not extra observations. The companion adds rotation, zoom, hover, observed-snapshot playback, exact histogram slices and the separately labelled 60-day mixture.",
+      "source": "comparison_methodology.md"
+    }
+  },
+  "tables": {
+    "1": {
+      "title": "Measured baseline validation",
+      "markdown": "| Metric | Result |\n|---|---:|\n| mass | 0.9999999985 |\n| minimum_density | 3.649747692e-12 |\n| negative_density_count | 0 |\n| integrated_absolute_error | 2.914825705e-06 |\n| first_moment | 6075.470692 |\n| theoretical_forward | 6075.470709 |\n| forward_relative_error | 2.895368748e-09 |\n| max_repricing_error_index_points | 1.099256224e-05 |",
+      "caption": "Table 1. Measured baseline validation",
+      "source": "methodology.md"
+    },
+    "2": {
+      "title": "Data-source assessment and access status",
+      "markdown": "| Source | Evidence obtained | Decision |\n|---|---|---|\n| Cboe public SPX delayed-quotes page [2] | Embedded option records retrieved; time-only timestamp; zero sizes throughout | Audit candidate only |\n| Cboe DataShop Option Quotes [3] | Documented bid/ask snapshots, contract identifiers and quote datetime | Structured fallback; no purchase made |\n| DataShop downloadable sample [3] | Download attempt returned HTTP 403 | Sample contents not inspected |",
+      "caption": "Table 2. Source assessment and access status.",
+      "source": "market_data_methodology.md"
+    },
+    "3": {
+      "title": "Candidate-snapshot audit results",
+      "markdown": "| Measure | Result |\n|---|---:|\n| Retrieved option records | 27,782 |\n| Root-and-expiry groups | 61 |\n| Records passing the 25% local price screen | 25,866 |\n| Records excluded for wide relative spread | 1,916 |\n| Zero-bid records, overlapping the spread exclusions | 697 |\n| Records reporting zero bid size | 27,782 |\n| Records reporting zero ask size | 27,782 |",
+      "caption": "Table 3. Candidate-snapshot audit results.",
+      "source": "market_data_methodology.md"
+    },
+    "4": {
+      "title": "Required market-data fields",
+      "markdown": "| Field | Meaning and treatment |\n|---|---|\n| Raw contract symbol | Preserved identifier; decoded root, expiry date, type and strike |\n| Bid and ask | Index-point premiums; finite and ordered |\n| Bid and ask sizes | Preserved in raw JSON; missing or nonpositive values flagged |\n| Full quote observation datetime | Required before estimation; currently unresolved |\n| Quote timezone | Required and explicit; currently unresolved |\n| Settlement convention and datetime | Confirm for selected contracts before calculating maturity |\n| Retrieval time and source | Provenance only; not substitutes for observation time |\n| Discount factor and forward | Establish and document separately for each horizon |",
+      "caption": "Table 4. Required fields and current treatment.",
+      "source": "market_data_methodology.md"
+    },
+    "5": {
+      "title": "Baseline constrained-fit diagnostics",
+      "markdown": "| Check | Result | Interpretation |\n|---|---:|---|\n| Total fitted probability mass | 1.0000000000 | Imposed by Equation (10) |\n| Fitted mean | 6,075.470709 | Imposed forward consistency |\n| Negative fitted interval masses | 0 | Enforced non-negativity |\n| Negative raw finite-difference estimates | 18 of 79 | Failure of direct differentiation on these noisy prices |\n| Fitted-price RMSE against noisy inputs | 0.437732 index points | Training-data discrepancy |\n| Price RMSE at withheld clean strikes | 0.246113 index points | Synthetic interpolation accuracy |\n| Integrated absolute density error on support | 0.030998 | Density discrepancy; not a pointwise percentage error |\n| Sampled decreasing-price or convexity violations | 0 | Numerical check of theoretical shape properties |",
+      "caption": "Table 5. Baseline constrained-fit diagnostics, using $\\lambda=10^{-6}$.",
+      "source": "constrained_methodology.md"
+    },
+    "6": {
+      "title": "Smoothing sensitivity",
+      "markdown": "| Penalty | Noisy-input price RMSE | Withheld clean-price RMSE | Integrated absolute density error |\n|---|---:|---:|---:|\n| $10^{-8}$ | 0.392897 | 0.287372 | 0.108563 |\n| $10^{-6}$ | 0.437732 | 0.246113 | 0.030998 |\n| $10^{-4}$ | 0.458675 | 0.211071 | 0.025788 |",
+      "caption": "Table 6. Smoothing sensitivity in the synthetic experiment.",
+      "source": "constrained_methodology.md"
+    },
+    "7": {
+      "title": "Synthetic validation by expiry horizon",
+      "markdown": "| Horizon (days) | Withheld clean-price RMSE | Density $L_1$ on support | Known probability outside support |\n|---|---:|---:|---:|\n| 30 | 0.127809 | 0.058293 | $1.6893\\times10^{-43}$ |\n| 60 | 0.109230 | 0.042719 | $8.0373\\times10^{-23}$ |\n| 90 | 0.131872 | 0.036594 | $6.8132\\times10^{-16}$ |\n| 120 | 0.096013 | 0.030898 | $2.0625\\times10^{-12}$ |\n| 180 | 0.083350 | 0.027398 | $6.5773\\times10^{-9}$ |\n| 240 | 0.149516 | 0.026950 | $3.8505\\times10^{-7}$ |\n| 300 | 0.105392 | 0.025826 | $4.5167\\times10^{-6}$ |\n| 365 | 0.137777 | 0.032580 | $2.6468\\times10^{-5}$ |",
+      "caption": "Table 7. Synthetic validation by expiry horizon. RMSE is measured in index points; $L_1$ and probability mass are dimensionless.",
+      "source": "surface_methodology.md"
+    },
+    "8": {
+      "title": "Cross-maturity calendar diagnostic",
+      "markdown": "| Horizons (days) | Violations across full grid | Minimum normalised change | Violations within shared quote range |\n|---|---:|---:|---:|\n| 30 → 60 | 0 | $-4.44\\times10^{-16}$ | 0 |\n| 60 → 90 | 723 | $-5.42381\\times10^{-5}$ | 0 |\n| 90 → 120 | 393 | $-3.59782\\times10^{-5}$ | 0 |\n| 120 → 180 | 823 | $-8.97400\\times10^{-5}$ | 0 |\n| 180 → 240 | 0 | 0 | 0 |\n| 240 → 300 | 309 | $-6.68342\\times10^{-5}$ | 0 |\n| 300 → 365 | 514 | $-1.90808\\times10^{-4}$ | 0 |",
+      "caption": "Table 8. Adjacent-maturity calendar diagnostic on the finite grid in Equation (14). The minimum change is in normalised, dimensionless call value.",
+      "source": "surface_methodology.md"
+    },
+    "9": {
+      "title": "Independent and joint consistency and recovery accuracy",
+      "markdown": "| Fit | Grid violations | Minimum calendar gap | Pooled withheld-price RMSE | Mean density $L_1$ |\n|---|---:|---:|---:|---:|\n| Saved independent SLSQP | 2,762 | $-1.90808\\times10^{-4}$ | 0.119513 | 0.035157 |\n| Independent OSQP control | 2,763 | $-1.90836\\times10^{-4}$ | 0.119513 | 0.035158 |\n| Joint OSQP | 0 | $-8.56105\\times10^{-10}$ | 0.119153 | 0.035162 |",
+      "caption": "Table 9. Calendar consistency and recovery accuracy across the three fitting cases. Grid counts use 13,307 adjacent-pair comparisons and tolerance $10^{-8}$. The minimum gap comes from the interval-level check. Price RMSE is in index points; gap and density $L_1$ are dimensionless.",
+      "source": "joint_methodology.md"
+    },
+    "10": {
+      "title": "Joint-fit recovery accuracy by horizon",
+      "markdown": "| Horizon (days) | Control RMSE | Joint RMSE | Control density $L_1$ | Joint density $L_1$ |\n|---|---:|---:|---:|---:|\n| 30 | 0.127807 | 0.127248 | 0.058292 | 0.058580 |\n| 60 | 0.109230 | 0.108049 | 0.042718 | 0.043281 |\n| 90 | 0.131872 | 0.131690 | 0.036594 | 0.037064 |\n| 120 | 0.096014 | 0.095934 | 0.030899 | 0.031052 |\n| 180 | 0.083350 | 0.083266 | 0.027399 | 0.027311 |\n| 240 | 0.149516 | 0.148945 | 0.026954 | 0.026008 |\n| 300 | 0.105392 | 0.105271 | 0.025824 | 0.025642 |\n| 365 | 0.137777 | 0.137723 | 0.032580 | 0.032363 |",
+      "caption": "Table 10. Recovery accuracy by synthetic horizon. RMSE compares against withheld clean prices; the density error is Equation (15) on the finite support.",
+      "source": "joint_methodology.md"
+    },
+    "11": {
+      "title": "Declared sensitivity settings and comparable smoothing coefficients",
+      "markdown": "| Setting | Support | Bins | Roughness multiple | Lambda |\n|---|---|---:|---:|---:|\n| Baseline | [0.300000, 2.200000] | 120 | 1 | 1e-06 |\n| 80 bins | [0.300000, 2.200000] | 80 | 1 | 1.958569e-07 |\n| 160 bins | [0.300000, 2.200000] | 160 | 1 | 3.173886e-06 |\n| Smoothing / 10 | [0.300000, 2.200000] | 120 | 0.1 | 1e-07 |\n| Smoothing x 10 | [0.300000, 2.200000] | 120 | 10 | 1e-05 |\n| Narrow support | [0.458333, 1.883333] | 90 | 1 | 7.457627e-07 |\n| Wide support | [0.110000, 2.580000] | 156 | 1 | 1.305085e-06 |",
+      "caption": "Table 11. Declared sensitivity settings. Support is in forward-normalised terminal levels; lambda is the coefficient passed to Equation (12).",
+      "source": "robustness_methodology.md"
+    },
+    "12": {
+      "title": "Recovery accuracy across two benchmarks and seven settings",
+      "markdown": "| Benchmark | Setting | Withheld-price RMSE (points) | Mean full-domain density $L_1$ | Calendar check |\n|---|---|---:|---:|---|\n| Single lognormal | Baseline | 0.119153 | 0.035165 | Pass |\n| Single lognormal | 80 bins | 0.119451 | 0.048880 | Pass |\n| Single lognormal | 160 bins | 0.119123 | 0.028548 | Pass |\n| Single lognormal | Smoothing / 10 | 0.123455 | 0.042368 | Pass |\n| Single lognormal | Smoothing x 10 | 0.204097 | 0.034196 | Pass |\n| Single lognormal | Narrow support | 0.119134 | 0.035164 | Pass |\n| Single lognormal | Wide support | 0.119154 | 0.035111 | Pass |\n| Two-lognormal mixture | Baseline | 0.162515 | 0.053741 | Pass |\n| Two-lognormal mixture | 80 bins | 0.159930 | 0.069154 | Pass |\n| Two-lognormal mixture | 160 bins | 0.163632 | 0.046317 | Pass |\n| Two-lognormal mixture | Smoothing / 10 | 0.124574 | 0.064150 | Pass |\n| Two-lognormal mixture | Smoothing x 10 | 0.527565 | 0.061080 | Pass |\n| Two-lognormal mixture | Narrow support | 0.218804 | 0.068692 | Pass |\n| Two-lognormal mixture | Wide support | 0.162515 | 0.052483 | Pass |",
+      "caption": "Table 12. Recovery accuracy across all eight fitted horizons. Each calendar entry refers to the interval-level check at tolerance $10^{-8}$. Density error includes benchmark probability outside the chosen support.",
+      "source": "robustness_methodology.md"
+    },
+    "13": {
+      "title": "Known and fitted tail probabilities and variance at 365 days",
+      "markdown": "| Benchmark | Quantity | Known value | Minimum fitted | Maximum fitted |\n|---|---|---:|---:|---:|\n| Single lognormal | P(S < 0.8F), % | 15.488190 | 15.479921 | 15.542850 |\n| Single lognormal | P(S > 1.2F), % | 15.586281 | 15.541113 | 15.550680 |\n| Single lognormal | P(S > 1.8F), % | 0.118709 | 0.010066 | 0.058278 |\n| Single lognormal | Var(S/F) | 0.040811 | 0.040748 | 0.040811 |\n| Two-lognormal mixture | P(S < 0.8F), % | 13.788289 | 13.782732 | 13.848692 |\n| Two-lognormal mixture | P(S > 1.2F), % | 12.773293 | 12.725272 | 12.737735 |\n| Two-lognormal mixture | P(S > 1.8F), % | 1.188550 | 1.745535 | 2.720848 |\n| Two-lognormal mixture | Var(S/F) | 0.058223 | 0.054783 | 0.056258 |",
+      "caption": "Table 13. Known values and fitted ranges at 365 days across the seven declared settings. Probabilities are percentages; normalised variance is dimensionless. Ranges are sensitivity summaries, not confidence intervals.",
+      "source": "robustness_methodology.md"
+    },
+    "14": {
+      "title": "Quote patterns, counts and threshold coverage",
+      "markdown": "| Pattern | Quotes per horizon | Minimum K/F | Maximum K/F | 0.8F inside? | 1.2F inside? | 1.8F inside? |\n|---|---:|---:|---:|---|---|---|\n| Original 81 | 81 | 0.6065 | 1.6487 | Yes | Yes | No |\n| Sparse 41 | 41 | 0.6065 | 1.6487 | Yes | Yes | No |\n| Central 41 | 41 | 0.8671 | 1.3882 | No | Yes | No |\n| Extended 121 | 121 | 0.3460 | 1.9093 | Yes | Yes | Yes |",
+      "caption": "Table 14. Quote patterns at 365 days. The same nested construction is used at every horizon. The fitting support remains [0.3, 2.2] in forward coordinates. Threshold entries indicate whether that strike is inside the quoted span.",
+      "source": "repeated_methodology.md"
+    },
+    "15": {
+      "title": "Mean recovery errors and Monte Carlo standard errors",
+      "markdown": "| Benchmark | Error limit a (points) | Quote pattern | Mean density L1 (MCSE) | Mean price RMSE (MCSE) |\n|---|---:|---|---:|---:|\n| Single lognormal | 0.1 | Original 81 | 0.0307 (4.2e-05) | 0.1146 (0.0036) |\n| Single lognormal | 0.1 | Sparse 41 | 0.0311 (4.6e-05) | 0.1238 (0.0041) |\n| Single lognormal | 0.1 | Central 41 | 0.0364 (0.0001) | 1.0844 (0.0150) |\n| Single lognormal | 0.1 | Extended 121 | 0.0298 (1e-05) | 0.0374 (0.0002) |\n| Single lognormal | 0.5 | Original 81 | 0.0357 (0.0001) | 0.2251 (0.0072) |\n| Single lognormal | 0.5 | Sparse 41 | 0.0386 (0.0002) | 0.2535 (0.0070) |\n| Single lognormal | 0.5 | Central 41 | 0.0448 (0.0003) | 1.7134 (0.0626) |\n| Single lognormal | 0.5 | Extended 121 | 0.0335 (0.0001) | 0.0931 (0.0008) |\n| Two-lognormal mixture | 0.1 | Original 81 | 0.0470 (0.0001) | 0.4459 (0.0114) |\n| Two-lognormal mixture | 0.1 | Sparse 41 | 0.0479 (0.0001) | 0.4962 (0.0144) |\n| Two-lognormal mixture | 0.1 | Central 41 | 0.1134 (0.0001) | 7.8641 (0.0208) |\n| Two-lognormal mixture | 0.1 | Extended 121 | 0.0443 (0.0001) | 0.1254 (0.0002) |\n| Two-lognormal mixture | 0.5 | Original 81 | 0.0575 (0.0003) | 0.9229 (0.0211) |\n| Two-lognormal mixture | 0.5 | Sparse 41 | 0.0623 (0.0003) | 1.0044 (0.0206) |\n| Two-lognormal mixture | 0.5 | Central 41 | 0.1223 (0.0005) | 8.3539 (0.0789) |\n| Two-lognormal mixture | 0.5 | Extended 121 | 0.0521 (0.0001) | 0.1596 (0.0010) |",
+      "caption": "Table 15. Average recovery errors across 50 repetitions per scenario. Parentheses contain one Monte Carlo standard error of the mean. Each repetition aggregates eight horizons; the common validation grid contains 960 withheld clean prices. Density L1 is dimensionless and price RMSE is in index points.",
+      "source": "repeated_methodology.md"
+    },
+    "16": {
+      "title": "Clean-input and repeated upper-tail errors",
+      "markdown": "| Benchmark | Pattern | Clean-input error | Mean error (MCSE) | Empirical SD | Root MSE |\n|---|---|---:|---:|---:|---:|\n| Single lognormal | Original 81 | +0.0044 | -0.0443 (0.0047) | 0.0332 | 0.0552 |\n| Single lognormal | Sparse 41 | +0.0044 | -0.0438 (0.0058) | 0.0408 | 0.0595 |\n| Single lognormal | Central 41 | -0.0130 | +0.0688 (0.0175) | 0.1238 | 0.1405 |\n| Single lognormal | Extended 121 | +4.69e-05 | -0.0026 (0.0041) | 0.0289 | 0.0287 |\n| Two-lognormal mixture | Original 81 | +0.2265 | +0.3108 (0.0330) | 0.2333 | 0.3873 |\n| Two-lognormal mixture | Sparse 41 | +0.2241 | +0.3159 (0.0306) | 0.2164 | 0.3817 |\n| Two-lognormal mixture | Central 41 | +0.4398 | +0.1061 (0.0537) | 0.3794 | 0.3903 |\n| Two-lognormal mixture | Extended 121 | -0.0503 | -0.0436 (0.0043) | 0.0304 | 0.0530 |",
+      "caption": "Table 16. Error in the 365-day probability above 1.8F with a = 0.5 points. The known probabilities are 0.1187% (single lognormal) and 1.1885% (mixture). All errors and SDs are percentage points. The clean column uses exact input prices once, without a Monte Carlo error bar.",
+      "source": "repeated_methodology.md"
+    },
+    "17": {
+      "title": "Paired changes in density and absolute tail errors",
+      "markdown": "| Benchmark | First pattern − second pattern | Change in density L1 | Change in mean absolute tail error (pp) |\n|---|---|---:|---:|\n| Single lognormal | Sparse 41 − Original 81 | +0.0030 (0.0001) | +0.0042 (0.0030) |\n| Single lognormal | Central 41 − Original 81 | +0.0091 (0.0004) | +0.0661 (0.0129) |\n| Single lognormal | Extended 121 − Original 81 | -0.0022 (0.0001) | -0.0231 (0.0050) |\n| Single lognormal | Central 41 − Sparse 41 | +0.0061 (0.0004) | +0.0618 (0.0132) |\n| Two-lognormal mixture | Sparse 41 − Original 81 | +0.0048 (0.0003) | +0.0050 (0.0196) |\n| Two-lognormal mixture | Central 41 − Original 81 | +0.0648 (0.0007) | +0.0475 (0.0425) |\n| Two-lognormal mixture | Extended 121 − Original 81 | -0.0053 (0.0004) | -0.2632 (0.0338) |\n| Two-lognormal mixture | Central 41 − Sparse 41 | +0.0600 (0.0006) | +0.0425 (0.0394) |",
+      "caption": "Table 17. Paired changes at a = 0.5 points, with one MCSE in parentheses. Each difference uses matched repetitions. Negative values mean a smaller error for the first pattern. The tail measure is mean absolute probability error at 365 days, in percentage points.",
+      "source": "repeated_methodology.md"
+    },
+    "18": {
+      "title": "Smoothing-selection frequencies across repetitions",
+      "markdown": "| Benchmark | Strike pattern | Selected 10⁻⁷ | Selected 10⁻⁶ | Selected 10⁻⁵ |\n|---|---|---:|---:|---:|\n| Single lognormal | Original 81 | 0 | 20 | 0 |\n| Single lognormal | Extended 121 | 0 | 20 | 0 |\n| Two-lognormal mixture | Original 81 | 20 | 0 | 0 |\n| Two-lognormal mixture | Extended 121 | 20 | 0 | 0 |",
+      "caption": "Table 18. Smoothing selections in 20 repetitions per benchmark and strike pattern. All columns refer to the declared candidate set; selecting an endpoint does not establish that it is optimal beyond this set.",
+      "source": "selection_methodology.md"
+    },
+    "19": {
+      "title": "Recovery under selected and fixed smoothing",
+      "markdown": "| Benchmark | Pattern | Rule | Clean-price RMSE (points) | Full-density L1 | 365-day upper-tail bias (pp) |\n|---|---|---|---:|---:|---:|\n| Single lognormal | Original 81 | Fixed 10⁻⁶ | 0.2178 (0.0107) | 0.0358 (0.0001) | -0.0374 (0.0099) |\n| Single lognormal | Original 81 | Selected | 0.2178 (0.0107) | 0.0358 (0.0001) | -0.0374 (0.0099) |\n| Single lognormal | Extended 121 | Fixed 10⁻⁶ | 0.0948 (0.0012) | 0.0336 (0.0001) | +0.0080 (0.0066) |\n| Single lognormal | Extended 121 | Selected | 0.0948 (0.0012) | 0.0336 (0.0001) | +0.0080 (0.0066) |\n| Two-lognormal mixture | Original 81 | Fixed 10⁻⁶ | 0.8887 (0.0434) | 0.0574 (0.0004) | +0.3225 (0.0530) |\n| Two-lognormal mixture | Original 81 | Selected | 1.0928 (0.0290) | 0.0704 (0.0009) | +0.2533 (0.0511) |\n| Two-lognormal mixture | Extended 121 | Fixed 10⁻⁶ | 0.1587 (0.0015) | 0.0524 (0.0003) | -0.0358 (0.0073) |\n| Two-lognormal mixture | Extended 121 | Selected | 0.1174 (0.0011) | 0.0630 (0.0003) | -0.0366 (0.0110) |",
+      "caption": "Table 19. Recovery after full-data refitting. The clean-price RMSE pools 960 withheld prices in each repetition. Full-density $L_1$ is averaged across eight maturities and includes the known omitted tails as in Equation (23). Upper-tail bias is the mean error in $Q(S_T>1.8F)$ at 365 days, expressed in percentage points. Entries are mean (MCSE).",
+      "source": "selection_methodology.md"
+    },
+    "20": {
+      "title": "Paired selected-minus-fixed recovery errors",
+      "markdown": "| Benchmark | Pattern | Δ clean-price RMSE (points) | Δ full-density L1 | Δ absolute upper-tail error (pp) |\n|---|---|---:|---:|---:|\n| Single lognormal | Original 81 | +0.0000 (0.0000) | +0.0000 (0.0000) | +0.0000 (0.0000) |\n| Single lognormal | Extended 121 | +0.0000 (0.0000) | +0.0000 (0.0000) | +0.0000 (0.0000) |\n| Two-lognormal mixture | Original 81 | +0.2042 (0.0374) | +0.0130 (0.0007) | -0.0692 (0.0316) |\n| Two-lognormal mixture | Extended 121 | -0.0413 (0.0011) | +0.0107 (0.0004) | +0.0073 (0.0048) |",
+      "caption": "Table 20. Paired selected-minus-fixed differences, reported as mean (MCSE). Negative values indicate lower error under the selection rule. The last column compares absolute errors for the fixed 365-day upper-tail event; it is not a difference between signed biases.",
+      "source": "selection_methodology.md"
+    },
+    "21": {
+      "title": "Forward sensitivity and incompatible lower-bound quotes",
+      "markdown": "| Benchmark | Forward error (%) | Clean-price RMSE (points) | Full-density L1 | Upper-tail bias (pp) | Quotes below lower bound / 968 |\n|---|---:|---:|---:|---:|---:|\n| Single lognormal | -0.5 | 2.9202 (0.0001) | 0.0829 (0.0001) | +0.0082 (0.0066) | 0.00 (0.00) |\n| Single lognormal | -0.1 | 0.4770 (0.0002) | 0.0421 (0.0001) | +0.0080 (0.0067) | 0.00 (0.00) |\n| Single lognormal | +0.0 | 0.0948 (0.0012) | 0.0336 (0.0001) | +0.0080 (0.0066) | 56.90 (1.05) |\n| Single lognormal | +0.1 | 2.4965 (0.0001) | 0.0559 (0.0001) | +0.0080 (0.0066) | 216.90 (0.26) |\n| Single lognormal | +0.5 | 14.3147 (4e-05) | 0.1637 (0.0002) | +0.0081 (0.0066) | 285.00 (0.00) |\n| Two-lognormal mixture | -0.5 | 1.7653 (0.0001) | 0.1079 (0.0003) | -0.0413 (0.0085) | 0.00 (0.00) |\n| Two-lognormal mixture | -0.1 | 0.2109 (0.0006) | 0.0726 (0.0003) | -0.0393 (0.0108) | 0.00 (0.00) |\n| Two-lognormal mixture | +0.0 | 0.1174 (0.0011) | 0.0630 (0.0003) | -0.0366 (0.0110) | 0.05 (0.05) |\n| Two-lognormal mixture | +0.1 | 1.0523 (0.0001) | 0.0823 (0.0004) | -0.0340 (0.0113) | 99.35 (0.28) |\n| Two-lognormal mixture | +0.5 | 10.2713 (1.5e-05) | 0.1468 (0.0004) | -0.0239 (0.0131) | 227.30 (0.29) |",
+      "caption": "Table 21. Forward stress with the selected zero-shift coefficient held fixed. Entries are mean (MCSE); all errors use the same benchmark and physical risk events. The last column counts supplied-forward lower-bound violations among the 968 observed calls in each repetition. It diagnoses incompatible inputs, rather than failed solver convergence.",
+      "source": "selection_methodology.md"
+    },
+    "22": {
+      "title": "Updated source-access assessment for empirical calibration",
+      "markdown": "| Source | Evidence available in this project | Decision for this stage |\n|---|---|---|\n| Original Cboe page candidate [2] | Archived payload and audit; quote observation datetime/timezone and zero-size meaning remain unresolved | Retain for the data audit; no density fit |\n| Cboe Option EOD Summary [18] | Primary layout documentation; advertised sample request returned HTTP 403 | No sample contents inspected; access attempt recorded |\n| HistoricalData.net public 2022 sample [19] | Vendor documentation describes asynchronous last-standing quotes; quote timestamps start in August 2026 | Not downloaded: the advertised sample does not meet this study's synchronised-input requirement |\n| Institutional OptionMetrics route [20] | WRDS describes option quotes and curve data; no export or institutional access has been supplied | Possible route requiring an actual authorised export and its documentation |",
+      "caption": "Table 22. Initial source assessment before the supplied marking-price files. Product descriptions establish possible routes, not actual access or approval of unseen files.",
+      "source": "empirical_methodology.md"
+    },
+    "23": {
+      "title": "Synthetic input pairs and conditional forward inference",
+      "markdown": "| Nominal horizon | Elapsed years | Pairs | Conditional forward interval | Chosen forward | Error from known forward |\n|---|---:|---:|---|---:|---:|\n| 60 days | 0.16429795 | 41 | [6024.0571, 6025.3527] | 6024.7049 | +0.0095 |\n| 120 days | 0.32868151 | 47 | [6048.6398, 6050.5771] | 6049.6084 | +0.1031 |\n| 240 days | 0.65744863 | 53 | [6098.1441, 6100.6864] | 6099.4153 | -0.0169 |",
+      "caption": "Table 23. Verified synthetic input pairs and full-data forward inference. Interval endpoints, forward estimates and forward errors are in index points. Known forwards are available only for the fixture.",
+      "source": "empirical_methodology.md"
+    },
+    "24": {
+      "title": "Separate fixture recovery and in-sample spread diagnostics",
+      "markdown": "| Nominal horizon | Separate clean-price RMSE (points) | Full-domain density L1 | Quotes outside spread | Largest spread distance (points) |\n|---|---:|---:|---:|---:|\n| 60 days | 0.05257 | 0.04960 | 1 / 82 | 0.01993 |\n| 120 days | 0.05195 | 0.04411 | 0 / 94 | 0.00000 |\n| 240 days | 0.03808 | 0.06150 | 0 / 106 | 0.00000 |",
+      "caption": "Table 24. Independent fixture recovery and in-sample spread diagnostics. The clean-price column uses separate strike midpoints. The spread columns assess the supplied input quotes; the two roles should not be conflated.",
+      "source": "empirical_methodology.md"
+    },
+    "25": {
+      "title": "Deliberately invalid input cases and observed responses",
+      "markdown": "| Deliberate input change | Observed response |\n|---|---|\n| Missing quote timezone | Blocked |\n| Unsynchronised quote | Blocked |\n| Conflicting settlement time | Blocked |\n| Discount published after the snapshot | Blocked |\n| Discount older than the declared limit | Blocked |\n| Call bid and ask at the first strike increased by 5 points | Blocked by parity |\n| Zero size and a duplicated call quote | 5 rows excluded |",
+      "caption": "Table 25. Input-failure exercises applied to the saved fixture. These are designed checks, not failures discovered in market observations. Mutations and returned reasons are retained in `results/empirical_preparation.json`.",
+      "source": "empirical_methodology.md"
+    },
+    "26": {
+      "title": "Supplied marking-price files, dates and assigned roles",
+      "markdown": "| File | Date | CT | All rows | SPX/SPXW pairs | Use here |\n|---|---|---|---|---|---|\n| eom_marking_prices_list.csv | 2026-08-31 | 15:00 | 39,945 | 13,813 | reserved date comparison |\n| eod_marking_prices_list.csv | 2026-09-18 | 15:00 | 39,346 | 13,891 | primary calibration |\n| eod_marking_prices_late_list.csv | 2026-09-18 | 15:15 | 38,995 | 13,891 | reserved intraday comparison |",
+      "caption": "Table 26. Supplied file coverage and assigned role. Each target row contains a call and put at one strike. Counts include all SPX/SPXW expiries before screening. CT means Chicago civil time; all three observation dates are on UTC−05:00.",
+      "source": "marking_methodology.md"
+    },
+    "27": {
+      "title": "Quote-implied discount/forward inputs and feasible discount projections",
+      "markdown": "| Expiry | Pairs | Elapsed days | Inferred D | Feasible D range | Inferred F (points) | Implied rate (%/yr) |\n|---|---|---|---|---|---|---|\n| 2026-10-16 | 364 | 28.00000 | 0.99692766 | [0.99355705, 1.00051635] | 7666.5433 | 4.0112 |\n| 2026-11-20 | 344 | 63.04167 | 0.99259513 | [0.99038168, 0.99531840] | 7691.7365 | 4.3032 |\n| 2026-12-18 | 261 | 91.04167 | 0.98895253 | [0.98664835, 0.99123243] | 7712.2104 | 4.4537 |",
+      "caption": "Table 27. Full-sample quote-implied carry inputs. The discount intervals project all retained pair inequalities. Forward values are in index points; the last column is the equivalent annual rate, expressed as a percentage. Reporting digits aid reconstruction and do not imply this degree of economic precision.",
+      "source": "marking_methodology.md"
+    },
+    "28": {
+      "title": "Primary empirical coverage and call/put spread residuals",
+      "markdown": "| Expiry | Retained K/F range | Call RMSE (points) | Put RMSE (points) | Calls / puts outside | Largest spread miss (points) |\n|---|---|---|---|---|---|\n| 2026-10-16 | 0.6261–1.0905 | 0.8895 | 1.0036 | 100 / 236 | 1.8661 |\n| 2026-11-20 | 0.4680–1.1571 | 0.4477 | 0.8228 | 36 / 145 | 1.3688 |\n| 2026-12-18 | 0.4149–1.2188 | 0.3323 | 0.7146 | 6 / 127 | 0.6305 |",
+      "caption": "Table 28. Primary selected fit and quote coverage. RMSE uses retained midpoints. The outside counts separate calls and puts; each has the pair count in Table 27. A low price RMSE does not certify a recovered density.",
+      "source": "marking_methodology.md"
+    },
+    "29": {
+      "title": "Primary and post-hoc smoothing grids and fit diagnostics",
+      "markdown": "| Role | λ | Pooled held-out score | Outside spreads | Largest miss (points) |\n|---|---|---|---|---|\n| Primary | 1e-07 | 7.077784e-09 | 650 / 1938 | 1.8661 |\n| Primary | 1e-06 | 3.906252e-08 | 896 / 1938 | 5.7016 |\n| Primary | 1e-05 | 2.482028e-07 | 1083 / 1938 | 13.8752 |\n| Post-hoc | 1e-10 | 2.849965e-09 | 501 / 1938 | 1.3915 |\n| Post-hoc | 1e-09 | 2.927029e-09 | 496 / 1938 | 1.3963 |\n| Post-hoc | 1e-08 | 3.479806e-09 | 556 / 1938 | 1.3791 |",
+      "caption": "Table 29. Declared primary grid and subsequent lower-penalty diagnostic. Scores pool held-out call errors divided by training forwards. The outside-spread and maximum-miss columns instead describe full-data refits, so they need not rank coefficients in the same order.",
+      "source": "marking_methodology.md"
+    },
+    "30": {
+      "title": "Conditional empirical tail probabilities and variance sensitivity",
+      "markdown": "| Fit | Expiry | Q(S < 0.8F), % | Q(S > 1.2F), % | Q(S > 1.8F), % | Var(S/F) |\n|---|---|---|---|---|---|\n| Primary 1e−7 | 2026-10-16 | 0.37970 | 0.0096739 | 0.009673851 | 0.0016523 |\n| Primary 1e−7 | 2026-11-20 | 1.24439 | 0.0096739 | 0.009673851 | 0.0044610 |\n| Primary 1e−7 | 2026-12-18 | 2.34564 | 0.1486140 | 0.009673850 | 0.0068258 |\n| Post-hoc 1e−10 | 2026-10-16 | 0.37272 | 0.0000078 | 0.000001186 | 0.0015441 |\n| Post-hoc 1e−10 | 2026-11-20 | 1.35610 | 0.0997905 | 0.000049443 | 0.0043609 |\n| Post-hoc 1e−10 | 2026-12-18 | 2.06036 | 0.1797615 | 0.000218654 | 0.0067438 |",
+      "caption": "Table 30. Conditional risk-neutral summaries for the primary and post-hoc selected fits. Probabilities are percentages; variance is dimensionless. These are sensitivity outputs, not confidence intervals, physical forecasts or recommendations. Values near numerical resolution should not be read as precise market probabilities.",
+      "source": "marking_methodology.md"
+    },
+    "31": {
+      "title": "Dated quote coverage, common strikes and inferred carry",
+      "markdown": "| Snapshot (2026) | Expiry | Retained pairs | Common strikes | Elapsed days | Inferred D | Inferred F (points) |\n|---|---|---|---|---|---|---|\n| 31 Aug · 15:00 CT | 2026-10-16 | 296 | 288 | 46.00000 | 0.99742995 | 7716.6750 |\n| 31 Aug · 15:00 CT | 2026-11-20 | 305 | 296 | 81.04167 | 0.99157534 | 7742.7428 |\n| 31 Aug · 15:00 CT | 2026-12-18 | 239 | 230 | 109.04167 | 0.98782814 | 7762.9681 |\n| 18 Sep · 15:00 CT | 2026-10-16 | 364 | 288 | 28.00000 | 0.99692766 | 7666.5433 |\n| 18 Sep · 15:00 CT | 2026-11-20 | 344 | 296 | 63.04167 | 0.99259513 | 7691.7365 |\n| 18 Sep · 15:00 CT | 2026-12-18 | 261 | 230 | 91.04167 | 0.98895253 | 7712.2104 |\n| 18 Sep · 15:15 CT | 2026-10-16 | 361 | 288 | 27.98958 | 0.99698753 | 7680.0067 |\n| 18 Sep · 15:15 CT | 2026-11-20 | 337 | 296 | 63.03125 | 0.99256973 | 7705.6095 |\n| 18 Sep · 15:15 CT | 2026-12-18 | 252 | 230 | 91.03125 | 0.98914398 | 7725.9946 |",
+      "caption": "Table 31. Retained matched pairs, the intersection of strikes across all three snapshots, and independently inferred carry at each expiry. Times in the snapshot labels are Chicago civil time. The common-contract fit re-estimates carry on its smaller sample; the last two columns describe the all-pair fit.",
+      "source": "comparison_methodology.md"
+    },
+    "32": {
+      "title": "Finite-grid price feasibility and equivalent numerical formulations",
+      "markdown": "| Snapshot | Bins | Minimum widening (points) | Final outcome | Equivalent quote-row multiplier: status |\n|---|---|---|---|---|\n| 31 Aug · 15:00 CT | 120 | 0 | Solved | 1: solved |\n| 31 Aug · 15:00 CT | 240 | 0 | Solved | 1: solved |\n| 18 Sep · 15:00 CT | 120 | 0 | Solved | 1: postcheck_failure, 10: solved |\n| 18 Sep · 15:00 CT | 240 | 0 | Solved | 1: solved |\n| 18 Sep · 15:15 CT | 120 | 0.0265641741 | Blocked on this grid | No QP attempted |\n| 18 Sep · 15:15 CT | 240 | 0 | Solved | 1: solved |",
+      "caption": "Table 32. The disclosed 120/240-bin feasibility comparison and subsequent hard-bound QP outcome. Positive row multipliers give algebraically equivalent constraints; failed numerical attempts are retained. A printed zero is the LP's numerical result, subject to the residual checks below.",
+      "source": "comparison_methodology.md"
+    },
+    "33": {
+      "title": "Original call/put spread fit and midpoint residual comparisons",
+      "markdown": "| Snapshot | Estimator | Expiry | Call RMSE (points) | Put RMSE (points) | Calls / puts outside | Largest miss (points) |\n|---|---|---|---|---|---|---|\n| 31 Aug · 15:00 CT | 240-bin constrained | 2026-10-16 | 3.2961 | 3.3985 | 0 / 0 | 1.38e-11 |\n| 31 Aug · 15:00 CT | 240-bin constrained | 2026-11-20 | 3.1513 | 2.8919 | 0 / 0 | 1.06e-11 |\n| 31 Aug · 15:00 CT | 240-bin constrained | 2026-12-18 | 2.7834 | 2.4480 | 0 / 0 | 1.03e-11 |\n| 18 Sep · 15:00 CT | 240-bin constrained | 2026-10-16 | 0.7861 | 0.5697 | 0 / 0 | 6.96e-11 |\n| 18 Sep · 15:00 CT | 240-bin constrained | 2026-11-20 | 0.7695 | 0.6337 | 0 / 0 | 6.3e-11 |\n| 18 Sep · 15:00 CT | 240-bin constrained | 2026-12-18 | 0.7234 | 0.5273 | 0 / 0 | 6.11e-11 |\n| 18 Sep · 15:15 CT | 240-bin constrained | 2026-10-16 | 0.4469 | 0.2602 | 0 / 0 | 6.89e-11 |\n| 18 Sep · 15:15 CT | 240-bin constrained | 2026-11-20 | 0.4221 | 0.2530 | 0 / 0 | 2.06e-12 |\n| 18 Sep · 15:15 CT | 240-bin constrained | 2026-12-18 | 0.4846 | 0.3167 | 0 / 0 | 2.33e-12 |\n| 18 Sep · 15:00 CT | Notebook 9 primary | 2026-10-16 | 0.8895 | 1.0036 | 100 / 236 | 1.866071 |\n| 18 Sep · 15:00 CT | Notebook 9 primary | 2026-11-20 | 0.4477 | 0.8228 | 36 / 145 | 1.368845 |\n| 18 Sep · 15:00 CT | Notebook 9 primary | 2026-12-18 | 0.3323 | 0.7146 | 6 / 127 | 0.630488 |\n| 18 Sep · 15:00 CT | 120-bin constrained | 2026-10-16 | 0.7915 | 0.5688 | 0 / 0 | 0.000000 |\n| 18 Sep · 15:00 CT | 120-bin constrained | 2026-11-20 | 0.7661 | 0.6341 | 0 / 0 | 0.000000 |\n| 18 Sep · 15:00 CT | 120-bin constrained | 2026-12-18 | 0.7191 | 0.5289 | 0 / 0 | 0.000000 |",
+      "caption": "Table 33. Original call/put spread diagnostics and midpoint RMSE. The September 120-bin control changes the criterion while retaining Notebook 9's bin count. The 240-bin comparison changes both criterion and resolution. All counts use the stated $10^{-7}$-point tolerance.",
+      "source": "comparison_methodology.md"
+    },
+    "34": {
+      "title": "Paired held-out price errors and successful-fold coverage",
+      "markdown": "| Snapshot | Solved folds | Evaluated quotes | Outside spreads | Outside (%) | Largest miss (points) | Pooled normalised MSE |\n|---|---|---|---|---|---|---|\n| 31 Aug · 15:00 CT | 3 / 3 | 1668 | 40 | 2.398 | 0.872056 | 1.496021e-07 |\n| 18 Sep · 15:00 CT | 3 / 3 | 1926 | 46 | 2.388 | 0.392571 | 7.838472e-09 |\n| 18 Sep · 15:15 CT | 2 / 3 | 1256 | 24 | 1.911 | 0.058489 | 2.261022e-09 |",
+      "caption": "Table 34. Held-out call and put errors. Each successful fold contributes its actual quote count to the pooled forward-scaled midpoint MSE. The late snapshot has only two accepted folds, so its score must not be treated as directly comparable complete-fold evidence.",
+      "source": "comparison_methodology.md"
+    },
+    "35": {
+      "title": "Common-horizon conditional risk summaries and sample sensitivity",
+      "markdown": "| Snapshot | Pairs used | Below 0.8 (%) | Above 1.2 (%) | Above 1.8 (%) | Normalised variance |\n|---|---|---|---|---|---|\n| 31 Aug · 15:00 CT | All pairs | 1.3072946 | 0.0288369 | 0.0000000 | 0.00391937 |\n| 31 Aug · 15:00 CT | Common contracts | 1.3088835 | 0.0288158 | 0.0000000 | 0.00394024 |\n| 18 Sep · 15:00 CT | All pairs | 1.3888690 | 0.0239813 | 0.0002990 | 0.00408341 |\n| 18 Sep · 15:00 CT | Common contracts | 1.4007878 | 0.0591652 | 0.0001475 | 0.00406689 |\n| 18 Sep · 15:15 CT | All pairs | 1.3771398 | 0.0724494 | 0.0000000 | 0.00403270 |\n| 18 Sep · 15:15 CT | Common contracts | 1.3742812 | 0.0617352 | 0.0000464 | 0.00403093 |",
+      "caption": "Table 35. Conditional 60-day point summaries from the stated interpolation. Tail columns are percentages of the interpolated normalised distribution, not observed physical probabilities. Values rounded to zero are not proofs of a zero-probability event.",
+      "source": "comparison_methodology.md"
+    },
+    "36": {
+      "title": "Conditional feasible ranges for common-horizon tail events",
+      "markdown": "| Snapshot | 60-day event | Chosen estimate (%) | Feasible lower (%) | Feasible upper (%) |\n|---|---|---|---|---|\n| 31 Aug · 15:00 CT | Below 0.8 × forward | 1.3072946 | 0.9821901 | 1.7321271 |\n| 31 Aug · 15:00 CT | Above 1.2 × forward | 0.0288369 | 0.0000000 | 0.2002381 |\n| 31 Aug · 15:00 CT | Above 1.8 × forward | 0.0000000 | 0.0000000 | 0.0185933 |\n| 18 Sep · 15:00 CT | Below 0.8 × forward | 1.3888690 | 1.1862115 | 1.6390830 |\n| 18 Sep · 15:00 CT | Above 1.2 × forward | 0.0239813 | 0.0000000 | 0.2005809 |\n| 18 Sep · 15:00 CT | Above 1.8 × forward | 0.0002990 | 0.0000000 | 0.0157987 |\n| 18 Sep · 15:15 CT | Below 0.8 × forward | 1.3771398 | 1.1515257 | 1.6626283 |\n| 18 Sep · 15:15 CT | Above 1.2 × forward | 0.0724494 | 0.0000000 | 0.2129429 |\n| 18 Sep · 15:15 CT | Above 1.8 × forward | 0.0000000 | 0.0000000 | 0.0192084 |",
+      "caption": "Table 36. Conditional feasible ranges from Equation (44) for the interpolated 60-day distribution. Bounds are computed from the all-pair fits' fixed carry; they do not apply to the common-contract refits. The corresponding extrema for every actual expiry, LP residuals and extremising masses are retained in the result files.",
+      "source": "comparison_methodology.md"
+    }
+  },
+  "registers": {
+    "figures": [
+      "| Number | Short title | Current source |",
+      "|---|---|---|",
+      "| 1 | Synthetic European call prices | `methodology.md` |",
+      "| 2 | Known and recovered synthetic density | `methodology.md` |",
+      "| 3 | Strike-spacing convergence | `methodology.md` |",
+      "| 4 | Sensitivity to independent quote errors | `methodology.md` |",
+      "| 5 | Candidate quote coverage by expiry and root | `market_data_methodology.md` |",
+      "| 6 | Candidate coverage under spread thresholds | `market_data_methodology.md` |",
+      "| 7 | Constrained synthetic call-price fit and residuals | `constrained_methodology.md` |",
+      "| 8 | Constrained density versus raw differentiation | `constrained_methodology.md` |",
+      "| 9 | Smoothing-penalty sensitivity | `constrained_methodology.md` |",
+      "| 10 | Synthetic multi-maturity density surface; interactive companion | `surface_methodology.md` |",
+      "| 11 | Known and fitted density slices across horizons | `surface_methodology.md` |",
+      "| 12 | Calendar gap before and after joint fitting | `joint_methodology.md` |",
+      "| 13 | Joint density comparison and remaining tail differences | `joint_methodology.md` |",
+      "| 14 | Joint synthetic maturity surface; interactive comparison | `joint_methodology.md` |",
+      "| 15 | Density sensitivity across support, resolution and smoothing choices | `robustness_methodology.md` |",
+      "| 16 | Price and full-density error across sensitivity settings | `robustness_methodology.md` |",
+      "| 17 | Tail-probability errors under alternative fitting choices | `robustness_methodology.md` |",
+      "| 18 | Nested strike patterns and tail-threshold coverage | `repeated_methodology.md` |",
+      "| 19 | Repeated recovery errors and Monte Carlo precision | `repeated_methodology.md` |",
+      "| 20 | Repeated upper-tail errors and clean-input controls | `repeated_methodology.md` |",
+      "| 21 | Noisy held-out price scores for smoothing selection | `selection_methodology.md` |",
+      "| 22 | Selected and fixed smoothing on separate recovery measures | `selection_methodology.md` |",
+      "| 23 | Density, price and fixed-event tail sensitivity to supplied forwards | `selection_methodology.md` |",
+      "| 24 | Matched-pair forward intervals and an intentionally incompatible quote | `empirical_methodology.md` |",
+      "| 25 | Synthetic input-fixture density recovery and bid–ask residuals | `empirical_methodology.md` |",
+      "| 26 | Observed market prices and complete call–put spread residuals | `marking_methodology.md` |",
+      "| 27 | Empirical density sensitivity on full support and central detail | `marking_methodology.md` |",
+      "| 28 | First empirical maturity surface and offline explorer | `marking_methodology.md` |",
+      "| 29 | Original call/put spread residuals before and after hard-bound fitting | `comparison_methodology.md` |",
+      "| 30 | Fixed-expiry comparisons across the three observed snapshots | `comparison_methodology.md` |",
+      "| 31 | Assumed common-60-day densities and common-contract control | `comparison_methodology.md` |",
+      "| 32 | Chosen tail estimates and conditional feasible probability ranges | `comparison_methodology.md` |",
+      "| 33 | Dated density surfaces on shared scales; offline date-aware companion | `comparison_methodology.md` |"
+    ],
+    "tables": [
+      "| Number | Short title | Current source |",
+      "|---|---|---|",
+      "| 1 | Measured baseline validation | `methodology.md` |",
+      "| 2 | Data-source assessment and access status | `market_data_methodology.md` |",
+      "| 3 | Candidate-snapshot audit results | `market_data_methodology.md` |",
+      "| 4 | Required market-data fields | `market_data_methodology.md` |",
+      "| 5 | Baseline constrained-fit diagnostics | `constrained_methodology.md` |",
+      "| 6 | Smoothing sensitivity | `constrained_methodology.md` |",
+      "| 7 | Synthetic validation by expiry horizon | `surface_methodology.md` |",
+      "| 8 | Cross-maturity calendar diagnostic | `surface_methodology.md` |",
+      "| 9 | Independent and joint consistency and recovery accuracy | `joint_methodology.md` |",
+      "| 10 | Joint-fit recovery accuracy by horizon | `joint_methodology.md` |",
+      "| 11 | Declared sensitivity settings and comparable smoothing coefficients | `robustness_methodology.md` |",
+      "| 12 | Recovery accuracy across two benchmarks and seven settings | `robustness_methodology.md` |",
+      "| 13 | Known and fitted tail probabilities and variance at 365 days | `robustness_methodology.md` |",
+      "| 14 | Quote patterns, counts and threshold coverage | `repeated_methodology.md` |",
+      "| 15 | Mean recovery errors and Monte Carlo standard errors | `repeated_methodology.md` |",
+      "| 16 | Clean-input and repeated upper-tail errors | `repeated_methodology.md` |",
+      "| 17 | Paired changes in density and absolute tail errors | `repeated_methodology.md` |",
+      "| 18 | Smoothing-selection frequencies across repetitions | `selection_methodology.md` |",
+      "| 19 | Recovery under selected and fixed smoothing | `selection_methodology.md` |",
+      "| 20 | Paired selected-minus-fixed recovery errors | `selection_methodology.md` |",
+      "| 21 | Forward sensitivity and incompatible lower-bound quotes | `selection_methodology.md` |",
+      "| 22 | Updated source-access assessment for empirical calibration | `empirical_methodology.md` |",
+      "| 23 | Synthetic input pairs and conditional forward inference | `empirical_methodology.md` |",
+      "| 24 | Separate fixture recovery and in-sample spread diagnostics | `empirical_methodology.md` |",
+      "| 25 | Deliberately invalid input cases and observed responses | `empirical_methodology.md` |",
+      "| 26 | Supplied marking-price files, dates and assigned roles | `marking_methodology.md` |",
+      "| 27 | Quote-implied discount/forward inputs and feasible discount projections | `marking_methodology.md` |",
+      "| 28 | Primary empirical coverage and call/put spread residuals | `marking_methodology.md` |",
+      "| 29 | Primary and post-hoc smoothing grids and fit diagnostics | `marking_methodology.md` |",
+      "| 30 | Conditional empirical tail probabilities and variance sensitivity | `marking_methodology.md` |",
+      "| 31 | Dated quote coverage, common strikes and inferred carry | `comparison_methodology.md` |",
+      "| 32 | Finite-grid price feasibility and equivalent numerical formulations | `comparison_methodology.md` |",
+      "| 33 | Original call/put spread fit and midpoint residual comparisons | `comparison_methodology.md` |",
+      "| 34 | Paired held-out price errors and successful-fold coverage | `comparison_methodology.md` |",
+      "| 35 | Common-horizon conditional risk summaries and sample sensitivity | `comparison_methodology.md` |",
+      "| 36 | Conditional feasible ranges for common-horizon tail events | `comparison_methodology.md` |"
+    ],
+    "equations": [
+      "| Number | Descriptive name | Current source |",
+      "|---|---|---|",
+      "| 1 | Discounted expected call payoff | `methodology.md` |",
+      "| 2 | First strike derivative of the call price | `methodology.md` |",
+      "| 3 | Breeden–Litzenberger density-extraction relationship | `methodology.md` |",
+      "| 4 | Centred finite-difference density estimate | `methodology.md` |",
+      "| 5 | Bid–ask midpoint | `market_data_methodology.md` |",
+      "| 6 | Relative bid–ask spread | `market_data_methodology.md` |",
+      "| 7 | Discounted put–call parity | `market_data_methodology.md` |",
+      "| 8 | Indicative forward interval from bid–ask quotes | `market_data_methodology.md` |",
+      "| 9 | Piecewise-constant probability density | `constrained_methodology.md` |",
+      "| 10 | Non-negativity, total-mass and forward constraints | `constrained_methodology.md` |",
+      "| 11 | Exact call valuation under interval probabilities | `constrained_methodology.md` |",
+      "| 12 | Regularised constrained fitting objective | `constrained_methodology.md` |",
+      "| 13 | Forward-normalised call value | `surface_methodology.md` |",
+      "| 14 | Cross-maturity consistency at fixed forward moneyness | `surface_methodology.md` |",
+      "| 15 | Integrated absolute density error on fitting support | `surface_methodology.md` |",
+      "| 16 | Common forward-coordinate density and physical density | `joint_methodology.md` |",
+      "| 17 | Joint quadratic programme with calendar constraints | `joint_methodology.md` |",
+      "| 18 | Within-bin quadratic calendar gap | `joint_methodology.md` |",
+      "| 19 | Interior calendar-gap minimum | `joint_methodology.md` |",
+      "| 20 | Lognormal-mixture density and weighted option prices | `robustness_methodology.md` |",
+      "| 21 | Grid-scaled discrete density roughness | `robustness_methodology.md` |",
+      "| 22 | Equivalent smoothing coefficient across grids | `robustness_methodology.md` |",
+      "| 23 | Full-domain density error including omitted tails | `robustness_methodology.md` |",
+      "| 24 | Risk-neutral tail probabilities at stated forward thresholds | `robustness_methodology.md` |",
+      "| 25 | Normalised terminal-level variance for histograms and mixtures | `robustness_methodology.md` |",
+      "| 26 | Paired bounded synthetic quote perturbations | `repeated_methodology.md` |",
+      "| 27 | Simulation bias, empirical variance and finite-sample MSE decomposition | `repeated_methodology.md` |",
+      "| 28 | Monte Carlo standard error of a mean | `repeated_methodology.md` |",
+      "| 29 | Mean paired contrast and its Monte Carlo standard error | `repeated_methodology.md` |",
+      "| 30 | Pooled noisy-price validation score and penalty selection | `selection_methodology.md` |",
+      "| 31 | Relative perturbation of the supplied forward curve | `selection_methodology.md` |",
+      "| 32 | Density evaluation and fixed risk event in reference coordinates | `selection_methodology.md` |",
+      "| 33 | Supplied-forward call lower bound and quote shortfall | `selection_methodology.md` |",
+      "| 34 | Common bid–ask forward intersection and point convention | `empirical_methodology.md` |",
+      "| 35 | Minimum uniform widening of incompatible forward intervals | `empirical_methodology.md` |",
+      "| 36 | Smoothing selection with training-only inferred forwards | `empirical_methodology.md` |",
+      "| 37 | Fitted option-price distance outside its bid–ask range | `empirical_methodology.md` |",
+      "| 38 | Linear put–call parity and bid–ask difference bounds | `marking_methodology.md` |",
+      "| 39 | Constrained quote-implied discount and forward estimation | `marking_methodology.md` |",
+      "| 40 | Quote-implied continuously compounded rate equivalent | `marking_methodology.md` |",
+      "| 41 | Intersection of original call and parity-transformed put intervals | `comparison_methodology.md` |",
+      "| 42 | Minimum diagnostic quote widening under the finite density basis | `comparison_methodology.md` |",
+      "| 43 | Minimum-curvature density inside original quote restrictions | `comparison_methodology.md` |",
+      "| 44 | Conditional feasible lower and upper event probabilities | `comparison_methodology.md` |",
+      "| 45 | Assumed interpolation of normalised distributions at a common horizon | `comparison_methodology.md` |",
+      "| 46 | Absolute distance between two fitted normalised densities | `comparison_methodology.md` |"
+    ],
+    "abbreviations": [
+      "| Abbreviation | Meaning |",
+      "|---|---|",
+      "| AM / PM | Before / after noon; settlement conventions require contract-specific confirmation |",
+      "| ACT/365F | Actual elapsed time divided by a fixed 365-day year; UTC seconds are used here |",
+      "| API | Application programming interface |",
+      "| 3D | Three-dimensional |",
+      "| BBO | Best Bid and Offer on the stated exchange; not necessarily consolidated NBBO |",
+      "| CT / ET | Chicago / New York civil time, with the date-specific UTC offset |",
+      "| EOM | End of month |",
+      "| LP | Linear programme |",
+      "| OSI | Options Symbology Initiative; encoded contract identifier |",
+      "| CSV | Comma-separated values |",
+      "| CV | Cross-validation; here an interlaced interior-price selection rule |",
+      "| BS | Black–Scholes, used as a component-pricing subscript |",
+      "| DOI | Digital object identifier |",
+      "| EOD | End of day; a provider product can also contain a separately specified intraday snapshot |",
+      "| JSON | JavaScript Object Notation |",
+      "| ISO | International Organization for Standardization; ISO datetime notation is used in the input format |",
+      "| LN | Lognormal, used as a component-density subscript |",
+      "| MCSE | Monte Carlo standard error of an estimated simulation summary |",
+      "| MSE | Mean squared error |",
+      "| HTML | HyperText Markup Language |",
+      "| NBBO | National Best Bid and Offer |",
+      "| OSQP | Operator Splitting Quadratic Program; the solver used in Milestone 5 |",
+      "| PDF | Probability density function; a `.pdf` document separately denotes Portable Document Format |",
+      "| PCG64 | NumPy's 64-bit permuted congruential random-number generator |",
+      "| QP | Quadratic programme |",
+      "| QDLDL | Named sparse LDL factorisation implementation used by the Clarabel backend |",
+      "| RMSE | Root-mean-square error |",
+      "| RND | Risk-neutral density |",
+      "| SD | Standard deviation |",
+      "| SHA-256 | Secure Hash Algorithm with a 256-bit digest |",
+      "| SLSQP | Sequential least-squares programming |",
+      "| SPX | Cboe S&P 500 Index option identifier; a product symbol rather than an ordinary abbreviation |",
+      "| SPXW | SPX option trading-class identifier; kept separate from SPX in the quote audit |",
+      "| SVI | Stochastic volatility inspired; the parameterisation in reference [12], not the estimator used here |",
+      "| UTC | Coordinated Universal Time |",
+      "| WRDS | Wharton Research Data Services |"
+    ],
+    "mathematical symbols": [
+      "| Symbol | Definition | Units |",
+      "|---|---|---|",
+      "| $S_0$ | Initial index level | Index points |",
+      "| $S_T$, $s$ | Terminal index level, or its possible value | Index points |",
+      "| $K$, $K_i$ | Option strike | Index points |",
+      "| $T$ | Time from observation to settlement | Years |",
+      "| $r$ | Continuously compounded risk-free rate | Per year |",
+      "| $q$ | Continuous dividend yield; `dividend` in the code | Per year |",
+      "| $\\sigma$ | Annualised volatility | Per square-root year |",
+      "| $Q$ | Risk-neutral probability measure | Not applicable |",
+      "| $f_Q$, $\\widehat f_Q$ | Known/theoretical and estimated risk-neutral densities | Inverse index points |",
+      "| $C$, $P$ | European call and put prices | Index points |",
+      "| $F(T)$ | Forward index level for the horizon | Index points |",
+      "| $D(T)$ | Discount factor, $e^{-rT}$ | Dimensionless |",
+      "| $T_i$ | The $i$th increasing synthetic expiry horizon | Years |",
+      "| $\\kappa$ | Forward moneyness, $K/F(T)$; not log-moneyness | Dimensionless |",
+      "| $\\overline C$ | Call value divided by $D(T)F(T)$ | Dimensionless |",
+      "| $\\mathbb{E}^{Q}$ | Expectation under the risk-neutral measure | Same as the random quantity averaged |",
+      "| $L_1(T)$ | Integrated absolute density error on the fitting support | Dimensionless |",
+      "| $h$ | Strike spacing in finite differences | Index points |",
+      "| $B_i$, $A_i$ | Bid and ask of option observation $i$ | Index points |",
+      "| $M_i$ | Quote midpoint | Index points |",
+      "| $R_i$ | Spread divided by midpoint | Dimensionless |",
+      "| $a_j$, $b_j$ | Lower and upper terminal-level interval boundaries | Index points |",
+      "| $\\Delta s_j$, $m_j$ | Interval width and centre | Index points |",
+      "| $w_j$, $\\mathbf w$ | Probability in interval $j$, and vector of these probabilities | Dimensionless |",
+      "| $J$ | Number of terminal-level intervals | Count |",
+      "| $N$ | Number of observed or synthetic option prices | Count |",
+      "| $A_{ij}$ | Discounted call payoff for strike $i$ under unit uniform mass in interval $j$ | Index points |",
+      "| $y_i$ | Noisy synthetic price supplied to the fitter | Index points |",
+      "| $g_j$ | Density height in coordinates normalised by the forward | Dimensionless |",
+      "| $m$, $M$ | Maturity index and number of jointly fitted maturities | Count |",
+      "| $T_m$, $F_m$ | Maturity and its forward in the joint problem | Years; index points |",
+      "| $x$ | Terminal level divided by the forward, $s/F_m$ | Dimensionless |",
+      "| $u_j$, $\\bar u_j$, $\\Delta u$ | Common normalised edge, bin centre and equal bin width | Dimensionless |",
+      "| $w_{mj}$, $\\mathbf w_m$ | Bin probability and probability vector at maturity $m$ | Dimensionless |",
+      "| $\\widehat g_m(x)$ | Fitted density of the normalised terminal level | Dimensionless |",
+      "| $B_j(\\kappa)$, $\\mathbf B(\\kappa)$ | Uniform-bin normalised call payoff and its row vector | Dimensionless |",
+      "| $\\ell_m(\\mathbf w_m)$ | Per-maturity objective from Equation (12) | Dimensionless |",
+      "| $\\mathcal K_m$ | Calendar-constraint locations for adjacent pair $m,m+1$ | Set of dimensionless ratios |",
+      "| $\\delta_{mj}$ | Later minus earlier probability in bin $j$ | Dimensionless |",
+      "| $\\Delta_m(\\kappa)$ | Later minus earlier normalised call value | Dimensionless |",
+      "| $z$, $z^*_{mj}$ | Offset from the left bin edge; eligible interior-minimum offset | Dimensionless |",
+      "| $X_T$ | Normalised terminal random level, $S_T/F(T)$ | Dimensionless |",
+      "| $L$, $\\ell$ | Number of mixture components and component index | Count |",
+      "| $\\pi_\\ell$ | Probability weight of mixture component $\\ell$ | Dimensionless |",
+      "| $\\sigma_\\ell$ | Annualised volatility of mixture component $\\ell$ | Per square-root year |",
+      "| $g_{\\mathrm{mix}}$, $g_{\\mathrm{LN}}$ | Mixture and component densities of the normalised terminal level | Dimensionless |",
+      "| $C_{\\mathrm{mix}}$, $C_{\\mathrm{BS}}$ | Mixture call price and component Black–Scholes call price | Index points |",
+      "| $R_{\\Delta u}(\\mathbf g)$ | Discrete roughness of the normalised density-height sequence | Dimensionless |",
+      "| $\\alpha$, $\\alpha_0$ | Grid-comparable roughness coefficient and its baseline | Dimensionless |",
+      "| $L_1^{\\mathrm{full}}(T)$ | Density absolute error across the entire positive domain | Dimensionless |",
+      "| $p^-_{0.8}$, $p^+_{1.2}$, $p^+_{1.8}$ | Lower- and upper-tail probabilities relative to the forward | Dimensionless; optionally displayed as percentages |",
+      "| $\\widehat\\mu$ | Fitted mean of the normalised terminal level | Dimensionless |",
+      "| $\\widehat V$, $V_{\\mathrm{known}}$ | Fitted and known variance of the normalised terminal level | Dimensionless |",
+      "| $\\nu$, $n_{\\mathrm{sim}}$ | Simulation repetition index and number of repetitions | Count |",
+      "| $a$, $\\eta_{mi}(a)$ | Declared error half-width limit and its price-dependent bound | Index points |",
+      "| $C_{mi}$, $y_{\\nu mi}(a)$ | Clean and perturbed call value at horizon $m$ and master strike $i$ | Index points |",
+      "| $U_{\\nu mi}$, $\\mathcal U[-1,1]$ | Shared random draw and its uniform distribution | Dimensionless |",
+      "| $\\theta$, $\\widehat\\theta_\\nu$, $\\overline\\theta$ | Known target, repetition-level estimate and mean estimate | Units of the stated target; dimensionless for probability |",
+      "| $\\widehat{\\operatorname{Bias}}$, $s_\\theta$ | Estimated bias and empirical SD of repeated estimates | Same as $\\theta$ |",
+      "| $z_\\nu$, $\\overline z$, $s_z$ | Repetition-level performance scalar, its mean and sample SD | Units of the selected performance measure |",
+      "| $\\Delta_\\nu$, $\\overline\\Delta$ | Paired difference and its mean across repetitions | Same as $z_\\nu$ |",
+      "| $\\operatorname{MCSE}$ | Standard error due to a finite simulation repetition count | Units of the estimated summary |",
+      "| $\\lambda$ | Smoothing penalty coefficient in the specified scaled objective | Dimensionless |",
+      "| $\\Lambda$, $\\widehat\\lambda$ | Declared candidate set and selected smoothing coefficient | Set of dimensionless values; dimensionless |",
+      "| $k$, $\\mathcal H_k$ | Validation-fold index and its held-out quote positions | Count; index set |",
+      "| $\\widehat C_{m,\\lambda}^{(-k)}$ | Call-price fit trained without fold $k$ at maturity $m$ | Index points |",
+      "| $\\operatorname{CV}(\\lambda)$ | Pooled mean squared noisy-price residual after forward scaling | Dimensionless |",
+      "| $\\varepsilon$ | Relative supplied-forward error in the stress experiment | Dimensionless; optionally displayed as a percentage |",
+      "| $\\widetilde F_m^{(\\varepsilon)}$ | Forward supplied to the stressed fit | Index points |",
+      "| $\\widehat g_m^{(\\varepsilon),\\mathrm{ref}}$ | Stressed fitted density expressed using the fixed reference forward | Dimensionless |",
+      "| $\\widehat p_{1.8,m}^{(\\varepsilon)}$ | Stressed fitted probability above the fixed physical level $1.8F_m$ | Dimensionless |",
+      "| $D_m$ | Discount factor at maturity $T_m$ | Dimensionless |",
+      "| $\\ell^F_{mi}$, $u^F_{mi}$ | Lower and upper conditional forward bounds from matched pair $i$ | Index points |",
+      "| $\\underline F_m$, $\\overline F_m$ | Largest pair lower bound and smallest pair upper bound | Index points |",
+      "| $\\widehat F_m$, $\\widehat F_m^{(-k)}$ | Declared forward point from all pairs or fold-$k$ training pairs only | Index points |",
+      "| $s_m^*$ | Minimum common widening of forward intervals needed for intersection; diagnostic only | Index points |",
+      "| $\\mathcal H_{km}$ | Pair positions held out in fold $k$ at maturity $m$ | Index set |",
+      "| $C^{\\mathrm{mid}}_{mi}$ | Observed or fixture call midpoint used for fitting/selection | Index points |",
+      "| $\\operatorname{CV}_F(\\lambda)$ | Pooled call-price selection loss using training-only inferred forwards | Dimensionless |",
+      "| $o$, $\\widehat V_{mi,o}$ | Option type (call/put) and corresponding fitted price | Type label; index points |",
+      "| $B_{mi,o}$, $A_{mi,o}$ | Matched option's bid and ask | Index points |",
+      "| $d^{\\mathrm{spread}}_{mi,o}$ | Fitted-price distance outside the option's bid–ask range | Index points |",
+      "| $L_{mi}^{(\\varepsilon)}$, $v_{mi}^{(\\varepsilon)}$ | Supplied-forward call lower bound and positive observed-price shortfall | Index points |",
+      "| $\\mathbf 1_{[a,b)}$ | Indicator of the half-open interval | Dimensionless |",
+      "| $(x)_+$ | Positive part, $\\max(x,0)$ | Same as $x$ |",
+      "| $\\widehat{\\phantom f}$ | Estimated quantity | Same as the quantity |",
+      "| $\\partial$ | Partial differentiation | Determined by the variables |",
+      "| $O(h^2)$ | Second-order truncation-error notation | Order statement |",
+      "| § / §§ | Section / sections in a cited source; not a mathematical variable | Not applicable |",
+      "| $H_m$, $\\widehat H_m$ | Discounted forward, $D_mF_m$, and its quote-implied estimate | Index points |",
+      "| $\\widehat D_m$, $\\widehat r_m$ | Quote-implied discount factor and equivalent continuously compounded rate | Dimensionless; per year |",
+      "| $b^-_{mi}$, $b^+_{mi}$ | Opposite-side bid–ask bounds on the call-minus-put difference | Index points |",
+      "| $y_{mi}$ | Observed call-midpoint minus put-midpoint difference | Index points |",
+      "| $K_{0m}$ | Median training strike, used to centre and scale the carry regression | Index points |",
+      "| $\\beta_0$, $\\beta_1$ | Scaled parity intercept $(H-DK_0)/K_0$ and discount factor $D$ | Dimensionless |",
+      "| $\\varepsilon_{\\mathrm{carry}}$ | Positive lower bound for scaled carry inputs in Equation (39), $10^{-8}$ | Dimensionless |",
+      "| $N_m$ | Retained call–put pair count used in a full-sample or training-only carry fit | Count |",
+      "| $K_{mi}$ | Strike of matched pair $i$ at maturity $m$ | Index points |",
+      "| $\\ell^C_{mi}$, $u^C_{mi}$ | Intersection bounds from original call and parity-transformed put quotes | Index points |",
+      "| $W$ | Matrix of probability masses over all jointly fitted maturities | Dimensionless |",
+      "| $\\mathcal P_J$, $\\mathcal F_J$ | Finite-bin probability/calendar family, and its original-spread-feasible subset | Sets of mass matrices |",
+      "| $\\delta_J^*$ | Minimum common quote widening on the stated density grid; diagnostic only | Index points |",
+      "| $\\mathcal R_J(W)$ | Discrete density-curvature criterion used without a price-error tradeoff | Dimensionless |",
+      "| $\\mathbf a$ | Exact bin-event fractions, including time weights where applicable | Dimensionless |",
+      "| $\\operatorname{vec}(W)$ | Mass matrix flattened in maturity-major order | Dimensionless |",
+      "| $\\underline p_J$, $\\overline p_J$ | Conditional minimum/maximum event probability in the finite feasible family | Dimensionless; optionally percentages |",
+      "| $T_a$, $T_b$, $T_*$ | Adjacent interpolation horizons and target horizon; all in the same unit | Elapsed days in Notebook 10 |",
+      "| $\\omega_*$ | Linear common-horizon time-mixture weight | Dimensionless |",
+      "| $\\mathbf w_*$ | Assumed common-horizon mixture of normalised bin masses | Dimensionless |",
+      "| $d_1(\\widehat g^{(a)},\\widehat g^{(b)})$ | Integrated absolute difference between two fitted normalised densities | Dimensionless |"
+    ]
+  }
+}

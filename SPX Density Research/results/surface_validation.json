@@ -1,0 +1,431 @@
+{
+  "status": "synthetic_only",
+  "observation_dates": null,
+  "base_parameters": {
+    "spot": 6000.0,
+    "rate": 0.04,
+    "dividend": 0.015,
+    "volatility": 0.2
+  },
+  "days": [
+    30,
+    60,
+    90,
+    120,
+    180,
+    240,
+    300,
+    365
+  ],
+  "day_count": "synthetic horizon / 365, not a contract settlement calculation",
+  "noise": {
+    "distribution": "independent uniform",
+    "bounds": [
+      -0.5,
+      0.5
+    ],
+    "standard_deviation": 0.2886751345948129,
+    "seed_rule": "20260920 + horizon_days"
+  },
+  "quotes_per_maturity": 81,
+  "bins_per_maturity": 120,
+  "penalty": 1e-06,
+  "penalty_selection": "Retained Milestone 3 baseline for every maturity; no maturity-specific tuning",
+  "strike_rule": "81 equally spaced strikes between F exp(-2.5 sigma sqrt(T)) and F exp(2.5 sigma sqrt(T))",
+  "support_rule": "120 equal-width bins on [0.3 F(T), 2.2 F(T)]",
+  "display_range": [
+    3000.0,
+    11000.0
+  ],
+  "display_interpolation": "Straight graphical joins only; no fitted intermediate maturities",
+  "calendar": {
+    "scope": "Adjacent fitted maturities on a finite normalised-strike grid only",
+    "constraint_enforced": false,
+    "tolerance": 1e-08,
+    "moneyness_range": [
+      0.3,
+      2.2
+    ],
+    "moneyness_points": 1901,
+    "comparisons": 13307,
+    "violations": 2762,
+    "maximum_decrease": 0.0001908078556634721,
+    "pairs": [
+      {
+        "from_years": 0.0821917808219178,
+        "to_years": 0.1643835616438356,
+        "violations": 0,
+        "minimum_change": -4.440892098500626e-16,
+        "minimum_change_moneyness": 0.3,
+        "shared_quote_moneyness_range": [
+          0.8664546182996634,
+          1.1541285358515452
+        ],
+        "shared_quote_range_comparisons": 288,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.1643835616438356,
+        "to_years": 0.2465753424657534,
+        "violations": 723,
+        "minimum_change": -5.423806768955078e-05,
+        "minimum_change_moneyness": 1.35,
+        "shared_quote_moneyness_range": [
+          0.81650584048766,
+          1.2247309822091996
+        ],
+        "shared_quote_range_comparisons": 408,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.2465753424657534,
+        "to_years": 0.3287671232876712,
+        "violations": 393,
+        "minimum_change": -3.597824869328026e-05,
+        "minimum_change_moneyness": 0.607,
+        "shared_quote_moneyness_range": [
+          0.780140094899511,
+          1.2818210556513046
+        ],
+        "shared_quote_range_comparisons": 501,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.3287671232876712,
+        "to_years": 0.4931506849315068,
+        "violations": 823,
+        "minimum_change": -8.97399738275022e-05,
+        "minimum_change_moneyness": 1.5470000000000002,
+        "shared_quote_moneyness_range": [
+          0.7507436055728154,
+          1.3320126772668317
+        ],
+        "shared_quote_range_comparisons": 582,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.4931506849315068,
+        "to_years": 0.6575342465753424,
+        "violations": 0,
+        "minimum_change": 0.0,
+        "minimum_change_moneyness": 2.2,
+        "shared_quote_moneyness_range": [
+          0.7038968583462132,
+          1.420662683947011
+        ],
+        "shared_quote_range_comparisons": 717,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.6575342465753424,
+        "to_years": 0.821917808219178,
+        "violations": 309,
+        "minimum_change": -6.683418703368194e-05,
+        "minimum_change_moneyness": 0.562,
+        "shared_quote_moneyness_range": [
+          0.66668178755046,
+          1.4999659787831108
+        ],
+        "shared_quote_range_comparisons": 833,
+        "shared_quote_range_violations": 0
+      },
+      {
+        "from_years": 0.821917808219178,
+        "to_years": 1.0,
+        "violations": 514,
+        "minimum_change": -0.0001908078556634721,
+        "minimum_change_moneyness": 1.7830000000000001,
+        "shared_quote_moneyness_range": [
+          0.6355284547942769,
+          1.5734936688613008
+        ],
+        "shared_quote_range_comparisons": 938,
+        "shared_quote_range_violations": 0
+      }
+    ],
+    "shared_quote_range_comparisons": 4267,
+    "shared_quote_range_violations": 0
+  },
+  "known_calendar": {
+    "scope": "Adjacent fitted maturities on a finite normalised-strike grid only",
+    "constraint_enforced": false,
+    "tolerance": 1e-08,
+    "moneyness_range": [
+      0.3,
+      2.2
+    ],
+    "moneyness_points": 1901,
+    "comparisons": 13307,
+    "violations": 0,
+    "maximum_decrease": 5.551115123125783e-16,
+    "pairs": [
+      {
+        "from_years": 0.0821917808219178,
+        "to_years": 0.1643835616438356,
+        "violations": 0,
+        "minimum_change": -4.440892098500626e-16,
+        "minimum_change_moneyness": 0.31
+      },
+      {
+        "from_years": 0.1643835616438356,
+        "to_years": 0.2465753424657534,
+        "violations": 0,
+        "minimum_change": 0.0,
+        "minimum_change_moneyness": 0.326
+      },
+      {
+        "from_years": 0.2465753424657534,
+        "to_years": 0.3287671232876712,
+        "violations": 0,
+        "minimum_change": -5.551115123125783e-16,
+        "minimum_change_moneyness": 0.401
+      },
+      {
+        "from_years": 0.3287671232876712,
+        "to_years": 0.4931506849315068,
+        "violations": 0,
+        "minimum_change": 1.1102230246251565e-16,
+        "minimum_change_moneyness": 0.302
+      },
+      {
+        "from_years": 0.4931506849315068,
+        "to_years": 0.6575342465753424,
+        "violations": 0,
+        "minimum_change": 4.440892098500626e-16,
+        "minimum_change_moneyness": 0.3
+      },
+      {
+        "from_years": 0.6575342465753424,
+        "to_years": 0.821917808219178,
+        "violations": 0,
+        "minimum_change": 2.2326585025211898e-13,
+        "minimum_change_moneyness": 0.3
+      },
+      {
+        "from_years": 0.821917808219178,
+        "to_years": 1.0,
+        "violations": 0,
+        "minimum_change": 1.48118184384316e-11,
+        "minimum_change_moneyness": 0.3
+      }
+    ]
+  },
+  "marginals": [
+    {
+      "days": 30,
+      "years": 0.0821917808219178,
+      "seed": 20260950,
+      "forward": 6012.341442345024,
+      "discount_factor": 0.9967177272404354,
+      "iterations": 59,
+      "strike_range": [
+        5209.421009514305,
+        6939.0148258932295
+      ],
+      "support": [
+        1803.7024327035072,
+        13227.151173159054
+      ],
+      "minimum_input_price": 0.787149334639138,
+      "mass": 1.0000000000000004,
+      "mean": 6012.341442345027,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.27663960334077664,
+      "withheld_clean_price_rmse": 0.1278092856008478,
+      "density_l1_on_support": 0.05829279305727577,
+      "known_mass_outside_support": 1.6892784147477404e-43,
+      "fitted_mass_in_display_window": 0.9998382162290278,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 60,
+      "years": 0.1643835616438356,
+      "seed": 20260980,
+      "forward": 6024.7082698899085,
+      "discount_factor": 0.993446227795339,
+      "iterations": 94,
+      "strike_range": [
+        4919.209489599415,
+        7378.646876906156
+      ],
+      "support": [
+        1807.4124809669725,
+        13254.3581937578
+      ],
+      "minimum_input_price": 1.4683753102983976,
+      "mass": 1.0,
+      "mean": 6024.7082698899085,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.26840623216363657,
+      "withheld_clean_price_rmse": 0.10922971846913096,
+      "density_l1_on_support": 0.042718859434138265,
+      "known_mass_outside_support": 8.037343717952339e-23,
+      "fitted_mass_in_display_window": 0.9997479695742534,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 90,
+      "years": 0.2465753424657534,
+      "seed": 20261010,
+      "forward": 6037.100534849647,
+      "discount_factor": 0.990185466303754,
+      "iterations": 78,
+      "strike_range": [
+        4709.784184175493,
+        7738.48258065403
+      ],
+      "support": [
+        1811.1301604548942,
+        13281.621176669225
+      ],
+      "minimum_input_price": 1.3020969042308659,
+      "mass": 1.0000000000000009,
+      "mean": 6037.100534849652,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.25290857833635266,
+      "withheld_clean_price_rmse": 0.13187238409896337,
+      "density_l1_on_support": 0.036594374442929026,
+      "known_mass_outside_support": 6.813195982657159e-16,
+      "fitted_mass_in_display_window": 0.9998651356969086,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 120,
+      "years": 0.3287671232876712,
+      "seed": 20261040,
+      "forward": 6049.518289546643,
+      "discount_factor": 0.9869354075207885,
+      "iterations": 135,
+      "strike_range": [
+        4541.637172672938,
+        8058.035053033688
+      ],
+      "support": [
+        1814.8554868639928,
+        13308.940237002616
+      ],
+      "minimum_input_price": 1.4398773919070358,
+      "mass": 1.0000000000000002,
+      "mean": 6049.518289546644,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.28215432567531845,
+      "withheld_clean_price_rmse": 0.09601338628116156,
+      "density_l1_on_support": 0.030898336600059282,
+      "known_mass_outside_support": 2.062459511415728e-12,
+      "fitted_mass_in_display_window": 0.9998385606843003,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 180,
+      "years": 0.4931506849315068,
+      "seed": 20261100,
+      "forward": 6074.430477980318,
+      "discount_factor": 0.980467257679183,
+      "iterations": 89,
+      "strike_range": [
+        4275.772529692832,
+        8629.716706297042
+      ],
+      "support": [
+        1822.3291433940954,
+        13363.7470515567
+      ],
+      "minimum_input_price": 1.5620087053153622,
+      "mass": 1.0,
+      "mean": 6074.430477980319,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.25540619605942905,
+      "withheld_clean_price_rmse": 0.08334993210566899,
+      "density_l1_on_support": 0.027397950202876047,
+      "known_mass_outside_support": 6.577337616441189e-09,
+      "fitted_mass_in_display_window": 1.0,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 240,
+      "years": 0.6575342465753424,
+      "seed": 20261160,
+      "forward": 6099.445255926556,
+      "discount_factor": 0.9740414986182249,
+      "iterations": 126,
+      "strike_range": [
+        4066.389066287289,
+        9148.960373339878
+      ],
+      "support": [
+        1829.8335767779665,
+        13418.779563038423
+      ],
+      "minimum_input_price": 2.6220161573182543,
+      "mass": 1.0,
+      "mean": 6099.445255926555,
+      "minimum_bin_mass": 5.456590773990807e-21,
+      "noisy_price_rmse": 0.2529572374274434,
+      "withheld_clean_price_rmse": 0.1495163666623183,
+      "density_l1_on_support": 0.026950268719798234,
+      "known_mass_outside_support": 3.8504595888881197e-07,
+      "fitted_mass_in_display_window": 0.9992618015808755,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 300,
+      "years": 0.821917808219178,
+      "seed": 20261220,
+      "forward": 6124.563045853582,
+      "discount_factor": 0.9676578525183944,
+      "iterations": 135,
+      "strike_range": [
+        3892.3340888214566,
+        9636.961177192496
+      ],
+      "support": [
+        1837.3689137560743,
+        13474.03870087788
+      ],
+      "minimum_input_price": 2.880133135467183,
+      "mass": 1.0000000000000002,
+      "mean": 6124.563045853582,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.25820807101659826,
+      "withheld_clean_price_rmse": 0.1053916834869829,
+      "density_l1_on_support": 0.025825654401222593,
+      "known_mass_outside_support": 4.516714263178791e-06,
+      "fitted_mass_in_display_window": 0.9994433012334347,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    },
+    {
+      "days": 365,
+      "years": 1.0,
+      "seed": 20261285,
+      "forward": 6151.890723146573,
+      "discount_factor": 0.9607894391523232,
+      "iterations": 125,
+      "strike_range": [
+        3731.31033879012,
+        10142.753090274548
+      ],
+      "support": [
+        1845.5672169439717,
+        13534.159590922462
+      ],
+      "minimum_input_price": 2.6874663010911672,
+      "mass": 0.9999999999999996,
+      "mean": 6151.890723146573,
+      "minimum_bin_mass": 0.0,
+      "noisy_price_rmse": 0.24181902844898195,
+      "withheld_clean_price_rmse": 0.13777651895346077,
+      "density_l1_on_support": 0.032580088470000504,
+      "known_mass_outside_support": 2.646782774876895e-05,
+      "fitted_mass_in_display_window": 0.9989340626315555,
+      "monotonicity_violations": 0,
+      "convexity_violations": 0
+    }
+  ]
+}

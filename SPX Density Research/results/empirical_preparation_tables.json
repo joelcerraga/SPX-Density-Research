@@ -1,0 +1,8 @@
+{
+  "FORWARD_TABLE": "| Nominal horizon | Elapsed years | Pairs | Conditional forward interval | Chosen forward | Error from known forward |\n|---|---:|---:|---|---:|---:|\n| 60 days | 0.16429795 | 41 | [6024.0571, 6025.3527] | 6024.7049 | +0.0095 |\n| 120 days | 0.32868151 | 47 | [6048.6398, 6050.5771] | 6049.6084 | +0.1031 |\n| 240 days | 0.65744863 | 53 | [6098.1441, 6100.6864] | 6099.4153 | -0.0169 |",
+  "FIT_TABLE": "| Nominal horizon | Separate clean-price RMSE (points) | Full-domain density L1 | Quotes outside spread | Largest spread distance (points) |\n|---|---:|---:|---:|---:|\n| 60 days | 0.05257 | 0.04960 | 1 / 82 | 0.01993 |\n| 120 days | 0.05195 | 0.04411 | 0 / 94 | 0.00000 |\n| 240 days | 0.03808 | 0.06150 | 0 / 106 | 0.00000 |",
+  "CHECK_TABLE": "| Deliberate input change | Observed response |\n|---|---|\n| Missing quote timezone | Blocked |\n| Unsynchronised quote | Blocked |\n| Conflicting settlement time | Blocked |\n| Discount published after the snapshot | Blocked |\n| Discount older than the declared limit | Blocked |\n| Call bid and ask at the first strike increased by 5 points | Blocked by parity |\n| Zero size and a duplicated call quote | 5 rows excluded |",
+  "SCORES": "\u03bb = 1e-07: 2.50778e-10; \u03bb = 1e-06: 3.47051e-10; \u03bb = 1e-05: 2.38544e-09",
+  "PARITY_RELAXATION": "1.7234",
+  "NUMERICAL_SUMMARY": "All 10 joint fits (30 marginals) have solved status and pass the continuous calendar check at tolerance $10^{-8}$. Across their solver histories, the largest mass and normalised-mean residuals are 3.76e-14 and 4.06e-13; the minimum final calendar gap is -7.8e-10. No clipping or renormalisation is applied."
+}
