@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SPX Density Explorer | Interactive Graphs | Joel Cerraga</title>
+  <meta name="description" content="Explore four interactive SPX density graphs: synthetic maturity surfaces, joint calibration, the first empirical surface and comparisons across three observed snapshots.">
+  <meta name="author" content="Joel Cerraga">
+  <meta name="theme-color" content="#102b3e">
+  <link rel="canonical" href="https://joelcerraga.github.io/SPX-Density-Research/explorers/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SPX Density Research">
+  <meta property="og:title" content="SPX Density Explorer | Interactive Graphs">
+  <meta property="og:description" content="Explore four interactive SPX density graphs: synthetic maturity surfaces, joint calibration, the first empirical surface and comparisons across three observed snapshots.">
+  <meta property="og:url" content="https://joelcerraga.github.io/SPX-Density-Research/explorers/">
+  <meta property="og:image" content="https://joelcerraga.github.io/SPX-Density-Research/SPX-Landing-Page-Thumbnail-White.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1774">
+  <meta property="og:image:height" content="887">
+  <meta property="og:image:alt" content="SPX Density Explorer by Joel Cerraga, with conceptual teal surface artwork on white">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPX Density Explorer | Interactive Graphs">
+  <meta name="twitter:description" content="Explore four interactive SPX density graphs: synthetic maturity surfaces, joint calibration, the first empirical surface and comparisons across three observed snapshots.">
+  <meta name="twitter:image" content="https://joelcerraga.github.io/SPX-Density-Research/SPX-Landing-Page-Thumbnail-White.jpg">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html"><img class="brand-mark" src="../assets/favicon.svg" width="34" height="34" alt=""><span>SPX Density Research<small>Joel Cerraga</small></span></a>
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+      <a href="../index.html">Overview</a>
+      <a href="../explorers/" aria-current="page">Interactive graphs</a>
+      <a href="../SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Paper ↗</a>
+      <a href="https://github.com/joelcerraga/SPX-Density-Research">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-intro">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="../index.html">Research overview</a><span aria-hidden="true">/</span>Interactive graphs</div>
+    <div class="catalog-intro">
+      <div><p class="eyebrow">The interactive companion</p><h1>Explore the<br><span class="teal">density surfaces.</span></h1><p class="lede">Four ways to inspect the research, from known synthetic densities to comparisons across observed SPXW snapshots.</p><div class="tag-row"><span class="tag">4 explorers</span><span class="tag">Linked 3D and 2D views</span><span class="tag">Self-contained HTML</span></div></div>
+      <figure class="cover-figure"><img src="../SPX-Landing-Page-Thumbnail-White.jpg" width="1774" height="887" alt="Conceptual cover artwork for SPX Density Explorer, by Joel Cerraga"><figcaption>Conceptual cover artwork. The previews below are saved research figures.</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="section gallery-section" id="synthetic">
+  <div class="wrap">
+    <div class="section-heading"><div><p class="eyebrow">01–02 / Controlled experiments</p><h2>Begin with a known distribution.</h2></div><p>These explorers sweep across maturities at one synthetic valuation setup.</p></div>
+    <div class="card-grid">
+<a class="graph-card" href="../SPX%20Density%20Research/interactive/density_surface.html">
+  <div class="card-image">
+    <img src="../SPX%20Density%20Research/figures/figure_10_maturity_surface.png" width="1890" height="1224" alt="Saved synthetic density surface across eight maturities, from Figure 10" loading="lazy">
+    <span class="card-tag">Synthetic benchmark</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">01 / Notebook 4 · Eight maturities</p>
+    <h3>Synthetic maturity surface</h3>
+    <p>Compare estimated densities with a known analytical benchmark. Move through maturities from 30 to 365 days and inspect the linked histogram slices.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+<a class="graph-card" href="../SPX%20Density%20Research/interactive/joint_density_surface.html">
+  <div class="card-image">
+    <img src="../SPX%20Density%20Research/figures/figure_14_joint_maturity_surface.png" width="1890" height="1224" alt="Saved jointly calibrated synthetic density surface, from Figure 14" loading="lazy">
+    <span class="card-tag">Calendar consistency</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">02 / Notebook 5 · Eight maturities</p>
+    <h3>Joint maturity calibration</h3>
+    <p>Compare independent fits with a family of densities calibrated together. See how calendar constraints change consistency across maturities.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+</div>
+    <p class="graph-hint">“Joint” means that the marginal densities are calibrated together across maturities. It does not mean that a joint distribution of future price paths has been estimated.</p>
+  </div>
+</section>
+<section class="section tinted" id="empirical">
+  <div class="wrap">
+    <div class="section-heading"><div><p class="eyebrow">03–04 / Market observations</p><h2>Then examine the empirical cases.</h2></div><p>The first market surface and the final comparison retain their separate research contexts.</p></div>
+    <div class="card-grid">
+<a class="graph-card" href="../SPX%20Density%20Research/interactive/empirical_density_surface.html">
+  <div class="card-image">
+    <img src="../SPX%20Density%20Research/figures/figure_28_market_density_surface.png" width="1835" height="1224" alt="Saved first empirical SPXW density surface for 18 September 2026, from Figure 28" loading="lazy">
+    <span class="card-tag">Market observations</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">03 / Notebook 9 · 18 September 2026</p>
+    <h3>First empirical surface</h3>
+    <p>Explore the first SPXW market case across three expiries, with linked density slices and a comparison of the histogram and display smoothing.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+<a class="graph-card" href="../SPX%20Density%20Research/interactive/dated_density_surface.html">
+  <div class="card-image">
+    <img src="../SPX%20Density%20Research/figures/figure_33_dated_density_surfaces.png" width="2592" height="882" alt="Three saved empirical density surfaces for the dated comparison, from Figure 33" loading="lazy">
+    <span class="card-tag">Final empirical study</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">04 / Notebook 10 · Three observed snapshots</p>
+    <h3>Dated density comparisons</h3>
+    <p>Compare 31 August and two 18 September observations. Inspect a fixed expiry or an assumed 60-day mixture, with conditional probability ranges.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+</div>
+    <p class="graph-hint">The dated explorer plays only the three observed snapshots. The common 60-day view uses an assumed mixture across maturities, with no invented observation dates.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="read-grid">
+      <div><p class="eyebrow">How to read the graphs</p><h2>Look at the slices as well as the surface.</h2><p>Drag to rotate, scroll to zoom and hover for values. Use each explorer’s maturity or observation controls to update its linked slice.</p><ul><li><strong>Normalised terminal level:</strong> the future index level divided by the relevant forward level. A value of 1 is at that forward.</li><li><strong>Density height:</strong> probability is an area under the density over a range, rather than the height at one point.</li><li><strong>Surface joins:</strong> connecting facets aid viewing. They do not establish fitted densities at every intermediate maturity.</li></ul></div>
+      <div><p class="eyebrow">How to interpret the evidence</p><h2>Keep the pricing measure in view.</h2><p>As Bahra (1997) explains in <em>Implied risk-neutral probability density functions from option prices</em>, these densities are inferred under a risk-neutral pricing measure. Their probabilities are not direct forecasts of actual market outcomes.</p><p>The final explorer’s feasible ranges hold the bin support, inferred carry and selected quotes fixed. Read them alongside the retained held-out errors and unresolved numerical fold.</p><div class="detail-links"><a href="../SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Read the paper ↗</a><a href="https://github.com/joelcerraga/SPX-Density-Research/blob/main/SPX%20Density%20Research/research/comparison_methodology.md">Final methodology ↗</a></div></div>
+    </div>
+    <div class="callout scope-note"><p><strong>Viewing the explorers.</strong> Each opens as a standalone page with its plotting code and data included, so a downloaded copy also works offline. The 3D panels need a browser with WebGL support. Static previews and the final paper remain available above.</p></div>
+  </div>
+</section>
+<div class="wrap section"><section class="references" aria-label="References"><h2>References</h2><p>Bahra, B. (1997) <em>Implied risk-neutral probability density functions from option prices: theory and application</em>. Bank of England Working Paper No. 66. Available at: <a href="https://www.bankofengland.co.uk/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices">https://www.bankofengland.co.uk/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices</a> (Accessed: 28 September 2026).</p></section></div>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Joel Cerraga · Quantitative research · 2026</p>
+    <div class="footer-links">
+      <a href="../explorers/">Interactive graphs</a>
+      <a href="../SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Final paper</a>
+      <a href="https://github.com/joelcerraga/SPX-Density-Research">Source &amp; reproduction</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

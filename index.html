@@ -1,47 +1,184 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SPX Density Research</title>
+  <title>SPX Option-Implied Density Research | Joel Cerraga</title>
+  <meta name="description" content="Joel Cerraga&#x27;s research into SPX option-implied risk-neutral densities. Explore the final paper, ten analytical notebooks, empirical findings and four interactive 3D graphs.">
+  <meta name="author" content="Joel Cerraga">
+  <meta name="theme-color" content="#102b3e">
+  <link rel="canonical" href="https://joelcerraga.github.io/SPX-Density-Research/">
   <meta property="og:type" content="website">
-<meta property="og:title" content="SPX Density Explorer">
-<meta property="og:description" content="Explore interactive 3D visualisations from Joel Cerraga's SPX option-implied density research.">
-<meta property="og:url" content="https://joelcerraga.github.io/SPX-Density-Research/">
-<meta property="og:image" content="https://joelcerraga.github.io/SPX-Density-Research/SPX-Landing-Page-Thumbnail-White.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1774">
-<meta property="og:image:height" content="887">
-<meta property="og:image:alt" content="SPX Density Explorer by Joel Cerraga">
-  <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#0f172a;color:#e5e7eb}
-    .wrap{max-width:980px;margin:0 auto;padding:56px 24px}
-    h1{font-size:42px;margin:0 0 12px}
-    p{color:#cbd5e1;line-height:1.6}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:32px}
-    a.card{display:block;padding:22px;border:1px solid #334155;border-radius:14px;background:#111827;color:#f8fafc;text-decoration:none}
-    a.card:hover{border-color:#64748b;transform:translateY(-1px)}
-    .small{font-size:14px;color:#94a3b8}
-  </style>
+  <meta property="og:site_name" content="SPX Density Research">
+  <meta property="og:title" content="SPX Option-Implied Density Research">
+  <meta property="og:description" content="Joel Cerraga&#x27;s research into SPX option-implied risk-neutral densities. Explore the final paper, ten analytical notebooks, empirical findings and four interactive 3D graphs.">
+  <meta property="og:url" content="https://joelcerraga.github.io/SPX-Density-Research/">
+  <meta property="og:image" content="https://joelcerraga.github.io/SPX-Density-Research/SPX-Landing-Page-Thumbnail-White.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1774">
+  <meta property="og:image:height" content="887">
+  <meta property="og:image:alt" content="SPX Density Explorer by Joel Cerraga, with conceptual teal surface artwork on white">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPX Option-Implied Density Research">
+  <meta name="twitter:description" content="Joel Cerraga&#x27;s research into SPX option-implied risk-neutral densities. Explore the final paper, ten analytical notebooks, empirical findings and four interactive 3D graphs.">
+  <meta name="twitter:image" content="https://joelcerraga.github.io/SPX-Density-Research/SPX-Landing-Page-Thumbnail-White.jpg">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
-  <main class="wrap">
-    <h1>SPX Density Research</h1>
-    <p>Interactive visualisations from the option-implied probability density research project.</p>
-    <div class="grid">
-      <a class="card" href="SPX%20Density%20Research/interactive/density_surface.html">
-        <strong>Density Surface</strong><br><span class="small">Core interactive density surface</span>
-      </a>
-      <a class="card" href="SPX%20Density%20Research/interactive/joint_density_surface.html">
-        <strong>Joint Density Surface</strong><br><span class="small">Joint density visualisation</span>
-      </a>
-      <a class="card" href="SPX%20Density%20Research/interactive/empirical_density_surface.html">
-        <strong>Empirical Density Surface</strong><br><span class="small">Empirical market density surface</span>
-      </a>
-      <a class="card" href="SPX%20Density%20Research/interactive/dated_density_surface.html">
-        <strong>Dated Density Surface</strong><br><span class="small">Date-indexed density visualisation</span>
-      </a>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><img class="brand-mark" src="assets/favicon.svg" width="34" height="34" alt=""><span>SPX Density Research<small>Joel Cerraga</small></span></a>
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="nav-links" id="site-nav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="explorers/">Interactive graphs</a>
+      <a href="SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Paper ↗</a>
+      <a href="https://github.com/joelcerraga/SPX-Density-Research">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Option prices · Constrained inference</p>
+      <h1>SPX Option-Implied<br><span>Density Research</span></h1>
+      <p class="lede">Recovering risk-neutral distributions from option prices, from analytical benchmarks to empirical comparisons and interactive 3D surfaces.</p>
+      <div class="button-row"><a class="button" href="explorers/">Explore the graphs <span aria-hidden="true">↗</span></a><a class="button secondary" href="SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Read the paper</a></div>
+      <p class="hero-note">Research by Joel Cerraga · Ten completed analytical notebooks</p>
     </div>
-  </main>
+    <figure class="hero-visual">
+      <img src="SPX%20Density%20Research/figures/figure_28_market_density_surface.png" width="1835" height="1224" alt="First empirical SPXW density surface across three expiries, saved as Figure 28 in Notebook 9" fetchpriority="high">
+      <figcaption class="visual-label"><span>FIRST EMPIRICAL SURFACE / NOTEBOOK 9</span><span>18 SEP 2026</span></figcaption>
+    </figure>
+  </div>
+</section>
+<div class="wrap"><div class="stat-strip">
+  <div class="stat"><strong>10</strong><span>completed analytical notebooks</span></div>
+  <div class="stat"><strong>4</strong><span>interactive density explorers</span></div>
+  <div class="stat"><strong>3</strong><span>observed snapshots on two dates</span></div>
+  <div class="stat"><strong>5,518</strong><span>option prices in the primary fits</span></div>
+</div></div>
+<section class="section" id="method">
+  <div class="wrap question-grid">
+    <div>
+      <p class="eyebrow">The research question</p>
+      <h2>What distribution is implied by option prices?</h2>
+      <p>Breeden and Litzenberger (1978), in <em>Prices of State-Contingent Claims Implicit in Option Prices</em>, relate the curvature of call prices across strikes to state-contingent prices. This study uses that relationship as its starting point, then asks how much the recovered density depends on the data and constraints.</p>
+      <p>As Bahra (1997) explains in <em>Implied risk-neutral probability density functions from option prices</em>, the resulting distribution is risk-neutral: it describes valuation under the pricing assumptions, rather than the actual frequency of future outcomes.</p>
+    </div>
+    <div class="method-list">
+      <div class="method-item"><span class="method-num">01</span><div><h3>Establish a known benchmark</h3><p>Start with analytical option prices and a known density. Test finite-difference recovery, grid refinement and repricing before introducing noisy observations.</p></div></div>
+      <div class="method-item"><span class="method-num">02</span><div><h3>Constrain the inferred distribution</h3><p>Estimate nonnegative bin probabilities with unit mass and the required forward mean. Fit maturities together and check calendar consistency throughout each strike interval.</p></div></div>
+      <div class="method-item"><span class="method-num">03</span><div><h3>Challenge the fit</h3><p>Vary support, resolution, smoothing and inferred carry. Compare original price spreads, held-out contracts and conditional tail ranges across the observed snapshots.</p></div></div>
+    </div>
+  </div>
+  <div class="wrap"><p class="method-context">As Aït-Sahalia and Duarte (2003) show in <em>Nonparametric option pricing under shape restrictions</em>, economic restrictions on the pricing function matter for density estimation. Here those restrictions are implemented through a constrained histogram model with exact bin-payoff integration.</p></div>
+</section>
+<section class="section tinted" id="findings">
+  <div class="wrap question-grid">
+    <div>
+      <p class="eyebrow">Final empirical study / Notebook 10</p>
+      <h2>A compatible price fit. A density that remains uncertain.</h2>
+      <p>The three primary 240-bin fits accommodate the retained call and put spreads. That compatibility is imposed during fitting; it does not independently demonstrate that the estimated density is accurate.</p>
+      <p>Held-out checks still contain spread misses, one late-snapshot validation fold remains numerically unresolved, and feasible tail probabilities can differ substantially from the chosen smooth estimate.</p>
+      <p><a class="text-link" href="https://github.com/joelcerraga/SPX-Density-Research/blob/main/SPX%20Density%20Research/research/comparison_methodology.md">Read the final methodology <span aria-hidden="true">↗</span></a></p>
+    </div>
+    <div class="result-box">
+      <h3>Original option-price intervals</h3>
+      <p class="muted small">Three primary 240-bin fits · 31 August and 18 September 2026</p>
+      <div class="result-numbers">
+        <div class="result-number"><strong>5,518</strong><span>retained option prices</span></div>
+        <div class="result-number"><strong>0</strong><span>outside their original spreads</span></div>
+      </div>
+      <p class="result-note">In-sample result at a counting tolerance of 10<sup>−7</sup> index points. Conditional probability ranges describe compatible densities under fixed assumptions; they are not confidence intervals.</p>
+      <a class="text-link" href="SPX%20Density%20Research/interactive/dated_density_surface.html">Inspect the dated explorer <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+<section class="section" id="graphs">
+  <div class="wrap">
+    <div class="section-heading"><div><p class="eyebrow">Interactive research</p><h2>Four views of the density.</h2></div><p>Start with known synthetic distributions, then explore the observed market cases.</p></div>
+    <div class="card-grid">
+<a class="graph-card" href="SPX%20Density%20Research/interactive/density_surface.html">
+  <div class="card-image">
+    <img src="SPX%20Density%20Research/figures/figure_10_maturity_surface.png" width="1890" height="1224" alt="Saved synthetic density surface across eight maturities, from Figure 10" loading="lazy">
+    <span class="card-tag">Synthetic benchmark</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">01 / Notebook 4 · Eight maturities</p>
+    <h3>Synthetic maturity surface</h3>
+    <p>Compare estimated densities with a known analytical benchmark. Move through maturities from 30 to 365 days and inspect the linked histogram slices.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+<a class="graph-card" href="SPX%20Density%20Research/interactive/joint_density_surface.html">
+  <div class="card-image">
+    <img src="SPX%20Density%20Research/figures/figure_14_joint_maturity_surface.png" width="1890" height="1224" alt="Saved jointly calibrated synthetic density surface, from Figure 14" loading="lazy">
+    <span class="card-tag">Calendar consistency</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">02 / Notebook 5 · Eight maturities</p>
+    <h3>Joint maturity calibration</h3>
+    <p>Compare independent fits with a family of densities calibrated together. See how calendar constraints change consistency across maturities.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+<a class="graph-card" href="SPX%20Density%20Research/interactive/empirical_density_surface.html">
+  <div class="card-image">
+    <img src="SPX%20Density%20Research/figures/figure_28_market_density_surface.png" width="1835" height="1224" alt="Saved first empirical SPXW density surface for 18 September 2026, from Figure 28" loading="lazy">
+    <span class="card-tag">Market observations</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">03 / Notebook 9 · 18 September 2026</p>
+    <h3>First empirical surface</h3>
+    <p>Explore the first SPXW market case across three expiries, with linked density slices and a comparison of the histogram and display smoothing.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+<a class="graph-card" href="SPX%20Density%20Research/interactive/dated_density_surface.html">
+  <div class="card-image">
+    <img src="SPX%20Density%20Research/figures/figure_33_dated_density_surfaces.png" width="2592" height="882" alt="Three saved empirical density surfaces for the dated comparison, from Figure 33" loading="lazy">
+    <span class="card-tag">Final empirical study</span>
+  </div>
+  <div class="card-body">
+    <p class="card-meta">04 / Notebook 10 · Three observed snapshots</p>
+    <h3>Dated density comparisons</h3>
+    <p>Compare 31 August and two 18 September observations. Inspect a fixed expiry or an assumed 60-day mixture, with conditional probability ranges.</p>
+    <div class="card-bottom"><span>Open explorer</span><span aria-hidden="true">↗</span></div>
+  </div>
+</a>
+</div>
+    <div class="section-end"><p class="graph-hint">Previews are the saved research figures. Each explorer includes its own controls, interpretation and limitations.</p><a class="text-link" href="explorers/">Visit the graph gallery <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>
+<section class="section tinted" id="resources">
+  <div class="wrap">
+    <div class="section-heading"><div><p class="eyebrow">Read. Inspect. Reproduce.</p><h2>The complete research record.</h2></div></div>
+    <div class="resource-grid">
+      <article class="resource"><h3>The final paper</h3><p>The derivations, numbered figures and equations, empirical results, development lessons and conclusion in one report.</p><a href="SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Open the PDF ↗</a></article>
+      <article class="resource"><h3>Code and notebooks</h3><p>Ten analytical notebooks, Python experiment runners, numerical checks and saved figures, tables and result files.</p><a href="https://github.com/joelcerraga/SPX-Density-Research/tree/main/SPX%20Density%20Research">Browse the research files ↗</a></article>
+      <article class="resource"><h3>Decisions and setbacks</h3><p>How data limitations, unstable derivatives and numerical failures shaped the study, including the unresolved cases.</p><a href="https://github.com/joelcerraga/SPX-Density-Research/blob/main/SPX%20Density%20Research/research/development_reflection.md">Read the development record ↗</a></article>
+    </div>
+    <div class="callout scope-note"><p><strong>Scope of the evidence.</strong> The final comparison contains three SPXW snapshots on two dates, with three expiries per snapshot. Carry is inferred from matched calls and puts; executable market depth is unavailable. The 60-day comparison assumes a mixture of normalised marginal distributions. These observations do not establish forecasting accuracy or a trading advantage.</p></div>
+  </div>
+</section>
+<div class="wrap section"><section class="references" aria-label="References"><h2>References</h2><p>Aït-Sahalia, Y. and Duarte, J. (2003) ‘Nonparametric option pricing under shape restrictions’, <em>Journal of Econometrics</em>, 116(1–2), pp. 9–47. doi: <a href="https://doi.org/10.1016/S0304-4076(03)00102-7">10.1016/S0304-4076(03)00102-7</a>.</p><p>Bahra, B. (1997) <em>Implied risk-neutral probability density functions from option prices: theory and application</em>. Bank of England Working Paper No. 66. Available at: <a href="https://www.bankofengland.co.uk/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices">https://www.bankofengland.co.uk/working-paper/1997/implied-risk-neutral-probability-density-functions-from-option-prices</a> (Accessed: 28 September 2026).</p><p>Breeden, D.T. and Litzenberger, R.H. (1978) ‘Prices of State-Contingent Claims Implicit in Option Prices’, <em>The Journal of Business</em>, 51(4), pp. 621–651. doi: <a href="https://doi.org/10.1086/260618">10.1086/260618</a>.</p></section></div>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Joel Cerraga · Quantitative research · 2026</p>
+    <div class="footer-links">
+      <a href="explorers/">Interactive graphs</a>
+      <a href="SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf">Final paper</a>
+      <a href="https://github.com/joelcerraga/SPX-Density-Research">Source &amp; reproduction</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
