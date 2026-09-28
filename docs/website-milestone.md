@@ -23,6 +23,7 @@ Create an SPX research landing page in the same white, navy and teal style as th
 | Notebook 9 and Notebook 10 describe different empirical stages. | Label the first market surface by notebook and date; place the final primary-fit counts in a separate Notebook 10 findings section. | Earlier previews are not presented as the final empirical fit. |
 | Zero primary spread violations could be mistaken for independent validation. | Place the imposed in-sample constraint, tolerance, held-out misses and unresolved fold alongside the result. | The presentation distinguishes price compatibility from density accuracy. |
 | Maturity sweeps, observed dates and a 60-day mixture are different comparisons. | Name the comparison in each card and explain the assumed mixture in the gallery. | No synthetic maturity sweep is described as historical animation. |
+| The synthetic and empirical explorers use different terminal-level units. | Check the archived plotting templates and describe index points separately from forward-normalised levels. | The gallery guidance follows the actual axes in each explorer. |
 | Local browser previews were blocked by the available browser environment. | Perform static checks before publication, then inspect the published GitHub Pages site. | Public-page inspection is recorded separately from local structural checks. |
 | The available browser environment does not support WebGL. | Preserve the existing explorer code and provide saved static previews; check navigation and accessible controls where available. | Do not claim a fresh 3D rotation or zoom check. The research archive retains its original browser-validation records. |
 
@@ -32,4 +33,16 @@ Create an SPX research landing page in the same white, navy and teal style as th
 
 Website verification does not rerun numerical experiments or establish new empirical findings. The retained research checks and browser records belong to their documented original handoffs.
 
-Live deployment checks will be recorded after publication.
+## Recorded website checks
+
+- Generated both pages with `python scripts/build_site.py`; the build-consistency and static checks pass.
+- Checked 47 local link occurrences and 12 image occurrences across the two pages. Image alternatives, dimensions, original graph destinations, canonical URLs and primary result counts passed.
+- Verified 1,339 archived files, including the original cover, against baseline commit `6a0cd7c658b337f9ccc53eca2f423e4e77b2c325`; all remain byte-for-byte unchanged.
+- `node --check assets/site.js` passes.
+- GitHub Pages successfully deployed website commit `5ef228df5c2b18dae778f140762c3b351895fc74`.
+- Inspected both public pages in the available 1,348-pixel desktop viewport: no horizontal overflow or broken images. Followed the landing-page button to the gallery and the dated-comparison card to its original explorer.
+- In the dated explorer, selecting 31 August and the interpolated 60-day horizon updated the status, 2D comparison heading and probability table. Its 3D panel reported that this browser lacks WebGL; rotation and zoom were not revalidated.
+- All four standalone graph URLs and the final PDF returned HTTP 200, with the expected HTML/PDF content types.
+- Reviewed the responsive CSS breakpoints. A fresh mobile-browser rendering check was not available in this environment.
+
+The final follow-up clarifies the empirical smoothing description and synthetic-axis units, aligns card metadata, and records these checks. A [landing-page screenshot](../assets/previews/landing-page.jpg) captures the published hero and overview statistics.

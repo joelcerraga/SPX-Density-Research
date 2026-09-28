@@ -40,4 +40,4 @@ Open `http://localhost:8000/` in your browser to preview locally. GitHub Pages p
 
 Edit page content in `scripts/build_site.py`, the shared styling in `assets/site.css`, and navigation behaviour in `assets/site.js`. Previews link directly to the saved scientific figures. The builder never rewrites the research archive.
 
-See the [website development record](docs/website-milestone.md) for the design decisions and validation scope.
+View the [published-page preview](assets/previews/landing-page.jpg). See the [website development record](docs/website-milestone.md) for the design decisions and validation scope.

@@ -45,7 +45,7 @@ EXPLORERS = [
         "size": (1835, 1224),
         "tag": "Market observations",
         "meta": "03 / Notebook 9 · 18 September 2026",
-        "description": "Explore the first SPXW market case across three expiries, with linked density slices and a comparison of the histogram and display smoothing.",
+        "description": "Explore the first SPXW market case across three expiries. Compare fitted density slices and smoothing choices from the original empirical experiment.",
         "alt": "Saved first empirical SPXW density surface for 18 September 2026, from Figure 28",
     },
     {
@@ -278,7 +278,7 @@ def gallery():
 <section class="section">
   <div class="wrap">
     <div class="read-grid">
-      <div><p class="eyebrow">How to read the graphs</p><h2>Look at the slices as well as the surface.</h2><p>Drag to rotate, scroll to zoom and hover for values. Use each explorer’s maturity or observation controls to update its linked slice.</p><ul><li><strong>Normalised terminal level:</strong> the future index level divided by the relevant forward level. A value of 1 is at that forward.</li><li><strong>Density height:</strong> probability is an area under the density over a range, rather than the height at one point.</li><li><strong>Surface joins:</strong> connecting facets aid viewing. They do not establish fitted densities at every intermediate maturity.</li></ul></div>
+      <div><p class="eyebrow">How to read the graphs</p><h2>Look at the slices as well as the surface.</h2><p>Drag to rotate, scroll to zoom and hover for values. Use each explorer’s maturity or observation controls to update its linked slice.</p><ul><li><strong>Terminal level:</strong> the synthetic explorers use index points. The empirical explorers divide by each expiry’s inferred forward; a value of 1 is at that forward.</li><li><strong>Density height:</strong> probability is an area under the density over a range, rather than the height at one point.</li><li><strong>Surface joins:</strong> connecting facets aid viewing. They do not establish fitted densities at every intermediate maturity.</li></ul></div>
       <div><p class="eyebrow">How to interpret the evidence</p><h2>Keep the pricing measure in view.</h2><p>As Bahra (1997) explains in <em>Implied risk-neutral probability density functions from option prices</em>, these densities are inferred under a risk-neutral pricing measure. Their probabilities are not direct forecasts of actual market outcomes.</p><p>The final explorer’s feasible ranges hold the bin support, inferred carry and selected quotes fixed. Read them alongside the retained held-out errors and unresolved numerical fold.</p><div class="detail-links"><a href="{local(PAPER, prefix)}">Read the paper ↗</a><a href="{github(f'{ARCHIVE}/research/comparison_methodology.md')}">Final methodology ↗</a></div></div>
     </div>
     <div class="callout scope-note"><p><strong>Viewing the explorers.</strong> Each opens as a standalone page with its plotting code and data included, so a downloaded copy also works offline. The 3D panels need a browser with WebGL support. Static previews and the final paper remain available above.</p></div>
