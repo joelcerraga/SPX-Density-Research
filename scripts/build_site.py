@@ -63,7 +63,17 @@ EXPLORERS = [
 
 
 def local(path, prefix=""):
-    return prefix + quote(path, safe="/#")
+    url = prefix + quote(path, safe="/#")
+    if path == PAPER:
+        # A new author-supplied PDF must not reuse a reader's cached old version.
+        version = hashlib.sha256((ROOT / PAPER).read_bytes()).hexdigest()[:12]
+        url += f"?v={version}"
+    return url
+
+
+def share_image_url():
+    version = hashlib.sha256((ROOT / COVER).read_bytes()).hexdigest()[:12]
+    return f"{BASE}{COVER}?v={version}"
 
 
 def github(path, directory=False):
@@ -77,6 +87,7 @@ def shell(title, description, body, *, gallery=False):
     graphs = ' aria-current="page"' if gallery else ""
     css_version = hashlib.sha256((ROOT / "assets/site.css").read_bytes()).hexdigest()[:12]
     js_version = hashlib.sha256((ROOT / "assets/site.js").read_bytes()).hexdigest()[:12]
+    share_image = share_image_url()
     return f'''<!doctype html>
 <html lang="en-GB">
 <head>
@@ -92,7 +103,8 @@ def shell(title, description, body, *, gallery=False):
   <meta property="og:title" content="{escape(title, quote=True)}">
   <meta property="og:description" content="{escape(description, quote=True)}">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{BASE}{COVER}">
+  <meta property="og:image" content="{share_image}">
+  <meta property="og:image:secure_url" content="{share_image}">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1774">
   <meta property="og:image:height" content="887">
@@ -100,7 +112,8 @@ def shell(title, description, body, *, gallery=False):
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{escape(title, quote=True)}">
   <meta name="twitter:description" content="{escape(description, quote=True)}">
-  <meta name="twitter:image" content="{BASE}{COVER}">
+  <meta name="twitter:image" content="{share_image}">
+  <meta name="twitter:image:alt" content="SPX Density Explorer by Joel Cerraga, with conceptual teal surface artwork on white">
   <link rel="icon" type="image/svg+xml" href="{prefix}assets/favicon.svg">
   <link rel="stylesheet" href="{prefix}assets/site.css?v={css_version}">
   <script src="{prefix}assets/site.js?v={js_version}" defer></script>

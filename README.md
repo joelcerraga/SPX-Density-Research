@@ -2,7 +2,7 @@
 
 A reproducible investigation of risk-neutral distributions inferred from SPX option prices, by **Joel Cerraga**.
 
-**[Research landing page](https://joelcerraga.github.io/SPX-Density-Research/)** · **[Interactive graph gallery](https://joelcerraga.github.io/SPX-Density-Research/explorers/)** · **[Final paper](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf)**
+**[Research landing page](https://joelcerraga.github.io/SPX-Density-Research/)** · **[Interactive graph gallery](https://joelcerraga.github.io/SPX-Density-Research/explorers/)** · **[Final paper](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf?v=208db74854f9)**
 
 ![SPX Density Explorer — conceptual cover artwork](SPX-Landing-Page-Thumbnail-White.jpg)
 
@@ -19,7 +19,7 @@ Price compatibility is imposed during fitting. It does not establish density acc
 
 The complete research project is in **[`SPX Density Research/`](SPX%20Density%20Research/)**. Start with its [research README](SPX%20Density%20Research/README.md) for Python setup, experiment commands and milestone history.
 
-- [Final PDF](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf) and [editable Word document](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.docx).
+- [Final PDF — author-supplied Version 1.1, 88 pages](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf?v=208db74854f9) and [earlier editable Word source — Version 1.0](SPX%20Density%20Research/paper/SPX-Option-Implied-Density-Final-Paper.docx).
 - [First notebook](SPX%20Density%20Research/01_synthetic_density.ipynb) and [final empirical comparison](SPX%20Density%20Research/10_empirical_comparison.ipynb).
 - [Final comparison methodology](SPX%20Density%20Research/research/comparison_methodology.md).
 - [Development decisions, setbacks and lessons](SPX%20Density%20Research/research/development_reflection.md).

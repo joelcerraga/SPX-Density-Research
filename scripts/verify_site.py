@@ -79,7 +79,10 @@ def verify_pages():
         canonical = build_site.BASE + ("explorers/" if path.parent.name == "explorers" else "")
         require(page.canonical == canonical, f"Canonical URL: {relative}")
         require(page.meta.get("og:url") == canonical, f"Social URL: {relative}")
-        require(page.meta.get("og:image") == build_site.BASE + build_site.COVER, f"Social image: {relative}")
+        require(page.meta.get("og:image") == build_site.share_image_url(), f"Social image: {relative}")
+        require(page.meta.get("og:image:secure_url") == build_site.share_image_url(), f"Secure social image: {relative}")
+        require(page.meta.get("twitter:image") == build_site.share_image_url(), f"Twitter image: {relative}")
+        require(bool(page.meta.get("twitter:image:alt")), f"Twitter image description: {relative}")
         require(page.meta.get("twitter:card") == "summary_large_image", f"Social card: {relative}")
         require(bool(page.meta.get("description")), f"Missing description: {relative}")
         for url in page.links:
@@ -104,6 +107,10 @@ def verify_pages():
         expected = {ROOT / build_site.ARCHIVE / "interactive" / item["file"] for item in build_site.EXPLORERS}
         destinations = {resolve_local(path, url)[0] for url in page.links}
         require(expected.issubset(destinations), f"Not all original graph URLs are linked: {relative}")
+        paper_links = [url for url in page.links if resolve_local(path, url)[0] == ROOT / build_site.PAPER]
+        require(bool(paper_links), f"Missing current paper link: {relative}")
+        paper_version = hashlib.sha256((ROOT / build_site.PAPER).read_bytes()).hexdigest()[:12]
+        require(all(urlsplit(url).query == f"v={paper_version}" for url in paper_links), f"Stale PDF link: {relative}")
     metrics = json.loads((ROOT / build_site.ARCHIVE / "results/comparison_display_metrics.json").read_text())
     html = PAGES[0].read_text()
     for value in (metrics["primary_spread_quote_count"], metrics["primary_outside_count"]):
@@ -119,13 +126,19 @@ def verify_pages():
 
 
 def verify_archive():
+    publication = json.loads((ROOT / "docs/published-paper.json").read_text())
+    replacements = {item["path"]: item for item in publication["approved_replacements"]}
+    for name, item in replacements.items():
+        content = (ROOT / name).read_bytes()
+        require(hashlib.sha256(content).hexdigest() == item["sha256"], f"Approved publication differs: {name}")
     if not (ROOT / ".git").exists():
-        return {"status": "not checked", "reason": "Git history is unavailable in this downloaded copy"}
+        return {"status": "publication checked; original baseline unavailable", "approved_replacements": len(replacements), "reason": "Git history is unavailable in this downloaded copy"}
     result = subprocess.run(
         ["git", "ls-tree", "-rz", "--full-tree", BASELINE, "--", build_site.ARCHIVE, build_site.COVER],
         cwd=ROOT, capture_output=True, check=True,
     )
     checked = 0
+    replaced = 0
     for record in result.stdout.split(b"\0"):
         if not record:
             continue
@@ -135,11 +148,15 @@ def verify_archive():
         path = ROOT / name.decode()
         require(path.is_file(), f"Archived file removed: {path.relative_to(ROOT)}")
         content = path.read_bytes()
+        if name.decode() in replacements:
+            replaced += 1
+            continue
         actual = hashlib.sha1(b"blob " + str(len(content)).encode() + b"\0" + content).hexdigest()
         require(actual == expected.decode(), f"Archived file changed: {path.relative_to(ROOT)}")
         checked += 1
     require(checked > 1000, "Archive baseline was incomplete")
-    return {"status": "byte-for-byte unchanged", "files_checked": checked, "baseline_commit": BASELINE}
+    require(replaced == len(replacements), "Replacement record contains a path outside the archive baseline")
+    return {"status": "original research preserved except recorded author-approved replacements", "unchanged_files_checked": checked, "approved_replacements_checked": replaced, "baseline_commit": BASELINE}
 
 
 if __name__ == "__main__":

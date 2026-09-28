@@ -47,3 +47,17 @@ Website verification does not rerun numerical experiments or establish new empir
 - Reviewed the responsive CSS breakpoints. A fresh mobile-browser rendering check was not available in this environment.
 
 The final follow-up clarifies the empirical smoothing description and synthetic-axis units, aligns card metadata, and records these checks. A [landing-page screenshot](../assets/previews/landing-page.jpg) captures the published hero and overview statistics.
+
+## Author-supplied paper and link-preview update — 28 September 2026
+
+The author subsequently requested the supplied `SPX Option Implied Density Final Paper(1).pdf` as the public paper. The published PDF is now Version 1.1, with 88 physical pages. Its bytes are copied exactly; no pages are removed or rewritten. `published-paper.json` records its checksum and the two approved archive replacements: the PDF and its explanatory README. The other 1,337 baseline files remain unchanged.
+
+Both website pages retain the previously approved `SPX-Landing-Page-Thumbnail-White.jpg` artwork for Open Graph and Twitter previews. Its white background, navy text and teal density surface are unchanged. Explicit HTTPS image metadata, image descriptions and content-derived image URL versions are supplied on both pages.
+
+| Issue | Resolution |
+| --- | --- |
+| The attached paper has a different version and pagination from the original export. | Publish the exact supplied Version 1.1 PDF and identify the retained DOCX, page maps and verification JSON as Version 1.0 material. Do not claim that the old builder reproduces the new PDF. |
+| A reader could retain the earlier PDF in a browser cache. | Generate every website paper link with the current PDF content version while preserving the original download path. |
+| Replacing one archived document would fail the original blanket preservation check. | Record the exact authorised replacement checksums and verify them, while retaining the baseline checks for every other archived file. |
+
+The cover and final page of the supplied PDF were rendered and inspected, its 88-page count was read independently, and a byte comparison confirmed that the repository copy matches the attachment. Website generation, preview metadata, paper-link version and archive checks pass. Live verification compares the deployed PDF and thumbnail bytes with their expected checksums.

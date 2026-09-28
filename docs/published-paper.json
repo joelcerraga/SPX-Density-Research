@@ -1,0 +1,35 @@
+{
+  "published_on": "2026-09-28",
+  "version": "1.1",
+  "physical_pages": 88,
+  "source_filename": "SPX Option Implied Density Final Paper(1).pdf",
+  "pdf_path": "SPX Density Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf",
+  "sha256": "208db74854f9341788a5cd7f749d2af47058430603dcc44aa1eec15d17233845",
+  "size_bytes": 6290659,
+  "previous_pdf": {
+    "version": "1.0",
+    "physical_pages": 123,
+    "sha256": "c7449bfe22ecfef8c0ef905bcd9c8aa541f4298ed622db643edab144308a22e9"
+  },
+  "approved_replacements": [
+    {
+      "path": "SPX Density Research/paper/SPX-Option-Implied-Density-Final-Paper.pdf",
+      "sha256": "208db74854f9341788a5cd7f749d2af47058430603dcc44aa1eec15d17233845",
+      "reason": "Exact author-supplied Version 1.1 PDF replaces Version 1.0."
+    },
+    {
+      "path": "SPX Density Research/paper/README.md",
+      "sha256": "6bb7696e9d6383b5d33b877d7de51958cc24aa469071aa4a10dbcf6dcb6d491f",
+      "reason": "Distinguish the new PDF from retained Version 1.0 source and verification files."
+    }
+  ],
+  "share_preview": {
+    "path": "SPX-Landing-Page-Thumbnail-White.jpg",
+    "sha256": "59d708d88b6da81882b88d66f231d00b350dbbd0fbe1ac700dfd4f3bdada082b",
+    "pages": [
+      "/",
+      "/explorers/"
+    ],
+    "selection": "Previously approved white-background SPX Density Explorer artwork."
+  }
+}

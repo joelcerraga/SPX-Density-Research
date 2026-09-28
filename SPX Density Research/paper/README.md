@@ -1,6 +1,10 @@
 # Final paper
 
-Open `SPX-Option-Implied-Density-Final-Paper.pdf` to read the finished paper, or use the `.docx` version for editing. Both include the title page, abstract, contents, figure/table/equation lists, abbreviations, mathematical symbols with units, integrated research chapters, development reflection, discussion, conclusion and references.
+Open `SPX-Option-Implied-Density-Final-Paper.pdf` to read the author-supplied **Version 1.1**, published on 28 September 2026. This is the exact 88-page PDF supplied by Joel Cerraga; it replaces the earlier 123-page Version 1.0 at the same download path.
+
+The `.docx`, manuscript, builder, navigation files and `verification.json` retain the **earlier Version 1.0 source and verification record**. They have not been represented as the source or pagination check for the supplied Version 1.1 PDF. Rebuilding from those files produces the earlier document until the author's revisions are incorporated. The current PDF's checksum and publication provenance are recorded in `../../docs/published-paper.json`.
+
+The paper includes the title page, abstract, contents, figure/table/equation lists, abbreviations, mathematical symbols with units, integrated research chapters, development reflection, discussion, conclusion and references.
 
 The author's power systems logbook and final-year project report guided typography and document conventions. The chapter sequence follows the SPX investigation. The engineering reports are not financial research sources and are not redistributed in this package.
 
