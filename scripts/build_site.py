@@ -6,6 +6,7 @@ Run from any directory: python scripts/build_site.py
 """
 
 from html import escape
+import hashlib
 import json
 from pathlib import Path
 from urllib.parse import quote
@@ -74,6 +75,8 @@ def shell(title, description, body, *, gallery=False):
     canonical = BASE + ("explorers/" if gallery else "")
     overview = "" if gallery else ' aria-current="page"'
     graphs = ' aria-current="page"' if gallery else ""
+    css_version = hashlib.sha256((ROOT / "assets/site.css").read_bytes()).hexdigest()[:12]
+    js_version = hashlib.sha256((ROOT / "assets/site.js").read_bytes()).hexdigest()[:12]
     return f'''<!doctype html>
 <html lang="en-GB">
 <head>
@@ -99,8 +102,8 @@ def shell(title, description, body, *, gallery=False):
   <meta name="twitter:description" content="{escape(description, quote=True)}">
   <meta name="twitter:image" content="{BASE}{COVER}">
   <link rel="icon" type="image/svg+xml" href="{prefix}assets/favicon.svg">
-  <link rel="stylesheet" href="{prefix}assets/site.css">
-  <script src="{prefix}assets/site.js" defer></script>
+  <link rel="stylesheet" href="{prefix}assets/site.css?v={css_version}">
+  <script src="{prefix}assets/site.js?v={js_version}" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
